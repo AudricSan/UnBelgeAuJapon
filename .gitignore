@@ -6,3 +6,6 @@ CLAUDE.md
 /admin-config.php
 /mvaj-admin.sqlite*
 
+
+# Identifiants locaux (FileZilla) : ne jamais versionner
+/OVH.xml
