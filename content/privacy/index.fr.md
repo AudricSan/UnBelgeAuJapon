@@ -7,7 +7,7 @@ hideTitle: true
 # Politique de confidentialité
 
 ## 1. Introduction  
-Le site *Ma vie au Japon* accorde une grande importance à la protection de vos données personnelles.  
+Le site *Un Belge au Japon* accorde une grande importance à la protection de vos données personnelles.  
 Cette politique explique quelles données sont collectées, comment elles sont utilisées et quels sont vos droits.
 
 ---

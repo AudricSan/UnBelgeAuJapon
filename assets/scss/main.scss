@@ -1,9 +1,9 @@
 // =============================================================
-// Point d'entrée SCSS – Ma vie au Japon
+// Point d'entrée SCSS – Un Belge au Japon
 // Chaque fichier correspond à une zone précise du site.
 // =============================================================
 
-@import "common/header";   // Navigation, dropdown, hamburger, responsive
-@import "common/home";     // Page d'accueil, cartes catégories
-@import "common/article";  // Pages articles (post-single, contenu, pagination)
-@import "common/footer";   // Footer multi-colonnes
+@use "common/header";   // Navigation, dropdown, hamburger, responsive
+@use "common/home";     // Page d'accueil, cartes catégories
+@use "common/article";  // Pages articles (post-single, contenu, pagination)
+@use "common/footer";   // Footer multi-colonnes

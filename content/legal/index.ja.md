@@ -7,7 +7,7 @@ hideTitle: true
 # 法的情報（免責事項）
 
 ## 1. サイト運営者  
-本サイト「Ma vie au Japon」は、以下の者により運営されています。  
+本サイト「Un Belge au Japon」は、以下の者により運営されています。  
 - 氏名：Audric Rosier  
 - 区分：個人  
 - メールアドレス：audric@audricrosier.be  

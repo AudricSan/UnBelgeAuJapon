@@ -3,8 +3,8 @@
 # =========================
 baseURL = "https://blog.audricrosier.be/"
 canonicalURL = "https://blog.audricrosier.be/"
-title = "Ma vie au Japon – Blog d’expatriation, conseils et démarches"
-theme = "papermod"
+title = "Un Belge au Japon – Blog d’expatriation, conseils et démarches"
+theme = "PaperMod"
 
 defaultContentLanguage = "fr"
 paginate = 10
@@ -16,8 +16,8 @@ locale = "fr-fr"
 [languages]
 
   [languages.fr]
-    languageName = "Français"
-    languageCode = "fr-FR"
+    label = "Français"
+    locale = "fr-FR"
     weight = 1
 
     [[languages.fr.menus.main]]
@@ -41,8 +41,8 @@ locale = "fr-fr"
       weight = 4
 
   [languages.ja]
-    languageName = "日本語"
-    languageCode = "ja-JP"
+    label = "日本語"
+    locale = "ja-JP"
     weight = 2
 
     [[languages.ja.menus.main]]
@@ -72,6 +72,10 @@ locale = "fr-fr"
   env = "production" # Active OpenGraph, Twitter Cards, JSON-LD
   author = "Audric Rosier"
 
+  # Charte : thème clair uniquement (aucun mode sombre défini)
+  defaultTheme = "light"
+  disableThemeToggle = true
+
   description = "Découvrez comment vivre au Japon : démarches, visa, logement, travail et conseils d’expatrié. Un blog complet pour réussir votre installation au Japon."
 
   keywords = [
@@ -87,7 +91,7 @@ locale = "fr-fr"
 
   # Logo / Label
   [params.label]
-    text = "Ma vie au Japon"
+    text = "Un Belge au Japon"
 
   # SEO Schema
   [params.schema]
@@ -105,6 +109,10 @@ locale = "fr-fr"
     url  = "https://www.instagram.com/audric_san/"
 
   [[params.socialIcons]]
+    name = "instagram"
+    url  = "https://www.instagram.com/belgeaujapon/"
+
+  [[params.socialIcons]]
     name = "youtube"
     url  = "https://www.youtube.com/@JapanByAudric"
 
@@ -120,5 +128,10 @@ locale = "fr-fr"
 # IMAGE PROCESSING
 # =========================
 [imaging]
-  quality = 85
   resampleFilter = "Lanczos"
+
+  [imaging.jpeg]
+    quality = 85
+
+  [imaging.webp]
+    quality = 85

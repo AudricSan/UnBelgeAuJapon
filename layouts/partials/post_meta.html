@@ -1,5 +1,13 @@
 {{- $scratch := newScratch }}
 
+{{- /* Tags de catégorie de la charte (Récit, Guide, Comparaison, Conseil, Quotidien) */}}
+{{- $catClasses := dict "récit" "recit" "recit" "recit" "guide" "guide" "comparaison" "comparaison" "conseil" "conseil" "quotidien" "quotidien" }}
+{{- range .Params.categories }}
+{{- with index $catClasses (lower .) }}
+{{- $scratch.Add "meta" (slice (printf "<span class='cat-tag tag-%s'>%s</span>" . (title .))) }}
+{{- end }}
+{{- end }}
+
 {{- if not .Date.IsZero -}}
 {{- $scratch.Add "meta" (slice (printf "<span title='%s'>📅 %s</span>" (.Date) (.Date | time.Format (default ":date_long" site.Params.DateFormat)))) }}
 {{- end }}

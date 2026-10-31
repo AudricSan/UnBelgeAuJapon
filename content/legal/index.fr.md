@@ -7,7 +7,7 @@ hideTitle: true
 # Mentions légales
 
 ## 1. Éditeur du site  
-Le présent site, *Ma vie au Japon*, est édité par :  
+Le présent site, *Un Belge au Japon*, est édité par :  
 - Nom : Audric Rosier 
 - Statut : Particulier  
 - Email : audric@audricrosier.be

@@ -3,4 +3,6 @@ CLAUDE.md
 /.vscode
 /public
 /.idea
+/admin-config.php
+/mvaj-admin.sqlite*
 
