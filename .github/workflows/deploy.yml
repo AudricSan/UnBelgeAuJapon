@@ -1,0 +1,91 @@
+name: Build & deploy to OVH
+
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - "DEPLOYMENT.md"
+      - "GUIDE-*.md"
+      - "README.md"
+      - "CLAUDE.md"
+      - "charte-blog-hugo.md"
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Simulation : calcule le plan de déploiement sans rien modifier sur OVH"
+        type: boolean
+        default: true
+      max_deletions:
+        description: "Nombre maximal de suppressions distantes autorisées"
+        type: string
+        default: "200"
+
+# Un seul déploiement à la fois. Pas d'annulation en cours de transfert
+# (un envoi interrompu laisserait le site à moitié mis à jour) : un nouveau push
+# attend la fin du déploiement actif, et seul le dernier push en attente est conservé.
+concurrency:
+  group: deploy-ovh
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+env:
+  HUGO_VERSION: "0.169.0"
+
+jobs:
+  deploy:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - name: Checkout (avec le thème PaperMod)
+        uses: actions/checkout@v4
+        with:
+          submodules: true
+
+      - name: Installer Hugo Extended ${{ env.HUGO_VERSION }}
+        uses: peaceiris/actions-hugo@v3
+        with:
+          hugo-version: ${{ env.HUGO_VERSION }}
+          extended: true
+
+      - name: Vérifier la version de Hugo
+        run: |
+          hugo version
+          hugo version | grep -q "v${HUGO_VERSION}" || { echo "::error::Version de Hugo inattendue"; exit 1; }
+          hugo version | grep -q "extended" || { echo "::error::Hugo n'est pas la version Extended"; exit 1; }
+
+      - name: Build de production
+        run: hugo build --minify --gc --cleanDestinationDir
+
+      - name: Validation du build
+        run: python3 scripts/validate_build.py public
+
+      - name: Déploiement SFTP vers OVH
+        env:
+          DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
+          DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
+          DEPLOY_PORT: ${{ secrets.DEPLOY_PORT }}
+          DEPLOY_PATH: ${{ secrets.DEPLOY_PATH }}
+          DEPLOY_PASSWORD: ${{ secrets.DEPLOY_PASSWORD }}
+          DEPLOY_SSH_KEY: ${{ secrets.DEPLOY_SSH_KEY }}
+          DEPLOY_KNOWN_HOSTS: ${{ secrets.DEPLOY_KNOWN_HOSTS }}
+          DRY_RUN: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run || 'false' }}
+          MAX_DELETIONS: ${{ github.event_name == 'workflow_dispatch' && inputs.max_deletions || '200' }}
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends lftp
+          python3 scripts/deploy_sftp.py public
+
+      - name: Rapport
+        if: always()
+        run: |
+          {
+            echo "## Déploiement MaVieAuJapon"
+            echo "- Statut : \`${{ job.status }}\`"
+            echo "- Commit : \`${GITHUB_SHA::7}\`"
+            echo "- Déclencheur : \`${{ github.event_name }}\`"
+            echo "- Hugo : \`${HUGO_VERSION}\` Extended"
+            echo "- Simulation : \`${{ github.event_name == 'workflow_dispatch' && inputs.dry_run || 'false' }}\`"
+            echo "- Site : https://blog.audricrosier.be/"
+          } >> "$GITHUB_STEP_SUMMARY"
