@@ -49,6 +49,11 @@ jobs:
           hugo-version: ${{ env.HUGO_VERSION }}
           extended: true
 
+      - name: Installer Dart Sass (requis par css.Sass, même version qu'en local)
+        run: |
+          npm install -g sass@1.107.1
+          sass --version
+
       - name: Vérifier la version de Hugo
         run: |
           hugo version
