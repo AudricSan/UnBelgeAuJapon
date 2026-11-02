@@ -1,7 +1,7 @@
 ---
 title: "🌸 Ma première année au Japon : ce que personne ne m'avait dit"
 date: 2025-01-15
-author: "Audric Rosier"
+author: "AudricSan"
 description: "Bilan honnête de ma première année de vie au Japon en tant qu'expatrié belge : les surprises, les difficultés, les petites victoires et ce que j'aurais voulu savoir avant."
 keywords:
   - "première année Japon"

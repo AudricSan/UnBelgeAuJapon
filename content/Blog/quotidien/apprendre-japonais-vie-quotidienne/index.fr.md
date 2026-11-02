@@ -1,7 +1,7 @@
 ---
 title: "Apprendre le japonais en vivant au Japon : ce qui marche vraiment"
 date: 2026-04-12
-author: "Audric Rosier"
+author: "AudricSan"
 description: "Vivre au Japon ne suffit pas à apprendre le japonais. Ce qui fait vraiment progresser, c'est une combinaison de méthodes, de discipline et d'exposition intentionnelle. Retour d'expérience après deux ans."
 keywords:
   - "apprendre japonais expatrié"

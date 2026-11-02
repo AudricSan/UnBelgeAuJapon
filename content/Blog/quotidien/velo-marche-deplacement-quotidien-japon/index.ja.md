@@ -1,7 +1,7 @@
 ---
 title: "自転車と徒歩——日本での別の移動のかたち"
 date: 2026-04-19
-author: "Audric Rosier"
+author: "AudricSan"
 description: "日本では、自転車と徒歩は本格的な日常の移動手段です。独自のルール、インフラ、文化的なコードがあります。これらの習慣を取り入れて気づいたこと。"
 keywords:
   - "自転車 日本"

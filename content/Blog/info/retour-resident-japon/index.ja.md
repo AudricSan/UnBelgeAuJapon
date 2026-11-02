@@ -1,7 +1,7 @@
 ---
 title: '一時的に日本を離れる：在留資格を失わずに戻る方法'
 date: 2025-01-01
-author: "Audric Rosier"
+author: "AudricSan"
 description: "一時的に日本を離れ、在留カードを保持したまま戻るための手続き方法：みなし再入国許可と通常の再入国許可の違い。"
 keywords:
   - "日本 出国"

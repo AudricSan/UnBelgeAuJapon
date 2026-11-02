@@ -1,7 +1,7 @@
 ---
 title: '🌸 日本での最初の1年：誰も教えてくれなかったこと'
 date: 2025-01-15
-author: "Audric Rosier"
+author: "AudricSan"
 description: "ベルギー人として日本で過ごした最初の1年間の正直なレビュー：驚いたこと、困ったこと、小さな勝利、そして出発前に知っておきたかったこと。"
 keywords:
   - "日本 1年目"

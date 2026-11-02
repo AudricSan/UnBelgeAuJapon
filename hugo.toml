@@ -70,7 +70,7 @@ locale = "fr-fr"
 # =========================
 [params]
   env = "production" # Active OpenGraph, Twitter Cards, JSON-LD
-  author = "Audric Rosier"
+  author = "AudricSan"
 
   # Charte : thème clair uniquement (aucun mode sombre défini)
   defaultTheme = "light"
@@ -80,7 +80,7 @@ locale = "fr-fr"
 
   keywords = [
     "Japon",
-    "expatrié belge Japon",
+    "expatrié Belgique Japon",
     "visa Japon",
     "vie au Japon",
     "mariage belgo-japonais",

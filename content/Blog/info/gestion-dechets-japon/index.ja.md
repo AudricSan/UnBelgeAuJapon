@@ -1,7 +1,7 @@
 ---
 title: "日本のゴミ分別ガイド——注意されないための完全マニュアル"
 date: 2026-02-15
-author: "Audric Rosier"
+author: "AudricSan"
 description: "日本のゴミ管理は厳格で、市区町村によって異なります。間違えないための方法と、近所付き合いを守るために避けるべきミスについて。"
 keywords:
   - "ゴミ分別 日本"

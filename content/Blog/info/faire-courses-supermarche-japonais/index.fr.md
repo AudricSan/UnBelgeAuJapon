@@ -1,7 +1,7 @@
 ---
 title: "Faire ses courses au supermarché japonais : ce qui change tout"
 date: 2026-03-01
-author: "Audric Rosier"
+author: "AudricSan"
 description: "Le supermarché japonais est une expérience à part entière. Organisation, étiquetage, fraîcheur, prix, culture alimentaire — voici ce que j'ai appris en faisant mes courses chaque semaine au Japon."
 keywords:
   - "supermarché Japon"

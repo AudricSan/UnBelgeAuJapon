@@ -1,7 +1,7 @@
 ---
 title: "Vivre dans un petit appartement japonais : contraintes, astuces et changement d'état d'esprit"
 date: 2026-03-29
-author: "Audric Rosier"
+author: "AudricSan"
 description: "Mon appartement à Tokyo fait 28 m². C'est petit, mais c'est fonctionnel, propre, et ça m'a appris à vivre autrement. Guide pratique et réflexion sur le logement japonais."
 keywords:
   - "appartement Japon"

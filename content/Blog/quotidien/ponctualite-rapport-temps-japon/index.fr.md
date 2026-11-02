@@ -1,7 +1,7 @@
 ---
 title: "La ponctualité au Japon : quand le temps est une valeur morale"
 date: 2026-03-15
-author: "Audric Rosier"
+author: "AudricSan"
 description: "Au Japon, être à l'heure n'est pas juste une bonne habitude — c'est une marque de respect. Ce que ça implique dans la vie quotidienne, au travail et dans les relations sociales."
 keywords:
   - "ponctualité Japon"

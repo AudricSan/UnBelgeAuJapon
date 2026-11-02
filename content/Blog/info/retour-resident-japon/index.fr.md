@@ -1,7 +1,7 @@
 ---
 title: '🪃 Quitter temporairement le Japon : revenir sans perdre son statut de résident'
 date: 2025-09-01
-author: "Audric Rosier"
+author: "AudricSan"
 description: "Démarches à suivre pour quitter temporairement le Japon et revenir avec sa carte de résident (zairyuu card) : special re-entry permit et re-entry permit classique."
 keywords:
   - "quitter le Japon"

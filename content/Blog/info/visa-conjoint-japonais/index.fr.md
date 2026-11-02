@@ -1,7 +1,7 @@
 ---
 title: "💍 Visa conjoint de Japonais(e) : guide complet pour l'obtenir"
 date: 2025-03-01
-author: "Audric Rosier"
+author: "AudricSan"
 description: "Comment obtenir le visa 'conjoint de Japonais(e)' après un mariage au Japon : documents, délais, conditions et conseils pratiques pour les expatriés francophones."
 keywords:
   - "visa conjoint japonais"

@@ -1,7 +1,7 @@
 ---
 title: '🪪 マイナンバーとは？：使い方と申請方法'
 date: 2026-03-01
-author: "Audric Rosier"
+author: "AudricSan"
 description: "日本在住外国人のためのマイナンバー完全ガイド：番号の取得方法、マイナンバーカードの申請、日常生活での活用方法。"
 keywords:
   - "マイナンバー 外国人"

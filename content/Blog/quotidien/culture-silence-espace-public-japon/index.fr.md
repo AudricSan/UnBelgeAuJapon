@@ -1,7 +1,7 @@
 ---
 title: "Le silence dans les espaces publics japonais : une valeur, pas une absence"
 date: 2026-02-22
-author: "Audric Rosier"
+author: "AudricSan"
 description: "Au Japon, le silence dans les transports, les files d'attente et les lieux publics n'est pas un vide : c'est une forme de politesse collective. Ce que ça m'a appris sur moi-même."
 keywords:
   - "silence Japon"

@@ -1,7 +1,7 @@
 ---
 title: "🪃 Sortir du Japon pour la première fois avec une carte de résident"
 date: 2025-09-01
-author: "Audric Rosier"
+author: "AudricSan"
 description: "Mon récit personnel de sortie temporaire du Japon avec une carte de résident, et les démarches à ne pas oublier : special re-entry permit, formulaire à l’aéroport."
 keywords:
   - "sortir du Japon"

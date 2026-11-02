@@ -1,7 +1,7 @@
 ---
 title: "💼 Travailler au Japon avec un visa conjoint : ce qu'il faut savoir"
 date: 2025-04-01
-author: "Audric Rosier"
+author: "AudricSan"
 description: "Tout savoir sur le droit au travail avec le visa conjoint de Japonais(e) : liberté d'emploi, obligations légales, fiscalité et points d'attention pour les expatriés."
 keywords:
   - "travailler Japon visa conjoint"

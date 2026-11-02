@@ -6,90 +6,104 @@ hideTitle: true
 
 # Politique de confidentialité
 
-## 1. Introduction  
-Le site *Un Belge au Japon* accorde une grande importance à la protection de vos données personnelles.  
-Cette politique explique quelles données sont collectées, comment elles sont utilisées et quels sont vos droits.
+## 1. Responsable du traitement
+Le site *Un Belge au Japon* est édité par Audric Rosier, en qualité de particulier. Ce site est hébergé par OVHcloud, situé à Roubaix (France).
 
 ---
 
-## 2. Données collectées  
-Des données personnelles peuvent être collectées dans les cas suivants :  
+## 2. Traitements identifiés dans le code du site
 
-- Lors de l'envoi d'un message via un formulaire de contact (nom, email, etc.)  
-- Lors de la navigation sur le site (adresse IP, pages consultées, navigateur, etc.)  
+### 2.1 Formulaire de contact
+Les données suivantes peuvent être collectées via le formulaire de contact :
+- nom ;
+- adresse e-mail ;
+- message.
 
----
+Finalité : répondre aux demandes de contact, relancer une question ou un échange, et gérer les demandes de renseignements.
 
-## 3. Finalité de la collecte  
-Les données collectées sont utilisées pour :  
+Base légale : intérêt légitime à répondre à une demande ou exécution de mesures précontractuelles / service rendu dans le cadre d’une relation directe avec l’éditeur.
 
-- Répondre aux demandes via le formulaire de contact  
-- Améliorer le site et analyser son utilisation  
-- Assurer la sécurité et prévenir les abus  
+Durée de conservation : 12 mois à compter du dernier échange, sauf obligation légale contraire.
 
----
+Accès : l’éditeur du site, ainsi que le prestataire Web3Forms qui reçoit le formulaire pour acheminer le message à son destinataire.
 
-## 4. Partage des données  
-Les données personnelles ne sont pas vendues ni cédées à des tiers.  
+Sortie de l’UE : les données peuvent transiter via le prestataire tiers Web3Forms. Le site ne mentionne pas de clause spécifique dans le code ; ce point doit être vérifié dans le contrat avec le prestataire lors de la mise en ligne.
 
-Elles peuvent être partagées uniquement dans les cas suivants :  
-- Obligation légale  
-- Prestataires techniques (hébergement, analyse) si nécessaire  
+Droits : accès, rectification, effacement, limitation, opposition, portabilité. Pour les exercer, écrire à contact@audricrosier.be.
 
 ---
 
-## 5. Durée de conservation  
-Les données sont conservées uniquement pendant la durée nécessaire aux finalités pour lesquelles elles ont été collectées.
+### 2.2 Analyse de performance / sécurité du site
+Le site charge un script Cloudflare Insights uniquement après consentement, conformément au bandeau de gestion des cookies.
+
+Données concernées : adresse IP (souvent pseudonymisée ou hachée selon la configuration), pages visitées, temps de chargement, informations de performance et de sécurité du navigateur.
+
+Finalité : mesurer la performance du site, détecter les incidents techniques, sécuriser et optimiser le service.
+
+Base légale : consentement de la personne.
+
+Durée de conservation : maximum 6 mois à compter de la décision de consentement, conformément à la gestion du bandeau.
+
+Accès : l’éditeur du site et le prestataire Cloudflare.
+
+Sortie de l’UE : les données peuvent être traitées dans le réseau Cloudflare ; le site doit s’assurer de la présence des garanties appropriées, notamment des clauses contractuelles types, avant toute mise en ligne à forte volumétrie.
+
+Droits : accès, rectification, opposition, limitation, effacement. Pour les exercer, écrire à contact@audricrosier.be.
 
 ---
 
-## 6. Cookies  
-Le site peut utiliser des cookies pour :  
+## 3. Cookies et traceurs
+Le site ne dépose pas de cookie strictement nécessaire à la lecture du contenu autre qu’un stockage local de la préférence de consentement.
 
-- Assurer son bon fonctionnement  
-- Mesurer l'audience (si un outil d'analyse est utilisé)  
+Le site utilise un traceur d’analyse de performance Cloudflare Insights, classé comme non strictement nécessaire au fonctionnement. Il n’est chargé qu’après consentement explicite de la personne visiteuse.
 
-Vous pouvez configurer votre navigateur pour refuser ou supprimer les cookies.
+Le site met à disposition un bouton « Tout accepter » et un bouton « Tout refuser », ainsi qu’un accès à la politique des cookies dans le pied de page.
 
----
-
-## 7. Outils d'analyse  
-Le site peut utiliser des outils de mesure d'audience.  
-Les données collectées sont anonymisées et ne permettent pas d'identifier directement un utilisateur.
+Le choix de consentement est conservé pendant 6 mois maximum, puis le site redemande l’accord.
 
 ---
 
-## 8. Vos droits (RGPD)  
-Conformément au Règlement Général sur la Protection des Données (RGPD), vous disposez des droits suivants :  
-
-- Droit d'accès  
-- Droit de rectification  
-- Droit de suppression  
-- Droit à la limitation du traitement  
-
-Pour exercer ces droits, vous pouvez contacter :  
-
-legal@audricrosier.be  
+## 4. Partage des données avec des tiers
+Les données ne sont pas vendues ni revendues à des tiers. Elles peuvent être transmises uniquement :
+- à l’hébergeur pour la gestion technique du site ;
+- au prestataire Web3Forms pour la transmission du formulaire de contact ;
+- au prestataire Cloudflare pour la sécurité et la performance du site, si le consentement a été donné.
 
 ---
 
-## 9. Sécurité  
-Le site met en œuvre des mesures de sécurité appropriées afin de protéger les données personnelles contre tout accès non autorisé, modification ou divulgation.
+## 5. Sécurité et conservation
+Le site met en œuvre des mesures raisonnables de sécurité pour limiter les accès non autorisés, les pertes et les altérations.
+
+Les données sont conservées uniquement pendant la durée nécessaire à la finalité poursuivie, puis supprimées ou archivées selon le cadre légal.
 
 ---
 
-## 10. Liens externes  
-Le site peut contenir des liens vers d'autres sites.  
-Nous ne sommes pas responsables de leur politique de confidentialité.
+## 6. Vos droits RGPD
+Conformément au Règlement général sur la protection des données (RGPD), vous disposez des droits suivants :
+- droit d’accès ;
+- droit de rectification ;
+- droit à l’effacement ;
+- droit à la limitation du traitement ;
+- droit d’opposition ;
+- droit à la portabilité.
+
+Pour exercer ces droits, vous pouvez écrire à :
+- contact@audricrosier.be
+
+Vous pouvez aussi contacter le délégué à la protection des données si celui-ci est désigné, ou saisir la CNIL si vous estimez que vos droits ne sont pas respectés.
 
 ---
 
-## 11. Contact  
-Pour toute question relative à cette politique :  
-
-contact@audricrosier.be  
+## 7. Liens externes
+Le site contient des liens vers des réseaux sociaux et d’autres pages du blog. Cette politique ne couvre pas les sites tiers, dont les pratiques de données peuvent différer.
 
 ---
 
-## 12. Modification  
-Cette politique peut être modifiée à tout moment afin de rester conforme aux évolutions légales ou techniques.
+## 8. Contact
+Pour toute question concernant cette politique :
+- contact@audricrosier.be
+
+---
+
+## 9. Modifications
+Cette politique peut être mise à jour pour refléter les évolutions du site, des outils utilisés ou des obligations légales.

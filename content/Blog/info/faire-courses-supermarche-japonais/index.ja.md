@@ -1,7 +1,7 @@
 ---
 title: "日本のスーパーで買い物する——すべてが変わること"
 date: 2026-03-01
-author: "Audric Rosier"
+author: "AudricSan"
 description: "日本のスーパーはそれ自体が体験です。品揃え、ラベルの読み方、鮮度へのこだわり、価格、食文化——毎週の買い物から学んだことをまとめます。"
 keywords:
   - "スーパー 日本"

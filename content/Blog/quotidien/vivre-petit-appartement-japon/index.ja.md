@@ -1,7 +1,7 @@
 ---
 title: "日本の狭い部屋で暮らす——制約、工夫、そして考え方の変化"
 date: 2026-03-29
-author: "Audric Rosier"
+author: "AudricSan"
 description: "東京の私のアパートは28平米です。狭いですが、機能的で清潔で、違う暮らし方を教えてくれました。日本の住居の実践ガイドと考察。"
 keywords:
   - "アパート 日本"

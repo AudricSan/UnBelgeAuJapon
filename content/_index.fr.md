@@ -7,7 +7,7 @@ description: 'Un blog pour partager mon expérience de vie au Japon : récits, r
 
 # 🗾 Entre Belgique et Japon 
 
-Je m'appelle **Audric Rosier** et je vis au Japon depuis Janvier 2024.
+Je m'appelle **桜努陸 / Audric** et je vis au Japon depuis Janvier 2024.
 
 Ce blog est né d’une envie simple : poser des mots sur ce que je vis, ici, à mi-chemin entre deux cultures.
 

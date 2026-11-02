@@ -71,6 +71,7 @@
       <ul class="site-footer__list">
         <li><a href="{{ "/mentions-legales/" | absLangURL }}">Mentions légales</a></li>
         <li><a href="{{ "/confidentialite/" | absLangURL }}">Confidentialité</a></li>
+        <li><a href="{{ "/confidentialite/#cookies-et-traceurs" | absLangURL }}">Gérer mes cookies</a></li>
         <li><a href="{{ "/index.xml" | absLangURL }}" type="application/rss+xml">RSS</a></li>
         <li><a href="/sitemap.xml">Sitemap</a></li>
       </ul>
@@ -96,6 +97,129 @@
   </div>
 
 </footer>
+
+<div id="cookie-banner" class="cookie-banner" aria-live="polite" hidden>
+  <div class="cookie-banner__inner">
+    <div class="cookie-banner__content">
+      <strong>Cookies et traceurs</strong>
+      <p>
+        Le site utilise des cookies de fonctionnement et un outil d'analyse de performance
+        Cloudflare Insights, chargé uniquement après votre accord. Vous pouvez accepter ou refuser
+        ce traceur sans bloquer la lecture du contenu.
+      </p>
+    </div>
+    <div class="cookie-banner__actions">
+      <button type="button" data-cookie-action="accept">Tout accepter</button>
+      <button type="button" data-cookie-action="reject" class="secondary">Tout refuser</button>
+      <a href="{{ "/confidentialite/#cookies-et-traceurs" | absLangURL }}">Politique des cookies</a>
+    </div>
+  </div>
+</div>
+
+<style>
+  .cookie-banner {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 9999;
+    background: rgba(15, 23, 42, 0.96);
+    color: #f8fafc;
+    box-shadow: 0 -8px 28px rgba(15, 23, 42, 0.15);
+  }
+  .cookie-banner[hidden] { display: none; }
+  .cookie-banner__inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 1rem 1.25rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .cookie-banner__content {
+    flex: 1 1 520px;
+  }
+  .cookie-banner__content p {
+    margin: .3rem 0 0;
+    line-height: 1.5;
+    color: #e2e8f0;
+  }
+  .cookie-banner__actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: .75rem;
+  }
+  .cookie-banner__actions button,
+  .cookie-banner__actions a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 2.5rem;
+    padding: .6rem 1rem;
+    border-radius: 6px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: opacity .2s ease;
+  }
+  .cookie-banner__actions button {
+    border: 1px solid transparent;
+    background: #f8fafc;
+    color: #0f172a;
+    cursor: pointer;
+  }
+  .cookie-banner__actions button.secondary {
+    background: transparent;
+    border-color: rgba(248, 250, 252, 0.7);
+    color: #f8fafc;
+  }
+  .cookie-banner__actions a {
+    background: transparent;
+    color: #f8fafc;
+    border: 1px solid rgba(248, 250, 252, 0.7);
+  }
+</style>
+
+<script>
+(function () {
+    var consentKey = 'cookie-consent';
+    var banner = document.getElementById('cookie-banner');
+    if (!banner) return;
+
+    var consent = localStorage.getItem(consentKey);
+    if (consent === 'accepted' || consent === 'rejected') {
+        banner.hidden = true;
+        return;
+    }
+
+    banner.hidden = false;
+
+    function applyConsent(value) {
+        localStorage.setItem(consentKey, value);
+        banner.hidden = true;
+
+        if (value === 'accepted') {
+            var existing = document.querySelector('script[data-cookie-src="cloudflare-insights"]');
+            if (!existing) {
+                var script = document.createElement('script');
+                script.defer = true;
+                script.src = 'https://static.cloudflareinsights.com/beacon.min.js';
+                script.setAttribute('data-cf-beacon', '{"token":"TON_TOKEN"}');
+                script.setAttribute('data-cookie-src', 'cloudflare-insights');
+                document.head.appendChild(script);
+            }
+        }
+    }
+
+    document.querySelectorAll('[data-cookie-action]').forEach(function (button) {
+        button.addEventListener('click', function () {
+            applyConsent(this.getAttribute('data-cookie-action') === 'accept' ? 'accepted' : 'rejected');
+        });
+    });
+})();
+</script>
 
 {{- end }}
 

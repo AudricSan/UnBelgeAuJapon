@@ -1,7 +1,7 @@
 ---
 title: '💍 日本人の配偶者ビザ：取得完全ガイド'
 date: 2025-03-01
-author: "Audric Rosier"
+author: "AudricSan"
 description: "日本人と結婚後の配偶者ビザ取得方法：必要書類、申請手順、審査期間、実用的なアドバイス。"
 keywords:
   - "配偶者ビザ 日本"

@@ -1,7 +1,7 @@
 ---
 title: '🧳 日本移住チェックリスト：渡航前・到着時・移住後'
 date: 2025-01-01
-author: "Audric Rosier"
+author: "AudricSan"
 description: "ビザ、住居、役所手続き、銀行口座、SIMカード、予算など、日本移住の完全チェックリスト。フランス語圏の外国人向け実用ガイド。"
 keywords:
   - "日本移住"

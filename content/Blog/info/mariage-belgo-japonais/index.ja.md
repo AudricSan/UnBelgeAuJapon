@@ -1,7 +1,7 @@
 ---
 title: '💍 日本で結婚する：完全ガイド'
 date: 2025-01-01
-author: "Audric Rosier"
+author: "AudricSan"
 description: "ベルギー人と日本人が日本で結婚するための完全ガイド：手続き、必要書類、ベルギーでの認証方法。"
 keywords:
   - "日本 結婚"

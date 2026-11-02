@@ -138,4 +138,4 @@ Détails (secrets, maintenance, retour arrière, sécurité) : **[DEPLOYMENT.md]
 
 ## 📄 Licence
 
-Voir [LICENSE](LICENSE). Les contenus rédactionnels (textes, photos) restent la propriété de leur auteur, Audric Rosier.
+Voir [LICENSE](LICENSE). Les contenus rédactionnels (textes, photos) restent la propriété de leur auteur, AudricSan.

@@ -1,7 +1,7 @@
 ---
 title: "Trier ses poubelles au Japon : le guide complet pour ne pas se faire rappeler à l'ordre"
 date: 2026-02-15
-author: "Audric Rosier"
+author: "AudricSan"
 description: "La gestion des déchets au Japon est rigoureuse, codifiée et varie selon la municipalité. Voici comment m'y retrouver — et comment éviter les erreurs qui font mal aux relations de voisinage."
 keywords:
   - "tri déchets Japon"

@@ -1,7 +1,7 @@
 ---
 title: "🧳 Check-list pour s’installer au Japon : avant, pendant et après l’arrivée"
 date: 2024-04-01
-author: "Audric Rosier"
+author: "AudricSan"
 description: "Guide complet pour s’installer au Japon : visa, logement, mairie, compte bancaire, carte SIM et budget réaliste pour les expatriés francophones."
 keywords:
   - "s’installer au Japon"

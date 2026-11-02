@@ -602,7 +602,7 @@ function adminArticleMarkdown(array $input): string
     return "---\n"
         . 'title: ' . adminYamlString($title) . "\n"
         . 'date: ' . $date . "\n"
-        . "author: \"Audric Rosier\"\n"
+        . "author: \"AudricSan\"\n"
         . 'description: ' . adminYamlString($description) . "\n"
         . adminYamlList('keywords', $keywords) . "\n"
         . adminYamlList('categories', $categories) . "\n"

@@ -1,7 +1,7 @@
 ---
 title: "銭湯と温泉——日本の公衆浴場を理解し、親しむために"
 date: 2026-02-08
-author: "Audric Rosier"
+author: "AudricSan"
 description: "日本の公衆浴場は衛生の場所であるだけでなく、作法が決まった社会的な空間です。私の体験と、失礼のないための実践ガイド。"
 keywords:
   - "銭湯 日本"

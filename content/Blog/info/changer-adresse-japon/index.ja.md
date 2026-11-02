@@ -1,7 +1,7 @@
 ---
 title: '🏠 日本で住所を変更する：すべての手続き'
 date: 2025-05-01
-author: "Audric Rosier"
+author: "AudricSan"
 description: "外国人居住者のための日本での住所変更完全ガイド：転居届・転出届・転入届、役所、雇用主、銀行への届け出と期限。"
 keywords:
   - "住所変更 日本"

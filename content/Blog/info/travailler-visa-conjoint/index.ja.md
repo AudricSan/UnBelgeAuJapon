@@ -1,7 +1,7 @@
 ---
 title: '💼 配偶者ビザで日本で働く：知っておくべきこと'
 date: 2025-04-01
-author: "Audric Rosier"
+author: "AudricSan"
 description: "配偶者ビザ（日本人の配偶者等）での就労について：職種制限なしの自由、法的義務、税務、実用的なアドバイス。"
 keywords:
   - "配偶者ビザ 就労 日本"

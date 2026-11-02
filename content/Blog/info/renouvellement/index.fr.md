@@ -1,7 +1,7 @@
 ---
 title: '🔄 Renouveller son visa au Japon : guide complet'
 date: 2026-04-12
-author: "Audric Rosier"
+author: "AudricSan"
 description: "Guide complet pour renouveler son visa au Japon : quand faire la demande, documents nécessaires par type de visa, délais, coût et erreurs à éviter."
 keywords:
   - "renouvellement de visa Japon"

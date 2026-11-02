@@ -1,7 +1,7 @@
 ---
 title: '🏠 外国人として日本でアパートを探す：私の体験'
 date: 2024-02-01
-author: "Audric Rosier"
+author: "AudricSan"
 description: "外国人として日本でアパートを探した私の体験談：断られた経験、驚いたこと、日本の不動産市場の仕組み、そして最終的な解決策。"
 keywords:
   - "アパート 外国人 日本"

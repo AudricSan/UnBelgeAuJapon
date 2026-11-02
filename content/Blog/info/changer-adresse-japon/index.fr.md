@@ -1,7 +1,7 @@
 ---
 title: "🏠 Changer d'adresse au Japon : toutes les démarches à faire"
 date: 2025-05-01
-author: "Audric Rosier"
+author: "AudricSan"
 description: "Guide complet pour changer d'adresse au Japon en tant qu'étranger résident : mairie, immigration, employeur, banque — dans quel ordre et quels délais respecter."
 keywords:
   - "changer d'adresse Japon"

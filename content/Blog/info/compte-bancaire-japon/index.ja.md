@@ -1,7 +1,7 @@
 ---
 title: '🏦 日本で銀行口座を開く：どの銀行を選ぶ？'
 date: 2024-04-15
-author: "Audric Rosier"
+author: "AudricSan"
 description: "外国人が日本で銀行口座を開設する実用ガイド：ゆうちょ銀行、SBI新生銀行、楽天銀行の比較と必要書類。"
 keywords:
   - "銀行口座 日本 外国人"

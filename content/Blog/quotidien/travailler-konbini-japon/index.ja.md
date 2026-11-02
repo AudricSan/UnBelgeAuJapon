@@ -1,7 +1,7 @@
 ---
 title: "コンビニで働くということ — 外国人として見えた日本"
 date: 2026-01-01
-author: "Audric Rosier"
+author: "AudricSan"
 description: "外国人としてコンビニで働いた経験から気づいたこと：日本語、おもてなし、日本の日常。"
 keywords:
   - "コンビニ 外国人"

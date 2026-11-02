@@ -1,7 +1,7 @@
 ---
 title: "Travailler dans un konbini au Japon : ce que personne ne vous dit"
 date: 2026-01-01
-author: "Audric Rosier"
+author: "AudricSan"
 description: "Retour d'expérience sur le travail dans un konbini japonais en tant qu'étranger : rythme, langue, culture du service, et ce que ça m'a appris sur le Japon."
 keywords:
   - "konbini Japon"

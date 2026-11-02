@@ -1,7 +1,7 @@
 ---
 title: "🏠 Trouver un appartement au Japon en tant qu'étranger : mon expérience"
 date: 2024-02-01
-author: "Audric Rosier"
+author: "AudricSan"
 description: "Mon récit personnel pour trouver un appartement au Japon en tant qu'étranger : les refus, les surprises, le système immobilier japonais et comment on finit par s'en sortir."
 keywords:
   - "appartement Japon étranger"

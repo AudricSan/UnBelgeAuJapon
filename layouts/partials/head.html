@@ -40,8 +40,22 @@
 </script>
 {{- end }}
 
-<script defer src='https://static.cloudflareinsights.com/beacon.min.js'
-data-cf-beacon='{"token": "TON_TOKEN"}'></script>
+<script>
+(function () {
+    var consentKey = 'cookie-consent';
+    var consent = localStorage.getItem(consentKey);
+    if (consent !== 'accepted') return;
+
+    if (document.querySelector('script[data-cookie-src="cloudflare-insights"]')) return;
+
+    var script = document.createElement('script');
+    script.defer = true;
+    script.src = 'https://static.cloudflareinsights.com/beacon.min.js';
+    script.setAttribute('data-cf-beacon', '{"token":"TON_TOKEN"}');
+    script.setAttribute('data-cookie-src', 'cloudflare-insights');
+    document.head.appendChild(script);
+})();
+</script>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 {{- if hugo.IsProduction | or (eq site.Params.env "production") | and (ne .Params.robotsNoIndex true) }}

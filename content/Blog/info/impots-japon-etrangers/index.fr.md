@@ -1,7 +1,7 @@
 ---
 title: "💴 Les impôts au Japon pour les étrangers résidents : ce qu'il faut savoir"
 date: 2025-06-01
-author: "Audric Rosier"
+author: "AudricSan"
 description: "Guide pratique sur les impôts au Japon pour les résidents étrangers :住民税, 所得税, calendrier fiscal, déclaration et pièges à éviter en tant qu'expatrié."
 keywords:
   - "impôts Japon"

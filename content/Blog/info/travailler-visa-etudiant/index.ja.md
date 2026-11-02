@@ -1,7 +1,7 @@
 ---
 title: '🎓 学生ビザで日本でアルバイトする：知っておくべきルール'
 date: 2024-04-20
-author: "Audric Rosier"
+author: "AudricSan"
 description: "学生ビザでのアルバイト（バイト）について：資格外活動許可、週28時間の制限、おすすめの仕事、注意すべきミス。"
 keywords:
   - "アルバイト 留学生"

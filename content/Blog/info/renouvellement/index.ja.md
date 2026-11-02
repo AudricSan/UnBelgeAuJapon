@@ -1,7 +1,7 @@
 ---
 title: '🔄 日本のビザ更新：完全ガイド'
 date: 2026-04-12
-author: "Audric Rosier"
+author: "AudricSan"
 description: "日本在住外国人のためのビザ更新完全ガイド：申請時期、必要書類、注意すべきミス、実用的なアドバイス。"
 keywords:
   - "ビザ更新 日本"

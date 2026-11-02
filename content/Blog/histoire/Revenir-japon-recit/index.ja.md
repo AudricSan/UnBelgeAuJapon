@@ -1,7 +1,7 @@
 ---
 title: '在留カードを持って初めて日本を出国する'
 date: 2025-01-01
-author: "Audric Rosier"
+author: "AudricSan"
 description: "在留カードを持って日本を一時的に出国した個人的な体験と、忘れてはいけない手続きについて：みなし再入国許可の使い方。"
 keywords:
   - "日本 出国"

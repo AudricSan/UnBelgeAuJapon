@@ -1,7 +1,7 @@
 ---
 title: "Vélo et marche au Japon : se déplacer au quotidien autrement"
 date: 2026-04-19
-author: "Audric Rosier"
+author: "AudricSan"
 description: "Au Japon, le vélo et la marche sont des modes de déplacement quotidien à part entière — avec leurs propres règles, infrastructures et codes culturels. Ce que j'ai découvert en adoptant ces habitudes."
 keywords:
   - "vélo Japon"

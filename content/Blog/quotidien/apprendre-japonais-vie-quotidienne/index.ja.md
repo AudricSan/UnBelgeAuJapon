@@ -1,7 +1,7 @@
 ---
 title: "日本で日本語を学ぶ——本当に効果があること"
 date: 2026-04-12
-author: "Audric Rosier"
+author: "AudricSan"
 description: "日本に住むだけでは日本語は身につきません。本当に上達するのは、方法・規律・意図的な接触の組み合わせです。2年間の体験からの考察。"
 keywords:
   - "日本語 在日外国人"

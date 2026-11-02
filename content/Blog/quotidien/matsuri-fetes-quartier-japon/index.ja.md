@@ -1,7 +1,7 @@
 ---
 title: "祭り——町が一瞬だけ蘇るとき"
 date: 2026-03-22
-author: "Audric Rosier"
+author: "AudricSan"
 description: "祭りは神道の儀式であり、民衆の祭典でもあります。何を体験し、何を感じ、日本社会の何が見えるか。"
 keywords:
   - "祭り 日本"

@@ -1,7 +1,7 @@
 ---
 title: '💴 日本在住外国人のための税金ガイド'
 date: 2025-06-01
-author: "Audric Rosier"
+author: "AudricSan"
 description: "日本在住外国人のための税金実用ガイド：住民税・所得税の仕組み、確定申告、納税スケジュール、2年目の落とし穴。"
 keywords:
   - "住民税 外国人"

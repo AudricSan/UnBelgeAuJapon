@@ -1,7 +1,7 @@
 ---
 title: "日本の時間感覚——時間厳守が道徳的な価値になるとき"
 date: 2026-03-15
-author: "Audric Rosier"
+author: "AudricSan"
 description: "日本では、時間を守ることは単なる良い習慣ではありません。それは敬意の表れです。日常、職場、人間関係における時間との関わりについて。"
 keywords:
   - "日本 時間厳守"

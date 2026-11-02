@@ -1,7 +1,7 @@
 ---
 title: '🏅 日本の永住許可：条件と申請手続き'
 date: 2026-01-15
-author: "Audric Rosier"
+author: "AudricSan"
 description: "日本の永住許可（永住ビザ）申請完全ガイド：資格要件、必要書類、審査期間、実用的なアドバイス。"
 keywords:
   - "永住許可 日本"

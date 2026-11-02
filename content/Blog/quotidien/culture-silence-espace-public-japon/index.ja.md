@@ -1,7 +1,7 @@
 ---
 title: "公共の場の沈黙——それは不在ではなく、ひとつの価値"
 date: 2026-02-22
-author: "Audric Rosier"
+author: "AudricSan"
 description: "日本の電車や行列での沈黙は、空虚ではありません。それは集団的な礼儀のかたちです。ベルギー人として、この文化から学んだこと。"
 keywords:
   - "日本 公共の場 沈黙"

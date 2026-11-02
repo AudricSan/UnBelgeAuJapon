@@ -1,7 +1,7 @@
 ---
 title: "Prendre le train au Japon : guide pratique et réalité du quotidien"
 date: 2026-02-01
-author: "Audric Rosier"
+author: "AudricSan"
 description: "Le réseau ferroviaire japonais est l'un des plus denses au monde. Voici comment le comprendre, le naviguer, et ce que ça change de vivre sans voiture au Japon."
 keywords:
   - "train Japon"

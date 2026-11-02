@@ -1,7 +1,7 @@
 ---
 title: '🚗 ベルギーの運転免許を日本の免許に切り替える：実用ガイド'
 date: 2024-09-01
-author: "Audric Rosier"
+author: "AudricSan"
 description: "ベルギーの運転免許を日本の免許に切り替える方法：必要書類、試験センター、実技試験の準備と合格のためのアドバイス。"
 keywords:
   - "運転免許 外国人 日本"

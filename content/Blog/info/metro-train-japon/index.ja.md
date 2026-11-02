@@ -1,7 +1,7 @@
 ---
 title: "日本の電車・地下鉄ガイド——日常の移動を完全に理解する"
 date: 2026-02-01
-author: "Audric Rosier"
+author: "AudricSan"
 description: "日本の鉄道ネットワークは世界有数の密度を誇ります。その仕組みを理解し、日本で車なしで暮らすことが何を意味するかを解説します。"
 keywords:
   - "電車 日本"

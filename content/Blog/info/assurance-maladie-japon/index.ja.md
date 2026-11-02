@@ -1,7 +1,7 @@
 ---
 title: '🏥 日本の健康保険：外国人のための完全ガイド'
 date: 2024-05-01
-author: "Audric Rosier"
+author: "AudricSan"
 description: "日本在住外国人のための国民健康保険ガイド：加入手続き、保険料、給付内容、実用的なアドバイス。"
 keywords:
   - "国民健康保険 外国人"
