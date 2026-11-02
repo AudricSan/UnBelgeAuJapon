@@ -124,6 +124,17 @@ locale = "fr-fr"
   [params.cover]
     responsiveImages = true
 
+  [params.analytics]
+    provider = "umami"
+    domain = "blog.audricrosier.be"
+
+    [params.analytics.plausible]
+      script = "https://plausible.io/js/script.js"
+
+    [params.analytics.umami]
+      script = "https://cloud.umami.is/script.js"
+      websiteId = "b8aae5e6-083e-4e31-a259-75c80341a974"
+
 # =========================
 # IMAGE PROCESSING
 # =========================

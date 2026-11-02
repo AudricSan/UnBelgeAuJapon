@@ -25,6 +25,21 @@ function apiFail(int $status, string $message): never
     throw new AdminApiException($status, $message);
 }
 
+function adminPathIsInDocumentRoot(string $path, string $documentRoot): bool
+{
+    $normalizedPath = rtrim(realpath($path) ?: $path, DIRECTORY_SEPARATOR);
+    $normalizedRoot = rtrim(realpath($documentRoot) ?: $documentRoot, DIRECTORY_SEPARATOR);
+    if ($normalizedPath === '' || $normalizedRoot === '') {
+        return false;
+    }
+    $pathToCheck = DIRECTORY_SEPARATOR === '\\' ? strtolower($normalizedPath) : $normalizedPath;
+    $rootToCheck = DIRECTORY_SEPARATOR === '\\' ? strtolower($normalizedRoot) : $normalizedRoot;
+    if ($pathToCheck === $rootToCheck) {
+        return true;
+    }
+    return str_starts_with($pathToCheck, $rootToCheck . DIRECTORY_SEPARATOR);
+}
+
 function loadAdminConfig(): array
 {
     static $loaded = null;
@@ -43,10 +58,10 @@ function loadAdminConfig(): array
     $realPath = realpath($path);
     $documentRoot = realpath((string) ($_SERVER['DOCUMENT_ROOT'] ?? ''));
     if ($realPath !== false && $documentRoot !== false) {
-        $rootPrefix = rtrim($documentRoot, DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR;
-        $pathToCheck = DIRECTORY_SEPARATOR === '\\' ? strtolower($realPath) : $realPath;
-        $prefixToCheck = DIRECTORY_SEPARATOR === '\\' ? strtolower($rootPrefix) : $rootPrefix;
-        if ($pathToCheck === rtrim($documentRoot, DIRECTORY_SEPARATOR) || str_starts_with($pathToCheck, $prefixToCheck)) {
+        $configDir = dirname($realPath);
+        $configIsAtDocumentRoot = $configDir === $documentRoot;
+        $configIsInsideDocumentRootSubdirectory = ! $configIsAtDocumentRoot && adminPathIsInDocumentRoot($realPath, $documentRoot);
+        if ($configIsInsideDocumentRootSubdirectory) {
             apiFail(503, 'Le fichier de configuration doit être placé hors du dossier public.');
         }
     }
@@ -101,10 +116,10 @@ function adminDatabase(array $config): PDO
     $resolvedDatabasePath = realpath($databasePath) ?: $databasePath;
     $documentRoot = realpath((string) ($_SERVER['DOCUMENT_ROOT'] ?? ''));
     if ($documentRoot !== false) {
-        $rootPrefix = rtrim($documentRoot, DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR;
-        $pathToCheck = DIRECTORY_SEPARATOR === '\\' ? strtolower($resolvedDatabasePath) : $resolvedDatabasePath;
-        $prefixToCheck = DIRECTORY_SEPARATOR === '\\' ? strtolower($rootPrefix) : $rootPrefix;
-        if ($pathToCheck === rtrim($documentRoot, DIRECTORY_SEPARATOR) || str_starts_with($pathToCheck, $prefixToCheck)) {
+        $databaseDirectory = dirname($resolvedDatabasePath);
+        $databaseIsAtDocumentRoot = $databaseDirectory === $documentRoot;
+        $databaseIsInsideDocumentRootSubdirectory = ! $databaseIsAtDocumentRoot && adminPathIsInDocumentRoot($resolvedDatabasePath, $documentRoot);
+        if ($databaseIsInsideDocumentRootSubdirectory) {
             apiFail(503, 'Le fichier SQLite doit être placé hors du dossier public.');
         }
     }
@@ -127,8 +142,13 @@ function adminDatabase(array $config): PDO
 
 function ensureAdminSchema(PDO $pdo): void
 {
-    $tableCount = (int) $pdo->query("SELECT COUNT(*) FROM sqlite_master WHERE type = 'table' AND name IN ('mvaj_admin_users', 'mvaj_admin_user_roles', 'mvaj_admin_login_attempts')")->fetchColumn();
-    if ($tableCount === 3) {
+    $tableCount = (int) $pdo->query("SELECT COUNT(*) FROM sqlite_master WHERE type = 'table' AND name IN ('mvaj_admin_users', 'mvaj_admin_user_roles', 'mvaj_admin_login_attempts', 'mvaj_analytics_events', 'mvaj_newsletter_subscribers', 'mvaj_newsletter_sends')")->fetchColumn();
+    if ($tableCount === 6) {
+        $pdo->exec("CREATE TABLE IF NOT EXISTS mvaj_analytics_events (id INTEGER PRIMARY KEY AUTOINCREMENT, path TEXT NOT NULL, page_title TEXT DEFAULT '', language TEXT DEFAULT 'fr', referrer TEXT DEFAULT '', user_agent_hash TEXT NOT NULL, created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP)");
+        $pdo->exec("CREATE TABLE IF NOT EXISTS mvaj_newsletter_subscribers (id INTEGER PRIMARY KEY AUTOINCREMENT, email TEXT NOT NULL UNIQUE, source TEXT DEFAULT 'site', is_active INTEGER NOT NULL DEFAULT 1, consent_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP, created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP, unsubscribed_at TEXT NULL)");
+        $pdo->exec("CREATE TABLE IF NOT EXISTS mvaj_newsletter_sends (id INTEGER PRIMARY KEY AUTOINCREMENT, article_slug TEXT NOT NULL, article_title TEXT NOT NULL, language TEXT NOT NULL DEFAULT 'fr', recipients_count INTEGER NOT NULL DEFAULT 0, status TEXT NOT NULL DEFAULT 'sent', sent_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP)");
+        $pdo->exec('CREATE INDEX IF NOT EXISTS idx_mvaj_analytics_path_created ON mvaj_analytics_events (path, created_at)');
+        $pdo->exec('CREATE INDEX IF NOT EXISTS idx_mvaj_newsletter_subscribers_active ON mvaj_newsletter_subscribers (is_active, created_at)');
         return;
     }
 
@@ -155,8 +175,37 @@ function ensureAdminSchema(PDO $pdo): void
             email_hash TEXT NOT NULL,
             created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
         )",
+        "CREATE TABLE IF NOT EXISTS mvaj_analytics_events (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            path TEXT NOT NULL,
+            page_title TEXT DEFAULT '',
+            language TEXT DEFAULT 'fr',
+            referrer TEXT DEFAULT '',
+            user_agent_hash TEXT NOT NULL,
+            created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
+        )",
+        "CREATE TABLE IF NOT EXISTS mvaj_newsletter_subscribers (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            email TEXT NOT NULL UNIQUE,
+            source TEXT DEFAULT 'site',
+            is_active INTEGER NOT NULL DEFAULT 1,
+            consent_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+            created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+            unsubscribed_at TEXT NULL
+        )",
+        "CREATE TABLE IF NOT EXISTS mvaj_newsletter_sends (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            article_slug TEXT NOT NULL,
+            article_title TEXT NOT NULL,
+            language TEXT NOT NULL DEFAULT 'fr',
+            recipients_count INTEGER NOT NULL DEFAULT 0,
+            status TEXT NOT NULL DEFAULT 'sent',
+            sent_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
+        )",
         'CREATE INDEX IF NOT EXISTS idx_mvaj_admin_attempts_ip_time ON mvaj_admin_login_attempts (ip_hash, created_at)',
         'CREATE INDEX IF NOT EXISTS idx_mvaj_admin_attempts_email_time ON mvaj_admin_login_attempts (email_hash, created_at)',
+        'CREATE INDEX IF NOT EXISTS idx_mvaj_analytics_path_created ON mvaj_analytics_events (path, created_at)',
+        'CREATE INDEX IF NOT EXISTS idx_mvaj_newsletter_subscribers_active ON mvaj_newsletter_subscribers (is_active, created_at)',
     ];
 
     foreach ($statements as $statement) {
@@ -691,6 +740,316 @@ function adminDeleteArticle(array $config, string $section, string $slug): int
     return count($paths);
 }
 
+function adminNewsletterSummary(PDO $pdo): array
+{
+    $totalSubscribers = (int) $pdo->query("SELECT COUNT(*) FROM mvaj_newsletter_subscribers WHERE is_active = 1")->fetchColumn();
+    $totalEvents = (int) $pdo->query("SELECT COUNT(*) FROM mvaj_analytics_events")->fetchColumn();
+    $lastWeek = (int) $pdo->query("SELECT COUNT(*) FROM mvaj_analytics_events WHERE created_at >= datetime('now', '-7 days')")->fetchColumn();
+    $topPageRows = $pdo->query("SELECT path, COUNT(*) AS hits FROM mvaj_analytics_events GROUP BY path ORDER BY hits DESC, path ASC LIMIT 8")->fetchAll();
+    return [
+        'total_subscribers' => $totalSubscribers,
+        'total_events' => $totalEvents,
+        'week_events' => $lastWeek,
+        'top_pages' => array_map(static fn(array $row): array => ['path' => (string) $row['path'], 'hits' => (int) $row['hits']], $topPageRows),
+    ];
+}
+
+function adminNewsletterBuildEmail(array $newsletter, string $toEmail, string $title, string $siteUrl): array
+{
+    $fromEmail = is_string($newsletter['from_email'] ?? null) ? trim((string) $newsletter['from_email']) : 'newsletter@localhost';
+    $fromName = is_string($newsletter['sender_name'] ?? null) ? trim((string) $newsletter['sender_name']) : 'Un Belge au Japon';
+    $unsubscribeUrl = rtrim($siteUrl, '/') . '/newsletter/unsubscribe.php?email=' . rawurlencode($toEmail);
+    $subject = 'Nouvel article : ' . $title;
+    $plainText = "Bonjour,\n\nUn nouvel article vient d'être publié sur Un Belge au Japon :\n\n« {$title} »\n\nConsultez-le ici : {$siteUrl}\n\nSe désinscrire : {$unsubscribeUrl}\n\nÀ bientôt,\n{$fromName}\n\n---\nVous recevez cet email parce que vous êtes abonné·e à la newsletter.";
+    $html = sprintf(
+        '<html><body style="font-family:Arial,sans-serif;line-height:1.6;color:#0f172a;">'
+        . '<p>Bonjour,</p>'
+        . '<p>Un nouvel article vient d’être publié sur <strong>Un Belge au Japon</strong> :</p>'
+        . '<p><strong>%s</strong></p>'
+        . '<p><a href="%s">Lire l’article</a></p>'
+        . '<p><a href="%s">Se désinscrire</a></p>'
+        . '<p>À bientôt,<br>%s</p>'
+        . '</body></html>',
+        htmlspecialchars($title, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8'),
+        htmlspecialchars($siteUrl, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8'),
+        htmlspecialchars($unsubscribeUrl, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8'),
+        htmlspecialchars($fromName, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8')
+    );
+
+    return ['subject' => $subject, 'plain' => $plainText, 'html' => $html, 'from_email' => $fromEmail, 'from_name' => $fromName, 'unsubscribe_url' => $unsubscribeUrl];
+}
+
+function adminNewsletterSendWithProvider(array $newsletter, string $toEmail, string $subject, string $plainText, string $htmlText, string $fromEmail, string $fromName, string $unsubscribeUrl = ''): bool
+{
+    $provider = strtolower((string) ($newsletter['provider'] ?? 'smtp'));
+
+    if ($provider === 'smtp') {
+        $smtp = is_array($newsletter['smtp'] ?? null) ? $newsletter['smtp'] : [];
+        $host = is_string($smtp['host'] ?? null) ? trim((string) $smtp['host']) : 'ssl0.ovh.net';
+        $port = isset($smtp['port']) ? (int) $smtp['port'] : 465;
+        $username = is_string($smtp['username'] ?? null) ? trim((string) $smtp['username']) : '';
+        $password = is_string($smtp['password'] ?? null) ? (string) $smtp['password'] : '';
+        $encryption = strtolower((string) ($smtp['encryption'] ?? 'ssl'));
+
+        if ($host === '' || $username === '' || $password === '') {
+            return false;
+        }
+
+        $transport = ($encryption === 'ssl') ? 'ssl://' . $host : $host;
+        $socket = @fsockopen($transport, $port, $errno, $errstr, 30);
+        if ($socket === false) {
+            return false;
+        }
+        stream_set_timeout($socket, 30);
+
+        $readResponse = static function ($stream): string {
+            $response = '';
+            while (!feof($stream)) {
+                $line = fgets($stream, 515);
+                if ($line === false) {
+                    break;
+                }
+                $response .= $line;
+                if (strlen($line) >= 3 && $line[3] === ' ') {
+                    break;
+                }
+            }
+            return trim($response);
+        };
+
+        $banner = $readResponse($socket);
+        if (strpos($banner, '220') !== 0) {
+            fclose($socket);
+            return false;
+        }
+
+        fwrite($socket, "EHLO " . $host . "\r\n");
+        $ehlo = $readResponse($socket);
+        if (strpos($ehlo, '250') !== 0) {
+            fclose($socket);
+            return false;
+        }
+
+        if ($encryption === 'tls') {
+            fwrite($socket, "STARTTLS\r\n");
+            $tlsAnswer = $readResponse($socket);
+            if (strpos($tlsAnswer, '220') !== 0) {
+                fclose($socket);
+                return false;
+            }
+            if (!stream_socket_enable_crypto($socket, true, STREAM_CRYPTO_METHOD_TLS_CLIENT)) {
+                fclose($socket);
+                return false;
+            }
+            fwrite($socket, "EHLO " . $host . "\r\n");
+            $readResponse($socket);
+        }
+
+        fwrite($socket, "AUTH LOGIN\r\n");
+        $authPrompt = $readResponse($socket);
+        if (strpos($authPrompt, '334') !== 0) {
+            fclose($socket);
+            return false;
+        }
+        fwrite($socket, base64_encode($username) . "\r\n");
+        $userPrompt = $readResponse($socket);
+        if (strpos($userPrompt, '334') !== 0) {
+            fclose($socket);
+            return false;
+        }
+        fwrite($socket, base64_encode($password) . "\r\n");
+        $authResult = $readResponse($socket);
+        if (strpos($authResult, '235') !== 0) {
+            fclose($socket);
+            return false;
+        }
+
+        fwrite($socket, "MAIL FROM:<" . $fromEmail . ">\r\n");
+        $mailFromStatus = $readResponse($socket);
+        if (strpos($mailFromStatus, '250') !== 0) {
+            fclose($socket);
+            return false;
+        }
+        fwrite($socket, "RCPT TO:<" . $toEmail . ">\r\n");
+        $rcptStatus = $readResponse($socket);
+        if (strpos($rcptStatus, '250') !== 0 && strpos($rcptStatus, '251') !== 0) {
+            fclose($socket);
+            return false;
+        }
+        fwrite($socket, "DATA\r\n");
+        $dataStatus = $readResponse($socket);
+        if (strpos($dataStatus, '354') !== 0) {
+            fclose($socket);
+            return false;
+        }
+
+        $headers = [
+            'From: ' . $fromName . ' <' . $fromEmail . '>',
+            'To: ' . $toEmail,
+            'Subject: ' . $subject,
+            'Reply-To: ' . $fromEmail,
+            'MIME-Version: 1.0',
+            'Content-Type: text/html; charset=UTF-8',
+            'List-Unsubscribe: <' . $unsubscribeUrl . '>',
+            'Date: ' . gmdate('D, d M Y H:i:s O'),
+            '',
+            $htmlText,
+        ];
+
+        fwrite($socket, implode("\r\n", $headers) . "\r\n.\r\n");
+        $mailStatus = $readResponse($socket);
+        fwrite($socket, "QUIT\r\n");
+        fclose($socket);
+        return strpos($mailStatus, '250') === 0 || strpos($mailStatus, '251') === 0;
+    }
+
+    if (!function_exists('curl_init')) {
+        if ($provider === 'smtp') {
+            $headers = [
+                'From: ' . $fromName . ' <' . $fromEmail . '>',
+                'Reply-To: ' . $fromEmail,
+                'X-Mailer: MaVieAuJapon/Newsletter',
+                'MIME-Version: 1.0',
+                'Content-Type: text/html; charset=UTF-8',
+                'List-Unsubscribe: <' . $unsubscribeUrl . '>',
+            ];
+            return mail($toEmail, $subject, $htmlText, implode("\r\n", $headers), '-f' . $fromEmail);
+        }
+        return false;
+    }
+
+    if ($provider === 'mailgun') {
+        $apiKey = is_string($newsletter['mailgun']['api_key'] ?? null) ? trim((string) $newsletter['mailgun']['api_key']) : '';
+        $domain = is_string($newsletter['mailgun']['domain'] ?? null) ? trim((string) $newsletter['mailgun']['domain']) : '';
+        if ($apiKey === '' || $domain === '') {
+            return false;
+        }
+
+        $ch = curl_init('https://api.mailgun.net/v3/' . rawurlencode($domain) . '/messages');
+        curl_setopt_array($ch, [
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_POST => true,
+            CURLOPT_POSTFIELDS => [
+                'from' => $fromName . ' <' . $fromEmail . '>',
+                'to' => $toEmail,
+                'subject' => $subject,
+                'text' => $plainText,
+                'html' => $htmlText,
+            ],
+            CURLOPT_USERPWD => 'api:' . $apiKey,
+            CURLOPT_TIMEOUT => 30,
+        ]);
+        $response = curl_exec($ch);
+        $ok = $response !== false && curl_getinfo($ch, CURLINFO_HTTP_CODE) >= 200 && curl_getinfo($ch, CURLINFO_HTTP_CODE) < 300;
+        curl_close($ch);
+        return $ok;
+    }
+
+    if ($provider === 'brevo') {
+        $apiKey = is_string($newsletter['brevo']['api_key'] ?? null) ? trim((string) $newsletter['brevo']['api_key']) : '';
+        if ($apiKey === '') {
+            return false;
+        }
+
+        $payload = [
+            'sender' => ['name' => $fromName, 'email' => $fromEmail],
+            'to' => [['email' => $toEmail]],
+            'subject' => $subject,
+            'htmlContent' => $htmlText,
+            'textContent' => $plainText,
+        ];
+        $ch = curl_init('https://api.brevo.com/v3/smtp/email');
+        curl_setopt_array($ch, [
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_POST => true,
+            CURLOPT_POSTFIELDS => json_encode($payload),
+            CURLOPT_HTTPHEADER => ['Content-Type: application/json', 'api-key: ' . $apiKey],
+            CURLOPT_TIMEOUT => 30,
+        ]);
+        $response = curl_exec($ch);
+        $ok = $response !== false && curl_getinfo($ch, CURLINFO_HTTP_CODE) >= 200 && curl_getinfo($ch, CURLINFO_HTTP_CODE) < 300;
+        curl_close($ch);
+        return $ok;
+    }
+
+    if ($provider === 'sendgrid') {
+        $apiKey = is_string($newsletter['sendgrid']['api_key'] ?? null) ? trim((string) $newsletter['sendgrid']['api_key']) : '';
+        if ($apiKey === '') {
+            return false;
+        }
+
+        $payload = [
+            'from' => ['email' => $fromEmail, 'name' => $fromName],
+            'personalizations' => [['to' => [['email' => $toEmail]]]],
+            'subject' => $subject,
+            'content' => [
+                ['type' => 'text/plain', 'value' => $plainText],
+                ['type' => 'text/html', 'value' => $htmlText],
+            ],
+        ];
+        $ch = curl_init('https://api.sendgrid.com/v3/mail/send');
+        curl_setopt_array($ch, [
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_POST => true,
+            CURLOPT_POSTFIELDS => json_encode($payload),
+            CURLOPT_HTTPHEADER => ['Content-Type: application/json', 'Authorization: Bearer ' . $apiKey],
+            CURLOPT_TIMEOUT => 30,
+        ]);
+        $response = curl_exec($ch);
+        $ok = $response !== false && curl_getinfo($ch, CURLINFO_HTTP_CODE) >= 200 && curl_getinfo($ch, CURLINFO_HTTP_CODE) < 300;
+        curl_close($ch);
+        return $ok;
+    }
+
+    $headers = [
+        'From: ' . $fromName . ' <' . $fromEmail . '>',
+        'Reply-To: ' . $fromEmail,
+        'X-Mailer: MaVieAuJapon/Newsletter',
+        'MIME-Version: 1.0',
+        'Content-Type: text/html; charset=UTF-8',
+    ];
+    return mail($toEmail, $subject, $htmlText, implode("\r\n", $headers), '-f' . $fromEmail);
+}
+
+function adminNewsletterDispatch(PDO $pdo, array $config, string $title, string $slug, string $language): void
+{
+    $newsletter = $config['newsletter'] ?? [];
+    if (!is_array($newsletter) || (($newsletter['enabled'] ?? false) !== true)) {
+        return;
+    }
+
+    $query = $pdo->query("SELECT email FROM mvaj_newsletter_subscribers WHERE is_active = 1 ORDER BY created_at ASC");
+    $emails = array_map(static fn(array $row): string => (string) $row['email'], $query->fetchAll());
+    if ($emails === []) {
+        $pdo->prepare("INSERT INTO mvaj_newsletter_sends (article_slug, article_title, language, recipients_count, status, sent_at) VALUES (?, ?, ?, 0, 'skipped', datetime('now'))")->execute([$slug, $title, $language]);
+        return;
+    }
+
+    $fromEmail = is_string($newsletter['from_email'] ?? null) ? trim((string) $newsletter['from_email']) : 'newsletter@localhost';
+    $fromName = is_string($newsletter['sender_name'] ?? null) ? trim((string) $newsletter['sender_name']) : 'Un Belge au Japon';
+    $siteUrl = is_string($newsletter['site_url'] ?? null) ? rtrim(trim((string) $newsletter['site_url']), '/') : 'https://example.com';
+    $sent = 0;
+    foreach ($emails as $email) {
+        $emailBundle = adminNewsletterBuildEmail($newsletter, $email, $title, $siteUrl);
+        if (adminNewsletterSendWithProvider(
+            $newsletter,
+            $email,
+            $emailBundle['subject'],
+            $emailBundle['plain'],
+            $emailBundle['html'],
+            $emailBundle['from_email'],
+            $emailBundle['from_name'],
+            $emailBundle['unsubscribe_url']
+        )) {
+            $sent++;
+        }
+    }
+
+    $status = $sent > 0 ? 'sent' : 'failed';
+    $insert = $pdo->prepare('INSERT INTO mvaj_newsletter_sends (article_slug, article_title, language, recipients_count, status, sent_at) VALUES (?, ?, ?, ?, ?, datetime("now"))');
+    $insert->execute([$slug, $title, $language, $sent, $status]);
+}
+
 function adminHandle(PDO $pdo, array $config, string $action, string $method): never
 {
     $body = $method === 'POST' ? adminRequestBody() : [];
@@ -708,6 +1067,96 @@ function adminHandle(PDO $pdo, array $config, string $action, string $method): n
             'needsBootstrap' => adminUserCount($pdo) === 0,
             'csrf' => (string) $_SESSION['csrf_token'],
         ]);
+    }
+
+    if ($action === 'analytics.track') {
+        if ($method !== 'POST') {
+            apiFail(405, 'Méthode non autorisée.');
+        }
+        $payload = is_array($body) ? $body : [];
+        $path = is_string($payload['path'] ?? null) ? trim((string) $payload['path']) : '';
+        if ($path === '') {
+            apiFail(400, 'La page tracking est obligatoire.');
+        }
+        $userAgent = $_SERVER['HTTP_USER_AGENT'] ?? '';
+        $identity = hash('sha256', ($userAgent === '' ? 'unknown' : $userAgent) . '|' . ($_SERVER['REMOTE_ADDR'] ?? 'unknown'));
+        $insert = $pdo->prepare('INSERT INTO mvaj_analytics_events (path, page_title, language, referrer, user_agent_hash, created_at) VALUES (?, ?, ?, ?, ?, datetime("now"))');
+        $insert->execute([
+            $path,
+            is_string($payload['title'] ?? null) ? substr((string) $payload['title'], 0, 255) : '',
+            is_string($payload['language'] ?? null) ? substr((string) $payload['language'], 0, 20) : 'fr',
+            is_string($payload['referrer'] ?? null) ? substr((string) $payload['referrer'], 0, 255) : '',
+            $identity,
+        ]);
+        apiReply(200, ['ok' => true]);
+    }
+
+    if ($action === 'analytics.summary') {
+        if ($method !== 'GET') {
+            apiFail(405, 'Méthode non autorisée.');
+        }
+        adminRequireRole($pdo, ['admin']);
+        apiReply(200, ['summary' => adminNewsletterSummary($pdo)]);
+    }
+
+    if ($action === 'newsletter.subscribe') {
+        if ($method !== 'POST') {
+            apiFail(405, 'Méthode non autorisée.');
+        }
+        $email = strtolower(trim((string) ($body['email'] ?? '')));
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            apiFail(400, 'L’adresse e-mail est invalide.');
+        }
+        $source = is_string($body['source'] ?? null) ? trim((string) $body['source']) : 'site';
+        $check = $pdo->prepare('SELECT id, is_active FROM mvaj_newsletter_subscribers WHERE email = ? LIMIT 1');
+        $check->execute([$email]);
+        $record = $check->fetch();
+        if ($record) {
+            if ((int) $record['is_active'] === 0) {
+                $activate = $pdo->prepare('UPDATE mvaj_newsletter_subscribers SET is_active = 1, consent_at = datetime("now"), unsubscribed_at = NULL WHERE id = ?');
+                $activate->execute([(int) $record['id']]);
+            }
+            apiReply(200, ['ok' => true, 'subscribed' => true, 'source' => $source]);
+        }
+        $insert = $pdo->prepare('INSERT INTO mvaj_newsletter_subscribers (email, source, is_active, consent_at, created_at, unsubscribed_at) VALUES (?, ?, 1, datetime("now"), datetime("now"), NULL)');
+        $insert->execute([$email, substr($source, 0, 80)]);
+        apiReply(201, ['ok' => true, 'subscribed' => true, 'source' => $source]);
+    }
+
+    if ($action === 'newsletter.unsubscribe') {
+        if ($method !== 'POST') {
+            apiFail(405, 'Méthode non autorisée.');
+        }
+        $email = strtolower(trim((string) ($body['email'] ?? '')));
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            apiFail(400, 'L’adresse e-mail est invalide.');
+        }
+        $stmt = $pdo->prepare('UPDATE mvaj_newsletter_subscribers SET is_active = 0, unsubscribed_at = datetime("now") WHERE email = ?');
+        $stmt->execute([$email]);
+        apiReply(200, ['ok' => true, 'unsubscribed' => true]);
+    }
+
+    if ($action === 'newsletter.list') {
+        if ($method !== 'GET') {
+            apiFail(405, 'Méthode non autorisée.');
+        }
+        adminRequireRole($pdo, ['admin']);
+        $rows = $pdo->query('SELECT id, email, source, is_active, consent_at, created_at, unsubscribed_at FROM mvaj_newsletter_subscribers ORDER BY created_at DESC')->fetchAll();
+        apiReply(200, ['subscribers' => $rows, 'summary' => adminNewsletterSummary($pdo)]);
+    }
+
+    if ($action === 'newsletter.toggle') {
+        if ($method !== 'POST') {
+            apiFail(405, 'Méthode non autorisée.');
+        }
+        adminRequireRole($pdo, ['admin']);
+        $id = filter_var($body['id'] ?? null, FILTER_VALIDATE_INT);
+        if (!$id || $id < 1) {
+            apiFail(400, 'L’abonné sélectionné est invalide.');
+        }
+        $update = $pdo->prepare('UPDATE mvaj_newsletter_subscribers SET is_active = CASE WHEN is_active = 1 THEN 0 ELSE 1 END, unsubscribed_at = CASE WHEN is_active = 1 THEN datetime("now") ELSE NULL END WHERE id = ?');
+        $update->execute([$id]);
+        apiReply(200, ['ok' => true]);
     }
 
     if ($action === 'users.list') {
@@ -762,7 +1211,9 @@ function adminHandle(PDO $pdo, array $config, string $action, string $method): n
     if ($method !== 'POST') {
         apiFail(405, 'Méthode non autorisée.');
     }
-    adminRequireCsrf();
+    if (!in_array($action, ['analytics.track', 'newsletter.subscribe', 'newsletter.unsubscribe'], true)) {
+        adminRequireCsrf();
+    }
 
     if ($action === 'bootstrap') {
         if (adminUserCount($pdo) !== 0) {
@@ -957,12 +1408,14 @@ function adminHandle(PDO $pdo, array $config, string $action, string $method): n
     if ($action === 'articles.create') {
         adminRequireRole($pdo, ['editor']);
         adminCreateArticle($config, $body);
+        adminNewsletterDispatch($pdo, $config, (string) ($body['title'] ?? 'Nouvel article'), (string) ($body['slug'] ?? 'nouvel-article'), 'fr');
         apiReply(201, ['ok' => true]);
     }
 
     if ($action === 'articles.translate') {
         adminRequireRole($pdo, ['translator']);
         adminTranslateArticle($config, $body);
+        adminNewsletterDispatch($pdo, $config, (string) ($body['title'] ?? 'Nouvel article'), (string) ($body['slug'] ?? 'nouvel-article'), 'ja');
         apiReply(200, ['ok' => true]);
     }
 

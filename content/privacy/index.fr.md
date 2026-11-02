@@ -33,20 +33,20 @@ Droits : accès, rectification, effacement, limitation, opposition, portabilité
 
 ---
 
-### 2.2 Analyse de performance / sécurité du site
-Le site charge un script Cloudflare Insights uniquement après consentement, conformément au bandeau de gestion des cookies.
+### 2.2 Analyse de performance du site
+Le site charge un script Plausible uniquement après consentement, conformément au bandeau de gestion des cookies.
 
-Données concernées : adresse IP (souvent pseudonymisée ou hachée selon la configuration), pages visitées, temps de chargement, informations de performance et de sécurité du navigateur.
+Données concernées : pages visitées, temps de chargement, informations de navigation agrégées, pays/région approximative, source de trafic si elle est transmise par le navigateur, et la collecte technique nécessaire au bon fonctionnement de l’outil de mesure.
 
-Finalité : mesurer la performance du site, détecter les incidents techniques, sécuriser et optimiser le service.
+Finalité : mesurer la performance du site, comprendre les contenus consultés et optimiser l’expérience de lecture.
 
 Base légale : consentement de la personne.
 
-Durée de conservation : maximum 6 mois à compter de la décision de consentement, conformément à la gestion du bandeau.
+Durée de conservation : maximum 6 mois à compter de la décision de consentement, conformément à la gestion du bandeau, sauf obligation légale contraire.
 
-Accès : l’éditeur du site et le prestataire Cloudflare.
+Accès : l’éditeur du site et le prestataire Plausible.
 
-Sortie de l’UE : les données peuvent être traitées dans le réseau Cloudflare ; le site doit s’assurer de la présence des garanties appropriées, notamment des clauses contractuelles types, avant toute mise en ligne à forte volumétrie.
+Sortie de l’UE : le service Plausible est un prestataire tiers. Le site doit vérifier, avant mise en ligne à fort volume, que les garanties appropriées sont en place pour tout transfert hors Union européenne.
 
 Droits : accès, rectification, opposition, limitation, effacement. Pour les exercer, écrire à contact@audricrosier.be.
 
@@ -55,7 +55,7 @@ Droits : accès, rectification, opposition, limitation, effacement. Pour les exe
 ## 3. Cookies et traceurs
 Le site ne dépose pas de cookie strictement nécessaire à la lecture du contenu autre qu’un stockage local de la préférence de consentement.
 
-Le site utilise un traceur d’analyse de performance Cloudflare Insights, classé comme non strictement nécessaire au fonctionnement. Il n’est chargé qu’après consentement explicite de la personne visiteuse.
+Le site utilise un traceur d’analyse de performance Plausible, classé comme non strictement nécessaire au fonctionnement. Il n’est chargé qu’après consentement explicite de la personne visiteuse.
 
 Le site met à disposition un bouton « Tout accepter » et un bouton « Tout refuser », ainsi qu’un accès à la politique des cookies dans le pied de page.
 
@@ -67,7 +67,7 @@ Le choix de consentement est conservé pendant 6 mois maximum, puis le site rede
 Les données ne sont pas vendues ni revendues à des tiers. Elles peuvent être transmises uniquement :
 - à l’hébergeur pour la gestion technique du site ;
 - au prestataire Web3Forms pour la transmission du formulaire de contact ;
-- au prestataire Cloudflare pour la sécurité et la performance du site, si le consentement a été donné.
+- au prestataire Plausible pour l’analyse de performance, si le consentement a été donné.
 
 ---
 

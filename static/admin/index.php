@@ -81,6 +81,7 @@ $themeStylesheet = $stylesheetFiles === [] ? '' : '/assets/css/' . rawurlencode(
       <nav id="admin-tabs" class="admin-tabs" aria-label="Outils d’administration">
         <button class="tab-button" data-tab="create-view" type="button">Créer un article</button>
         <button class="tab-button" data-tab="translate-view" type="button">Traduire un article</button>
+        <button class="tab-button" data-tab="newsletter-view" type="button">Analytics & newsletter</button>
         <button class="tab-button" data-tab="users-view" type="button">Utilisateurs et articles</button>
       </nav>
 
@@ -117,6 +118,31 @@ $themeStylesheet = $stylesheetFiles === [] ? '' : '/assets/css/' . rawurlencode(
           <label class="field field-wide"><span>Traduction en Markdown</span><textarea name="body" rows="18" maxlength="500000" required></textarea></label>
           <div class="field-wide form-actions"><button class="button button-primary" type="submit">Enregistrer la traduction</button></div>
         </form>
+      </section>
+
+      <section id="newsletter-view" class="workspace-card" hidden>
+        <p class="eyebrow">ANALYTICS & NEWSLETTER</p>
+        <h2>Statistiques et abonnés</h2>
+        <div class="stats-grid">
+          <article class="stat-card"><span>Événements</span><strong id="stats-total-events">0</strong></article>
+          <article class="stat-card"><span>7 derniers jours</span><strong id="stats-week-events">0</strong></article>
+          <article class="stat-card"><span>Abonnés</span><strong id="stats-subscribers">0</strong></article>
+        </div>
+
+        <div class="stats-columns">
+          <section>
+            <h3>Pages les plus consultées</h3>
+            <ul id="top-pages-list" class="stats-list"></ul>
+          </section>
+          <section>
+            <h3>Abonnés</h3>
+            <form id="newsletter-subscribe-form" class="form-grid compact-form">
+              <label class="field field-wide"><span>Adresse e-mail</span><input name="email" type="email" maxlength="254" required></label>
+              <div class="field-wide form-actions"><button class="button button-primary" type="submit">Ajouter un abonné</button></div>
+            </form>
+            <div id="newsletter-subscribers" class="users-list"></div>
+          </section>
+        </div>
       </section>
 
       <section id="users-view" class="workspace-card" hidden>

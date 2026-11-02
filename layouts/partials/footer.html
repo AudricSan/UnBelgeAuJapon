@@ -72,9 +72,22 @@
         <li><a href="{{ "/mentions-legales/" | absLangURL }}">Mentions légales</a></li>
         <li><a href="{{ "/confidentialite/" | absLangURL }}">Confidentialité</a></li>
         <li><a href="{{ "/confidentialite/#cookies-et-traceurs" | absLangURL }}">Gérer mes cookies</a></li>
+        <li><a href="/newsletter/unsubscribe.php">Se désinscrire</a></li>
         <li><a href="{{ "/index.xml" | absLangURL }}" type="application/rss+xml">RSS</a></li>
         <li><a href="/sitemap.xml">Sitemap</a></li>
       </ul>
+    </div>
+
+    {{/* ── Newsletter ───────────────────────── */}}
+    <div class="site-footer__col">
+      <h3 class="site-footer__heading">Newsletter</h3>
+      <form id="newsletter-form" class="newsletter-form" method="post" action="/admin/api.php?action=newsletter.subscribe">
+        <label class="sr-only" for="newsletter-email">Adresse e-mail</label>
+        <input id="newsletter-email" name="email" type="email" placeholder="votre@email.com" required>
+        <button type="submit">S’abonner</button>
+      </form>
+      <a class="newsletter-unsubscribe-link" href="/newsletter/unsubscribe.php">Se désinscrire</a>
+      <p id="newsletter-status" class="newsletter-status" aria-live="polite"></p>
     </div>
 
     {{/* ── Projet ──────────────────────────────── */}}
@@ -104,7 +117,7 @@
       <strong>Cookies et traceurs</strong>
       <p>
         Le site utilise des cookies de fonctionnement et un outil d'analyse de performance
-        Cloudflare Insights, chargé uniquement après votre accord. Vous pouvez accepter ou refuser
+        (Umami), chargé uniquement après votre accord. Vous pouvez accepter ou refuser
         ce traceur sans bloquer la lecture du contenu.
       </p>
     </div>
@@ -180,6 +193,53 @@
     color: #f8fafc;
     border: 1px solid rgba(248, 250, 252, 0.7);
   }
+  .newsletter-form {
+    display: flex;
+    flex-direction: column;
+    gap: .6rem;
+    margin-top: .5rem;
+  }
+  .newsletter-form input {
+    min-height: 40px;
+    padding: .65rem .8rem;
+    border: 1px solid rgba(148, 163, 184, 0.5);
+    border-radius: 8px;
+    background: rgba(255,255,255,0.9);
+    color: #0f172a;
+  }
+  .newsletter-form button {
+    min-height: 40px;
+    border: 0;
+    border-radius: 8px;
+    background: #f8fafc;
+    color: #0f172a;
+    font-weight: 700;
+    cursor: pointer;
+  }
+  .newsletter-unsubscribe-link {
+    display: inline-block;
+    margin-top: .7rem;
+    color: #e2e8f0;
+    text-decoration: underline;
+    font-size: .9rem;
+  }
+  .newsletter-status {
+    min-height: 1.5rem;
+    margin: .75rem 0 0;
+    font-size: .9rem;
+    color: #e2e8f0;
+  }
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
 </style>
 
 <script>
@@ -191,25 +251,64 @@
     var consent = localStorage.getItem(consentKey);
     if (consent === 'accepted' || consent === 'rejected') {
         banner.hidden = true;
-        return;
+    } else {
+        banner.hidden = false;
     }
-
-    banner.hidden = false;
 
     function applyConsent(value) {
         localStorage.setItem(consentKey, value);
         banner.hidden = true;
 
         if (value === 'accepted') {
-            var existing = document.querySelector('script[data-cookie-src="cloudflare-insights"]');
-            if (!existing) {
-                var script = document.createElement('script');
-                script.defer = true;
-                script.src = 'https://static.cloudflareinsights.com/beacon.min.js';
-                script.setAttribute('data-cf-beacon', '{"token":"TON_TOKEN"}');
-                script.setAttribute('data-cookie-src', 'cloudflare-insights');
-                document.head.appendChild(script);
+            var provider = {{ site.Params.analytics.provider | default "none" | jsonify }};
+            var scriptElement = null;
+
+            if (provider === 'plausible') {
+                var plausibleScript = {{ site.Params.analytics.plausible.script | default "https://plausible.io/js/script.js" | jsonify }};
+                var plausibleDomain = {{ site.Params.analytics.domain | default "blog.audricrosier.be" | jsonify }};
+                scriptElement = document.querySelector('script[data-cookie-src="analytics-provider"][src="' + plausibleScript + '"]');
+                if (!scriptElement) {
+                    scriptElement = document.createElement('script');
+                    scriptElement.defer = true;
+                    scriptElement.src = plausibleScript;
+                    scriptElement.setAttribute('data-domain', plausibleDomain);
+                    scriptElement.setAttribute('data-cookie-src', 'analytics-provider');
+                    document.head.appendChild(scriptElement);
+                }
+            } else if (provider === 'umami') {
+                var umamiScript = {{ site.Params.analytics.umami.script | default "https://cloud.umami.is/script.js" | jsonify }};
+                var umamiId = {{ site.Params.analytics.umami.websiteId | default "" | jsonify }};
+                scriptElement = document.querySelector('script[data-cookie-src="analytics-provider"][src="' + umamiScript + '"]');
+                if (!scriptElement) {
+                    scriptElement = document.createElement('script');
+                    scriptElement.defer = true;
+                    scriptElement.src = umamiScript;
+                    scriptElement.setAttribute('data-website-id', umamiId);
+                    scriptElement.setAttribute('data-cookie-src', 'analytics-provider');
+                    document.head.appendChild(scriptElement);
+                }
+            } else if (provider === 'cloudflare') {
+                var existing = document.querySelector('script[data-cookie-src="cloudflare-insights"]');
+                if (!existing) {
+                    var script = document.createElement('script');
+                    script.defer = true;
+                    script.src = 'https://static.cloudflareinsights.com/beacon.min.js';
+                    script.setAttribute('data-cf-beacon', '{"token":"' + {{ site.Params.analytics.cloudflare.token | default "" | jsonify }} + '"}');
+                    script.setAttribute('data-cookie-src', 'cloudflare-insights');
+                    document.head.appendChild(script);
+                }
             }
+            fetch('/admin/api.php?action=analytics.track', {
+                method: 'POST',
+                credentials: 'same-origin',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    path: window.location.pathname + window.location.search,
+                    title: document.title,
+                    language: document.documentElement.lang || 'fr',
+                    referrer: document.referrer || ''
+                })
+            }).catch(function () {});
         }
     }
 
@@ -218,6 +317,31 @@
             applyConsent(this.getAttribute('data-cookie-action') === 'accept' ? 'accepted' : 'rejected');
         });
     });
+
+    var newsletterForm = document.getElementById('newsletter-form');
+    if (newsletterForm) {
+        newsletterForm.addEventListener('submit', function (event) {
+            event.preventDefault();
+            var form = event.currentTarget;
+            var email = form.querySelector('input[name="email"]').value.trim();
+            var status = document.getElementById('newsletter-status');
+            if (!email) return;
+            fetch('/admin/api.php?action=newsletter.subscribe', {
+                method: 'POST',
+                credentials: 'same-origin',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email: email, source: 'footer' })
+            }).then(function (response) {
+                return response.json().then(function (data) {
+                    if (!response.ok) throw new Error(data.error || 'Inscription impossible.');
+                    form.reset();
+                    if (status) status.textContent = 'Merci, vous êtes inscrit·e à la newsletter.';
+                });
+            }).catch(function (error) {
+                if (status) status.textContent = error.message || 'Inscription impossible.';
+            });
+        });
+    }
 })();
 </script>
 

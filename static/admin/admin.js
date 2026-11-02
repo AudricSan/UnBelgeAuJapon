@@ -74,6 +74,7 @@
     const definitions = [
       ["create-view", "editor"],
       ["translate-view", "translator"],
+      ["newsletter-view", "admin"],
       ["users-view", "admin"],
     ];
     const tabs = [...document.querySelectorAll(".tab-button")];
@@ -91,7 +92,7 @@
   }
 
   function showView(viewId) {
-    for (const section of ["create-view", "translate-view", "users-view"]) {
+    for (const section of ["create-view", "translate-view", "newsletter-view", "users-view"]) {
       setVisible(section, section === viewId);
     }
     for (const button of document.querySelectorAll(".tab-button")) {
@@ -100,7 +101,75 @@
       button.setAttribute("aria-selected", String(active));
     }
     if (viewId === "translate-view" || viewId === "users-view") loadArticles().catch((error) => showMessage(error.message, true));
+    if (viewId === "newsletter-view" && hasRole("admin")) {
+      loadAnalytics().catch((error) => showMessage(error.message, true));
+      loadNewsletterSubscribers().catch((error) => showMessage(error.message, true));
+    }
     if (viewId === "users-view" && hasRole("admin")) loadUsers().catch((error) => showMessage(error.message, true));
+  }
+
+  async function loadAnalytics() {
+    const result = await request("analytics.summary");
+    const summary = result.summary || {};
+    document.querySelector("#stats-total-events").textContent = Number(summary.total_events || 0).toLocaleString("fr-FR");
+    document.querySelector("#stats-week-events").textContent = Number(summary.week_events || 0).toLocaleString("fr-FR");
+    document.querySelector("#stats-subscribers").textContent = Number(summary.total_subscribers || 0).toLocaleString("fr-FR");
+    const list = document.querySelector("#top-pages-list");
+    list.replaceChildren();
+    for (const entry of summary.top_pages || []) {
+      const item = document.createElement("li");
+      item.textContent = `${entry.path} — ${Number(entry.hits || 0).toLocaleString("fr-FR")}`;
+      list.append(item);
+    }
+    if (!summary.top_pages || summary.top_pages.length === 0) {
+      const empty = document.createElement("li");
+      empty.textContent = "Aucune visite enregistrée pour le moment.";
+      list.append(empty);
+    }
+  }
+
+  async function loadNewsletterSubscribers() {
+    if (!hasRole("admin")) return;
+    const result = await request("newsletter.list");
+    const list = document.querySelector("#newsletter-subscribers");
+    list.replaceChildren();
+    const subscribers = result.subscribers || [];
+    if (subscribers.length === 0) {
+      const empty = document.createElement("p");
+      empty.className = "muted";
+      empty.textContent = "Aucun abonné pour le moment.";
+      list.append(empty);
+      return;
+    }
+    for (const subscriber of subscribers) {
+      const row = document.createElement("article");
+      row.className = "user-row";
+      const info = document.createElement("div");
+      info.className = "user-details";
+      const email = document.createElement("strong");
+      email.textContent = subscriber.email;
+      const meta = document.createElement("span");
+      meta.textContent = subscriber.is_active === 1 ? "Actif" : "Désactivé";
+      info.append(email, meta);
+      const action = document.createElement("div");
+      action.className = "user-actions";
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = "button button-secondary";
+      button.textContent = subscriber.is_active === 1 ? "Désactiver" : "Réactiver";
+      button.addEventListener("click", async () => {
+        try {
+          await request("newsletter.toggle", { method: "POST", body: { id: subscriber.id } });
+          await loadNewsletterSubscribers();
+          showMessage("Statut de la newsletter mis à jour.");
+        } catch (error) {
+          showMessage(error.message, true);
+        }
+      });
+      action.append(button);
+      row.append(info, action);
+      list.append(row);
+    }
   }
 
   function showAuthenticatedApp() {
@@ -347,6 +416,26 @@
     label.append(input, text);
     return label;
   }
+
+  document.querySelector("#newsletter-subscribe-form").addEventListener("submit", async (event) => {
+    event.preventDefault();
+    const form = event.currentTarget;
+    if (!form.reportValidity()) return;
+    const email = formValue(form, "email");
+    const button = form.querySelector('button[type="submit"]');
+    button.disabled = true;
+    try {
+      await request("newsletter.subscribe", { method: "POST", body: { email, source: "admin" } });
+      form.reset();
+      await loadNewsletterSubscribers();
+      await loadAnalytics();
+      showMessage("Abonné ajouté à la newsletter.");
+    } catch (error) {
+      showMessage(error.message, true);
+    } finally {
+      button.disabled = false;
+    }
+  });
 
   document.querySelector("#user-form").addEventListener("submit", async (event) => {
     event.preventDefault();

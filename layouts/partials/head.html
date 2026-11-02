@@ -46,13 +46,32 @@
     var consent = localStorage.getItem(consentKey);
     if (consent !== 'accepted') return;
 
-    if (document.querySelector('script[data-cookie-src="cloudflare-insights"]')) return;
+    var provider = {{ site.Params.analytics.provider | default "none" | jsonify }};
+    var scriptUrl = null;
+    var attributes = {};
+
+    if (provider === 'plausible') {
+        scriptUrl = {{ site.Params.analytics.plausible.script | default "https://plausible.io/js/script.js" | jsonify }};
+        attributes['data-domain'] = {{ site.Params.analytics.domain | default site.BaseURL | jsonify }};
+    } else if (provider === 'umami') {
+        scriptUrl = {{ site.Params.analytics.umami.script | default "https://cloud.umami.is/script.js" | jsonify }};
+        attributes['data-website-id'] = {{ site.Params.analytics.umami.websiteId | default "" | jsonify }};
+    } else if (provider === 'cloudflare') {
+        if (document.querySelector('script[data-cookie-src="cloudflare-insights"]')) return;
+        scriptUrl = 'https://static.cloudflareinsights.com/beacon.min.js';
+        attributes['data-cf-beacon'] = '{"token":"' + {{ site.Params.analytics.cloudflare.token | default "" | jsonify }} + '"}';
+        attributes['data-cookie-src'] = 'cloudflare-insights';
+    }
+
+    if (!scriptUrl || document.querySelector('script[src="' + scriptUrl + '"]')) return;
 
     var script = document.createElement('script');
     script.defer = true;
-    script.src = 'https://static.cloudflareinsights.com/beacon.min.js';
-    script.setAttribute('data-cf-beacon', '{"token":"TON_TOKEN"}');
-    script.setAttribute('data-cookie-src', 'cloudflare-insights');
+    script.src = scriptUrl;
+    Object.keys(attributes).forEach(function (key) {
+        if (attributes[key]) script.setAttribute(key, attributes[key]);
+    });
+    script.setAttribute('data-cookie-src', 'analytics-provider');
     document.head.appendChild(script);
 })();
 </script>
