@@ -7,8 +7,14 @@ title = "Un Belge au Japon – Blog d’expatriation, conseils et démarches"
 theme = "PaperMod"
 
 defaultContentLanguage = "fr"
+defaultContentLanguageInSubdir = false
+enableRobotsTXT = true
 paginate = 10
-locale = "fr-fr"
+
+[sitemap]
+  filename = "sitemap.xml"
+  priority = 0.7
+  changefreq = "weekly"
 
 # =========================
 # LANGUAGES
@@ -17,7 +23,7 @@ locale = "fr-fr"
 
   [languages.fr]
     label = "Français"
-    locale = "fr-FR"
+    locale = "fr"
     weight = 1
 
     [[languages.fr.menus.main]]
@@ -42,7 +48,7 @@ locale = "fr-fr"
 
   [languages.ja]
     label = "日本語"
-    locale = "ja-JP"
+    locale = "ja"
     weight = 2
 
     [[languages.ja.menus.main]]
