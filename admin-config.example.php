@@ -27,7 +27,7 @@ return [
     // Jeton fine-grained limité à ce dépôt, permission « Contents : Read and write ».
     'github' => [
         'owner' => 'AudricSan',
-        'repository' => 'Ma-vie-au-Japon',
+        'repository' => 'UnBelgeAuJapon',
         'branch' => 'main',
         'token' => 'YOUR_SERVER_SIDE_FINE_GRAINED_GITHUB_TOKEN',
     ],
