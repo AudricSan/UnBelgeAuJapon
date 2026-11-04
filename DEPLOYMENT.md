@@ -4,12 +4,12 @@ Publication : `git push origin main` → GitHub Actions compile avec Hugo → en
 
 ## 1. Architecture
 
-| Élément | Rôle |
-|---|---|
-| **Ton PC** | Édition des sources, `git commit`, `git push`. |
+| Élément                                             | Rôle                                                                                                                                                                                                                   |
+| --------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Ton PC**                                          | Édition des sources, `git commit`, `git push`.                                                                                                                                                                         |
 | **GitHub Actions** (`.github/workflows/deploy.yml`) | À chaque push sur `main` : checkout (thème PaperMod inclus), Hugo Extended 0.169.0, `hugo build --minify --gc --cleanDestinationDir`, validation (`scripts/validate_build.py`), envoi SFTP (`scripts/deploy_sftp.py`). |
-| **Hugo** | Génère `public/` (FR + JA, flux RSS, sitemaps, SCSS via Dart Sass embarqué). `public/` n'est jamais versionné. |
-| **OVH Perso** | Reçoit uniquement le contenu de `public/` dans le dossier racine du sous-domaine `blog.audricrosier.be`. |
+| **Hugo**                                            | Génère `public/` (FR + JA, flux RSS, sitemaps, SCSS via Dart Sass embarqué). `public/` n'est jamais versionné.                                                                                                         |
+| **OVH Perso**                                       | Reçoit uniquement le contenu de `public/` dans le dossier racine du sous-domaine `blog.audricrosier.be`.                                                                                                               |
 
 `baseURL` = `https://blog.audricrosier.be/` : le blog est servi à la **racine d'un sous-domaine**, pas dans un sous-chemin `/blog`. Les URLs ne changent donc pas et aucun ajustement de `baseURL` n'est nécessaire. « `/blog` » désigne le dossier distant de ce sous-domaine : son chemin réel est à confirmer (§2.3).
 
@@ -48,15 +48,15 @@ Le script ne crée pas le dossier cible : s'il n'existe pas, il s'arrête sans r
 ### 2.4 Secrets GitHub
 Dépôt → **Settings → Secrets and variables → Actions → New repository secret**.
 
-| Secret | Valeur | Obligatoire |
-|---|---|---|
-| `DEPLOY_HOST` | Serveur SFTP OVH | oui |
-| `DEPLOY_USER` | Identifiant SFTP | oui |
-| `DEPLOY_PORT` | Port (22) | non (22 par défaut) |
-| `DEPLOY_PATH` | Chemin physique du dossier du blog (§2.3) | oui |
-| `DEPLOY_KNOWN_HOSTS` | Lignes `known_hosts` vérifiées (§2.2) | oui |
-| `DEPLOY_PASSWORD` | Mot de passe SFTP | l'un des deux |
-| `DEPLOY_SSH_KEY` | Clé privée dédiée (si OVH l'accepte) | l'un des deux |
+| Secret               | Valeur                                    | Obligatoire         |
+| -------------------- | ----------------------------------------- | ------------------- |
+| `DEPLOY_HOST`        | Serveur SFTP OVH                          | oui                 |
+| `DEPLOY_USER`        | Identifiant SFTP                          | oui                 |
+| `DEPLOY_PORT`        | Port (22)                                 | non (22 par défaut) |
+| `DEPLOY_PATH`        | Chemin physique du dossier du blog (§2.3) | oui                 |
+| `DEPLOY_KNOWN_HOSTS` | Lignes `known_hosts` vérifiées (§2.2)     | oui                 |
+| `DEPLOY_PASSWORD`    | Mot de passe SFTP                         | l'un des deux       |
+| `DEPLOY_SSH_KEY`     | Clé privée dédiée (si OVH l'accepte)      | l'un des deux       |
 
 Clé SSH (seulement si ton offre l'accepte) : `ssh-keygen -t ed25519 -f mvaj_deploy -C "github-deploy"`, installe `mvaj_deploy.pub` selon la doc OVH, mets le contenu de `mvaj_deploy` dans `DEPLOY_SSH_KEY`, puis supprime le fichier local.
 
