@@ -23,7 +23,7 @@ paginate = 10
 
   [languages.fr]
     label = "Français"
-    locale = "fr"
+    locale = "fr-FR"
     weight = 1
 
     [[languages.fr.menus.main]]
@@ -48,7 +48,7 @@ paginate = 10
 
   [languages.ja]
     label = "日本語"
-    locale = "ja"
+    locale = "ja-JP"
     weight = 2
 
     [[languages.ja.menus.main]]
@@ -138,17 +138,6 @@ paginate = 10
     safari_pinned_tab = "safari-pinned-tab.svg"
     theme_color = "#d82c2c"
     msapplication_TileColor = "#d82c2c"
-
-  [params.analytics]
-    provider = "umami"
-    domain = "blog.audricrosier.be"
-
-    [params.analytics.plausible]
-      script = "https://plausible.io/js/script.js"
-
-    [params.analytics.umami]
-      script = "https://cloud.umami.is/script.js"
-      websiteId = "b8aae5e6-083e-4e31-a259-75c80341a974"
 
 # =========================
 # IMAGE PROCESSING

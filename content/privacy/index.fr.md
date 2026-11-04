@@ -33,33 +33,42 @@ Droits : accès, rectification, effacement, limitation, opposition, portabilité
 
 ---
 
-### 2.2 Analyse de performance du site
-Le site charge un script Plausible uniquement après consentement, conformément au bandeau de gestion des cookies.
+### 2.2 Statistiques de fréquentation
+Le site mesure sa fréquentation avec un compteur interne, hébergé sur le même serveur que le site : aucun service tiers n’intervient et aucun cookie n’est déposé.
 
-Données concernées : pages visitées, temps de chargement, informations de navigation agrégées, pays/région approximative, source de trafic si elle est transmise par le navigateur, et la collecte technique nécessaire au bon fonctionnement de l’outil de mesure.
+Données enregistrées pour chaque page vue : la page consultée, la langue de la page, le site d’origine du lien (par exemple google.com), le type d’appareil (ordinateur, mobile, tablette) et la date. Un identifiant anonyme est calculé à partir de l’adresse IP et du navigateur, mélangés à une valeur secrète qui change chaque jour : il ne permet ni de reconnaître une personne d’un jour à l’autre, ni de remonter à son adresse IP, qui n’est jamais conservée.
 
-Finalité : mesurer la performance du site, comprendre les contenus consultés et optimiser l’expérience de lecture.
+Finalité : savoir quelles pages sont lues pour améliorer le contenu.
 
-Base légale : consentement de la personne.
+Base légale : intérêt légitime de l’éditeur, avec des données qui ne permettent pas d’identifier une personne. Le navigateur peut refuser cette mesure avec l’option « Ne pas me suivre » (Do Not Track).
 
-Durée de conservation : maximum 6 mois à compter de la décision de consentement, conformément à la gestion du bandeau, sauf obligation légale contraire.
+Durée de conservation : 26 mois maximum.
 
-Accès : l’éditeur du site et le prestataire Plausible.
+Accès : l’éditeur du site uniquement.
 
-Sortie de l’UE : le service Plausible est un prestataire tiers. Le site doit vérifier, avant mise en ligne à fort volume, que les garanties appropriées sont en place pour tout transfert hors Union européenne.
+Droits : opposition via l’option « Ne pas me suivre » du navigateur, ou en écrivant à contact@audricrosier.be.
 
-Droits : accès, rectification, opposition, limitation, effacement. Pour les exercer, écrire à contact@audricrosier.be.
+---
+
+### 2.3 Newsletter
+Si vous vous abonnez, votre adresse e-mail et la langue de la page d’inscription sont enregistrées sur le serveur du site. L’inscription n’est active qu’après un clic sur le lien de confirmation envoyé par e-mail.
+
+Finalité : vous prévenir par e-mail de la publication de nouveaux articles.
+
+Base légale : votre consentement.
+
+Durée de conservation : jusqu’à votre désinscription, possible à tout moment grâce au lien présent dans chaque e-mail. Une inscription jamais confirmée n’est pas utilisée.
+
+Accès : l’éditeur du site et le service d’envoi d’e-mails du nom de domaine.
+
+Droits : accès, rectification, effacement, via le lien de désinscription ou contact@audricrosier.be.
 
 ---
 
 ## 3. Cookies et traceurs
-Le site ne dépose pas de cookie strictement nécessaire à la lecture du contenu autre qu’un stockage local de la préférence de consentement.
+Le site ne dépose aucun cookie sur les appareils des personnes qui le lisent, et n’utilise aucun traceur publicitaire ou d’analyse tiers. Le compteur de fréquentation décrit au point 2.2 fonctionne sans cookie. C’est pourquoi aucun bandeau de consentement n’est affiché.
 
-Le site utilise un traceur d’analyse de performance Plausible, classé comme non strictement nécessaire au fonctionnement. Il n’est chargé qu’après consentement explicite de la personne visiteuse.
-
-Le site met à disposition un bouton « Tout accepter » et un bouton « Tout refuser », ainsi qu’un accès à la politique des cookies dans le pied de page.
-
-Le choix de consentement est conservé pendant 6 mois maximum, puis le site redemande l’accord.
+Seul l’espace d’administration, réservé à l’éditeur, utilise un cookie de session pour maintenir la connexion.
 
 ---
 
@@ -67,7 +76,7 @@ Le choix de consentement est conservé pendant 6 mois maximum, puis le site rede
 Les données ne sont pas vendues ni revendues à des tiers. Elles peuvent être transmises uniquement :
 - à l’hébergeur pour la gestion technique du site ;
 - au prestataire Web3Forms pour la transmission du formulaire de contact ;
-- au prestataire Plausible pour l’analyse de performance, si le consentement a été donné.
+- au service d’envoi d’e-mails, uniquement pour acheminer la newsletter à ses abonnés.
 
 ---
 

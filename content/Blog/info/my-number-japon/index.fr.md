@@ -1,5 +1,6 @@
 ---
 title: "🪪 Le My Number au Japon : à quoi ça sert et comment l'utiliser ?"
+seo_title: 'My Number au Japon : utilité et démarches'
 date: 2026-03-01
 author: "AudricSan"
 description: "Tout savoir sur le My Number (マイナンバー) au Japon : attribution, carte My Number, utilités concrètes pour les résidents étrangers et démarches associées."

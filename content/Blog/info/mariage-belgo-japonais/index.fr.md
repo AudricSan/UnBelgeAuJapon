@@ -1,5 +1,6 @@
 ---
 title: '💍 Se marier au Japon : le guide complet'
+seo_title: 'Mariage au Japon : démarches pour un Belge'
 date: 2024-12-15
 author: "AudricSan"
 description: "Guide complet pour se marier au Japon entre un(e) Belge et un(e) Japonais(e) : démarches, documents et reconnaissance en Belgique."

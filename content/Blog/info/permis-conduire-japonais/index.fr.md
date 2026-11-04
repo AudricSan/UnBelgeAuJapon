@@ -1,5 +1,6 @@
 ---
 title: '🚗 Convertir son permis de conduire belge au Japon : guide pratique'
+seo_title: 'Convertir son permis belge au Japon'
 date: 2024-09-01
 author: "AudricSan"
 description: "Comment convertir son permis de conduire belge en permis japonais : documents, centre d'examen, épreuve pratique et conseils pour réussir du premier coup."

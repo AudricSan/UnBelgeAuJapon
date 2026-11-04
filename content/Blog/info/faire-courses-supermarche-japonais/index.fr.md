@@ -1,5 +1,6 @@
 ---
 title: "Faire ses courses au supermarché japonais : ce qui change tout"
+seo_title: 'Courses au supermarché japonais : le guide'
 date: 2026-03-01
 author: "AudricSan"
 description: "Le supermarché japonais est une expérience à part entière. Organisation, étiquetage, fraîcheur, prix, culture alimentaire — voici ce que j'ai appris en faisant mes courses chaque semaine au Japon."

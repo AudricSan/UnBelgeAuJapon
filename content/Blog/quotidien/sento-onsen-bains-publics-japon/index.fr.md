@@ -1,5 +1,6 @@
 ---
 title: "Sentō et onsen : comprendre et apprivoiser les bains publics au Japon"
+seo_title: 'Sentō et onsen : bains publics au Japon'
 date: 2026-02-08
 author: "AudricSan"
 description: "Les bains publics japonais sont bien plus qu'un lieu d'hygiène : ce sont des espaces sociaux codifiés. Retour sur mon expérience et guide pratique pour ne pas faire d'impair."

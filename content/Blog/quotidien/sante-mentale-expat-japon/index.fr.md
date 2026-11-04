@@ -1,5 +1,6 @@
 ---
 title: "Santé mentale et vie d'expatrié au Japon : ce dont on ne parle pas assez"
+seo_title: 'Santé mentale d''expatrié au Japon'
 date: 2026-04-05
 author: "AudricSan"
 description: "S'installer au Japon, c'est aussi traverser des phases de solitude, d'isolement et de remise en question. Un témoignage honnête sur la santé mentale en expatriation, avec des ressources concrètes."

@@ -1,6 +1,6 @@
 ---
 title: 'Guides pratiques'
-description: 'Informations pratiques sur la vie au Japon'
+description: 'Guides pratiques pour vivre au Japon : visa, résidence, assurance maladie, impôts, banque et démarches expliqués pas à pas.'
 hideTitle: true
 weight: 1
 ---

@@ -1,5 +1,6 @@
 ---
 title: "🏠 Trouver un appartement au Japon en tant qu'étranger : mon expérience"
+seo_title: 'Trouver un appartement au Japon en étranger'
 date: 2024-02-01
 author: "AudricSan"
 description: "Mon récit personnel pour trouver un appartement au Japon en tant qu'étranger : les refus, les surprises, le système immobilier japonais et comment on finit par s'en sortir."

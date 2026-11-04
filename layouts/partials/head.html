@@ -40,51 +40,21 @@
 </script>
 {{- end }}
 
-<script>
-(function () {
-    var consentKey = 'cookie-consent';
-    var consent = localStorage.getItem(consentKey);
-    if (consent !== 'accepted') return;
-
-    var provider = {{ site.Params.analytics.provider | default "none" | jsonify }};
-    var scriptUrl = null;
-    var attributes = {};
-
-    if (provider === 'plausible') {
-        scriptUrl = {{ site.Params.analytics.plausible.script | default "https://plausible.io/js/script.js" | jsonify }};
-        attributes['data-domain'] = {{ site.Params.analytics.domain | default site.BaseURL | jsonify }};
-    } else if (provider === 'umami') {
-        scriptUrl = {{ site.Params.analytics.umami.script | default "https://cloud.umami.is/script.js" | jsonify }};
-        attributes['data-website-id'] = {{ site.Params.analytics.umami.websiteId | default "" | jsonify }};
-    } else if (provider === 'cloudflare') {
-        if (document.querySelector('script[data-cookie-src="cloudflare-insights"]')) return;
-        scriptUrl = 'https://static.cloudflareinsights.com/beacon.min.js';
-        attributes['data-cf-beacon'] = '{"token":"' + {{ site.Params.analytics.cloudflare.token | default "" | jsonify }} + '"}';
-        attributes['data-cookie-src'] = 'cloudflare-insights';
-    }
-
-    if (!scriptUrl || document.querySelector('script[src="' + scriptUrl + '"]')) return;
-
-    var script = document.createElement('script');
-    script.defer = true;
-    script.src = scriptUrl;
-    Object.keys(attributes).forEach(function (key) {
-        if (attributes[key]) script.setAttribute(key, attributes[key]);
-    });
-    script.setAttribute('data-cookie-src', 'analytics-provider');
-    document.head.appendChild(script);
-})();
-</script>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-{{- if hugo.IsProduction | or (eq site.Params.env "production") | and (ne .Params.robotsNoIndex true) }}
+{{- if or (eq .Params.robotsNoIndex true) (and (eq .Kind "term") (eq .Data.Plural "tags")) }}
+{{- /* Pages d'étiquettes : trop fines pour être indexées, mais leurs liens restent suivis */}}
+<meta name="robots" content="noindex, follow">
+{{- else if hugo.IsProduction | or (eq site.Params.env "production") }}
 <meta name="robots" content="index, follow">
 {{- else }}
 <meta name="robots" content="noindex, nofollow">
 {{- end }}
 
 {{- /* Title */}}
-<title>{{ if .IsHome }}{{ else }}{{ if .Title }}{{ .Title }} | {{ end }}{{ end }}{{ site.Title }}</title>
+{{- /* Titre : `seo_title` (front matter) si présent, sinon le titre de l'article. Suffixe = titre du site. */}}
+{{- $pageTitle := .Params.seo_title | default .Title }}
+<title>{{ if and (not .IsHome) $pageTitle }}{{ $pageTitle }} | {{ end }}{{ if .Params.seo_title }}{{ site.Params.label.text }}{{ else }}{{ site.Title }}{{ end }}</title>
 
 {{- /* Meta */}}
 {{- if .IsHome }}
@@ -94,9 +64,15 @@
     {{- range $i, $e := .Params.keywords }}{{ if $i }}, {{ end }}{{ $e }}{{ end }} {{- else }}
     {{- range $i, $e := .Params.tags }}{{ if $i }}, {{ end }}{{ $e }}{{ end }} {{- end -}}">
 {{- end }}
-<meta name="description" content="{{- with .Description }}{{ . }}{{- else }}{{- if or .IsPage .IsSection}}
-    {{- .Summary | default (printf "%s - %s" .Title  site.Title) }}{{- else }}
-    {{- with site.Params.description }}{{ . }}{{- end }}{{- end }}{{- end -}}">
+{{- /* Description : celle de la page, sinon un résumé court, sinon un texte adapté au type de page */}}
+{{- $desc := "" }}
+{{- if .Description }}{{ $desc = .Description }}
+{{- else if .IsPage }}{{ $desc = .Summary | plainify | truncate 160 }}
+{{- else if eq .Kind "term" }}
+  {{- if eq .Lang "ja" }}{{ $desc = printf "「%s」に関する記事一覧 — %s" .Title site.Params.label.text }}{{ else }}{{ $desc = printf "Tous les articles sur « %s » — %s" .Title site.Params.label.text }}{{ end }}
+{{- else if and .Title (not .IsHome) }}{{ $desc = printf "%s — %s" .Title site.Params.description | truncate 160 }}
+{{- else }}{{ $desc = site.Params.description }}{{ end }}
+<meta name="description" content="{{ $desc }}">
 <meta name="author" content="{{ (partial "author.html" . ) }}">
 <link rel="canonical" href="{{ if .Params.canonicalURL -}} {{ trim .Params.canonicalURL " " }} {{- else -}} {{ .Permalink }} {{- end }}">
 {{- if site.Params.analytics.google.SiteVerificationTag }}
@@ -175,7 +151,9 @@
 {{ end -}}
 {{- range .AllTranslations -}}
 <link rel="alternate" hreflang="{{ .Lang }}" href="{{ .Permalink }}">
-{{ end -}}
+{{ if eq .Lang hugo.Sites.Default.Language.Lang }}<link rel="alternate" hreflang="x-default" href="{{ .Permalink }}">
+{{ end }}
+{{- end -}}
 
 <noscript>
     <style>

@@ -1,6 +1,6 @@
 ---
 title: 'Récits'
-description: 'Récits et témoignages personnels'
+description: 'Récits et témoignages personnels d’un Belge au Japon : première année, recherche d’appartement, retour au Japon.'
 hideTitle: true
 weight: 3
 ---

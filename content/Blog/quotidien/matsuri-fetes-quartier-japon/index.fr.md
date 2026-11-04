@@ -1,5 +1,6 @@
 ---
 title: "Les matsuri : quand le quartier reprend vie le temps d'une fête"
+seo_title: 'Les matsuri, fêtes de quartier au Japon'
 date: 2026-03-22
 author: "AudricSan"
 description: "Les matsuri sont les fêtes de quartier du Japon — à la fois rituels religieux shintoïstes et moments de liesse populaire. Ce qu'on y vit, et ce qu'ils révèlent de la société japonaise."

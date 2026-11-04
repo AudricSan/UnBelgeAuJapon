@@ -1,5 +1,6 @@
 ---
 title: '🏅 Demander la résidence permanente au Japon : conditions et démarches'
+seo_title: 'Résidence permanente au Japon : conditions'
 date: 2026-01-15
 author: "AudricSan"
 description: "Guide complet pour obtenir la résidence permanente au Japon (永住許可) : conditions d'éligibilité, documents nécessaires, délais et conseils pratiques pour les résidents étrangers."

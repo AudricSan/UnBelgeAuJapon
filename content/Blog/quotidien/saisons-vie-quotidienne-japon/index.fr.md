@@ -1,5 +1,6 @@
 ---
 title: "Les quatre saisons au Japon : comment elles structurent la vie quotidienne"
+seo_title: 'Les saisons au Japon et la vie quotidienne'
 date: 2026-03-08
 author: "AudricSan"
 description: "Au Japon, les saisons ne sont pas juste météorologiques — elles organisent la nourriture, les vêtements, les rituels sociaux et même l'humeur collective. Ce que ça change de vivre ici."

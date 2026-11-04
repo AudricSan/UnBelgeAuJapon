@@ -1,5 +1,6 @@
 ---
 title: '🏥 Assurance maladie au Japon pour les étrangers : guide complet'
+seo_title: 'Assurance maladie au Japon pour étrangers'
 date: 2024-05-01
 author: "AudricSan"
 description: "Tout savoir sur l'assurance maladie nationale au Japon (国民健康保険) pour les résidents étrangers : inscription, cotisations, remboursements et conseils pratiques."

@@ -1,6 +1,6 @@
 ---
 title: 'Blog'
-description: 'Articles et récits sur la vie au Japon'
+description: 'Tous les articles du blog : démarches administratives, visa, vie quotidienne et récits d’un Belge installé au Japon.'
 hideTitle: true
 ---
 

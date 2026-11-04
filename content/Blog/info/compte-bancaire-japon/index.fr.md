@@ -1,5 +1,6 @@
 ---
 title: '🏦 Ouvrir un compte bancaire au Japon : quel établissement choisir ?'
+seo_title: 'Ouvrir un compte bancaire au Japon'
 date: 2024-04-15
 author: "AudricSan"
 description: "Guide pratique pour ouvrir un compte bancaire au Japon en tant qu'étranger : Japan Post Bank, Rakuten, SBI Shinsei — documents, démarches et comparatif honnête."

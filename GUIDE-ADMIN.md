@@ -1,39 +1,41 @@
-# Configurer l’espace d’édition
+# Administration, statistiques et newsletter
 
-Le panneau utilise PHP, un fichier SQLite pour les comptes et un jeton GitHub conservé côté serveur pour enregistrer les articles. Il ne fonctionne pas avec le seul serveur statique `hugo server`.
+Un seul petit module PHP + SQLite, sans service externe. Le site reste statique (Hugo) ; seuls trois dossiers sont dynamiques :
 
-## Prérequis
+| Chemin | Rôle |
+|---|---|
+| `static/admin/` | Interface (`index.php`, `app.js`) et API (`api.php`). Le code est dans `admin/inc/` (fermé au web par `.htaccess`). |
+| `static/api/hit.php` | Compteur de visites, appelé par `static/s.js`. |
+| `static/api/newsletter.php` | Inscription, confirmation et désinscription publiques. |
 
-- PHP 8.1 ou plus récent avec `PDO_SQLITE` et `cURL`.
-- HTTPS actif sur le domaine public.
-- Un dossier persistant, hors de la racine publique, dans lequel PHP peut créer et modifier un fichier.
-- Un jeton GitHub fine-grained limité au dépôt `AudricSan/Ma-vie-au-Japon`, avec **Contents: Read and write**.
+## Ce que fait l'interface (`/admin/`)
 
-Le pilote `PDO_SQLITE` permet à PHP d’utiliser SQLite. Le fichier de base de données doit être dans un dossier accessible en écriture par PHP ([documentation PDO_SQLITE](https://www.php.net/manual/en/ref.pdo-sqlite.php), [format du DSN SQLite](https://www.php.net/manual/en/pdo-sqlite.connection.php)). Le pilote SQLite est activé dans le PHP local de XAMPP; vérifie aussi sa disponibilité sur l’hébergement.
+- **Statistiques** : visiteurs, pages vues, pages les plus lues, sources, langues, appareils. Mesure sans cookie (identifiant anonyme recalculé chaque jour, IP jamais conservée), donc aucun bandeau de consentement. Tes propres visites sont exclues dès que tu te connectes à l'admin (`localStorage.mvaj-ignore`).
+- **Articles** : liste, modification du Markdown brut (FR/JA), création, suppression. Chaque enregistrement est un commit sur `main` via l'API GitHub ; GitHub Actions compile et déploie en 2 à 3 minutes.
+  Titre Google : ajoute `seo_title: 'Titre court'` dans l'en-tête de l'article ; il remplace `title` dans la balise `<title>` seulement (sans lui, le titre de l'article est utilisé).
+- **Newsletter** : abonnés (inscription avec confirmation par e-mail), envoi d'un article choisi parmi ceux en ligne, e-mail de test, historique. L'envoi se fait par lots de 10 depuis le navigateur (compatible hébergement mutualisé).
 
-## Configuration privée
+## Configuration (une seule fois)
 
-1. Copie `admin-config.example.php` vers `admin-config.php` et place ce fichier hors du dossier accessible par le Web. Par défaut, le panneau le cherche deux niveaux au-dessus de `admin/`.
-2. La configuration crée `mvaj-admin.sqlite` à côté de `admin-config.php`. Le dossier parent doit être accessible en écriture par PHP et rester conservé lors des déploiements.
-3. Dans `admin-config.php`, renseigne le jeton GitHub. Le propriétaire, le dépôt et la branche `main` sont déjà indiqués.
-4. Génère deux secrets aléatoires distincts d’au moins 32 caractères pour `security_key` et `bootstrap_key`. Avec le PHP de XAMPP, tu peux en générer un à la fois avec :
-
+1. Copie `admin-config.example.php` vers `admin-config.php`, **hors du dossier public** (par défaut trois niveaux au-dessus de `admin/inc/`, soit à côté de `www/` sur OVH). Il n'est jamais versionné.
+2. Génère les valeurs avec le PHP de XAMPP :
    ```powershell
-   D:\audri\Xamp\php\php.exe -r "echo bin2hex(random_bytes(32)), PHP_EOL;"
+   D:\audri\Xamp\php\php.exe -r "echo bin2hex(random_bytes(32)), PHP_EOL;"                           # security_key
+   D:\audri\Xamp\php\php.exe -r "echo password_hash('ton-mot-de-passe', PASSWORD_DEFAULT), PHP_EOL;"  # admin_password_hash
    ```
+3. Renseigne `admin_email`, le jeton GitHub (fine-grained, ce dépôt uniquement, **Contents : Read and write**) et le mot de passe SMTP.
+4. La base SQLite se crée toute seule au premier accès (dossier privé, inscriptible). Les abonnés actifs de l'ancien panneau sont importés automatiquement.
 
-Ne partage pas ces secrets et ne les ajoute jamais à GitHub. `admin-config.php` et le fichier SQLite local sont ignorés par Git.
+Ancien format de configuration : `security_key`, `database`, `github` et `newsletter.smtp` sont conservés ; il suffit d'ajouter `admin_email`, `admin_password_hash` et `site_url`. Les clés `bootstrap_key`, `analytics` et les fournisseurs Brevo/Mailgun/SendGrid ne servent plus.
 
-## Première connexion
+## Aperçu local
 
-Après déploiement du code PHP et installation de la configuration privée, ouvre **https://blog.audricrosier.be/admin/**. La base SQLite et ses tables sont créées au premier accès. Utilise `bootstrap_key` pour créer le premier compte administrateur, puis remplace sa valeur par `''` dans la configuration privée.
+`hugo server` n'exécute pas PHP. Compile avec `hugo`, sers `public/` par XAMPP. Pour un test isolé : `php -S 127.0.0.1:8099 -t static` avec la variable `MVAJ_ADMIN_CONFIG` pointant vers un fichier de config de test.
 
-L’admin crée ensuite les autres comptes et coche un ou plusieurs rôles. Le mot de passe temporaire s’affiche une seule fois; l’utilisateur devra le remplacer à sa première connexion.
+## Sauvegarde
 
-## Déploiement et aperçu local
+Tout ce qui est dynamique tient dans un seul fichier : `mvaj-admin.sqlite`. Copie-le de temps en temps ; les articles, eux, sont dans Git.
 
-Les fichiers PHP sous `static/admin/` doivent être copiés par Hugo dans le dossier servi par Apache. Configure le déploiement OVH pour publier la sortie de Hugo et laisse PHP activé pour `admin/`. `hugo server` sert les fichiers, mais n’exécute pas les scripts PHP.
+## Évolutions du schéma
 
-Pour l’aperçu local, compile le site avec `hugo`, puis utilise le VirtualHost XAMPP qui sert `public/` à `http://127.0.0.4/admin/`. La configuration locale se trouve à la racine du projet, hors de `public/`. Pour l’utilisation en ligne, installe `admin-config.php` et conserve `mvaj-admin.sqlite` dans un dossier privé et persistant sur l’hébergement.
-
-Si Hugo signale que PaperMod est introuvable, rétablis d’abord le sous-module `themes/PaperMod` avant de compiler.
+Ajoute une entrée numérotée dans `$steps` de `migrate()` (`admin/inc/core.php`) : elle s'applique une seule fois, automatiquement.

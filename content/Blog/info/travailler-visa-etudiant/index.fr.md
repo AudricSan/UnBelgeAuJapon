@@ -1,5 +1,6 @@
 ---
 title: '🎓 Travailler avec un visa étudiant au Japon : les règles à connaître'
+seo_title: 'Travailler avec un visa étudiant au Japon'
 date: 2024-04-20
 author: "AudricSan"
 description: "Tout savoir sur le travail à temps partiel (baito) avec un visa étudiant au Japon : autorisation, limite d'heures, types de jobs accessibles et erreurs à éviter."

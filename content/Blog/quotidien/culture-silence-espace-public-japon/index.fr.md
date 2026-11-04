@@ -1,5 +1,6 @@
 ---
 title: "Le silence dans les espaces publics japonais : une valeur, pas une absence"
+seo_title: 'Le silence dans l''espace public au Japon'
 date: 2026-02-22
 author: "AudricSan"
 description: "Au Japon, le silence dans les transports, les files d'attente et les lieux publics n'est pas un vide : c'est une forme de politesse collective. Ce que ça m'a appris sur moi-même."

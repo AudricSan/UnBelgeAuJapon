@@ -71,24 +71,25 @@
       <ul class="site-footer__list">
         <li><a href="{{ "/mentions-legales/" | absLangURL }}">Mentions légales</a></li>
         <li><a href="{{ "/confidentialite/" | absLangURL }}">Confidentialité</a></li>
-        <li><a href="{{ "/confidentialite/#cookies-et-traceurs" | absLangURL }}">Gérer mes cookies</a></li>
-        <li><a href="/newsletter/unsubscribe.php">Se désinscrire</a></li>
         <li><a href="{{ "/index.xml" | absLangURL }}" type="application/rss+xml">RSS</a></li>
         <li><a href="/sitemap.xml">Sitemap</a></li>
       </ul>
     </div>
 
-    <!-- {{/* ── Newsletter ───────────────────────── */}}
+    {{/* ── Newsletter ───────────────────────── */}}
+    {{- $ja := eq site.Language.Lang "ja" }}
     <div class="site-footer__col">
-      <h3 class="site-footer__heading">Newsletter</h3>
-      <form id="newsletter-form" class="newsletter-form" method="post" action="/admin/api.php?action=newsletter.subscribe">
-        <label class="sr-only" for="newsletter-email">Adresse e-mail</label>
-        <input id="newsletter-email" name="email" type="email" placeholder="votre@email.com" required>
-        <button type="submit">S’abonner</button>
+      <h3 class="site-footer__heading">{{ if $ja }}ニュースレター{{ else }}Newsletter{{ end }}</h3>
+      <form id="newsletter-form" class="newsletter-form" method="post" action="/api/newsletter.php?a=subscribe">
+        <label class="sr-only" for="newsletter-email">{{ if $ja }}メールアドレス{{ else }}Adresse e-mail{{ end }}</label>
+        <input id="newsletter-email" name="email" type="email" placeholder="votre@email.com" autocomplete="email" required>
+        <input class="sr-only" name="website" type="text" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <button type="submit">{{ if $ja }}登録する{{ else }}S’abonner{{ end }}</button>
       </form>
-      <a class="newsletter-unsubscribe-link" href="/newsletter/unsubscribe.php">Se désinscrire</a>
-      <p id="newsletter-status" class="newsletter-status" aria-live="polite"></p>
-    </div> -->
+      <p id="newsletter-status" class="newsletter-status" aria-live="polite"
+         data-ok="{{ if $ja }}確認メールをお送りしました。リンクをクリックして登録を完了してください。{{ else }}Merci ! Un e-mail de confirmation vient de t’être envoyé.{{ end }}"
+         data-error="{{ if $ja }}登録できませんでした。後ほどもう一度お試しください。{{ else }}Inscription impossible pour le moment.{{ end }}"></p>
+    </div>
 
     {{/* ── Projet ──────────────────────────────── */}}
     <div class="site-footer__col">
@@ -111,88 +112,7 @@
 
 </footer>
 
-<div id="cookie-banner" class="cookie-banner" aria-live="polite" hidden>
-  <div class="cookie-banner__inner">
-    <div class="cookie-banner__content">
-      <strong>Cookies et traceurs</strong>
-      <p>
-        Le site utilise des cookies de fonctionnement et un outil d'analyse de performance
-        (Umami), chargé uniquement après votre accord. Vous pouvez accepter ou refuser
-        ce traceur sans bloquer la lecture du contenu.
-      </p>
-    </div>
-    <div class="cookie-banner__actions">
-      <button type="button" data-cookie-action="accept">Tout accepter</button>
-      <button type="button" data-cookie-action="reject" class="secondary">Tout refuser</button>
-      <a href="{{ "/confidentialite/#cookies-et-traceurs" | absLangURL }}">Politique des cookies</a>
-    </div>
-  </div>
-</div>
-
 <style>
-  .cookie-banner {
-    position: fixed;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 9999;
-    background: rgba(15, 23, 42, 0.96);
-    color: #f8fafc;
-    box-shadow: 0 -8px 28px rgba(15, 23, 42, 0.15);
-  }
-  .cookie-banner[hidden] { display: none; }
-  .cookie-banner__inner {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 1rem 1.25rem;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    align-items: center;
-    justify-content: space-between;
-  }
-  .cookie-banner__content {
-    flex: 1 1 520px;
-  }
-  .cookie-banner__content p {
-    margin: .3rem 0 0;
-    line-height: 1.5;
-    color: #e2e8f0;
-  }
-  .cookie-banner__actions {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: .75rem;
-  }
-  .cookie-banner__actions button,
-  .cookie-banner__actions a {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 2.5rem;
-    padding: .6rem 1rem;
-    border-radius: 6px;
-    font-weight: 600;
-    text-decoration: none;
-    transition: opacity .2s ease;
-  }
-  .cookie-banner__actions button {
-    border: 1px solid transparent;
-    background: #f8fafc;
-    color: #0f172a;
-    cursor: pointer;
-  }
-  .cookie-banner__actions button.secondary {
-    background: transparent;
-    border-color: rgba(248, 250, 252, 0.7);
-    color: #f8fafc;
-  }
-  .cookie-banner__actions a {
-    background: transparent;
-    color: #f8fafc;
-    border: 1px solid rgba(248, 250, 252, 0.7);
-  }
   .newsletter-form {
     display: flex;
     flex-direction: column;
@@ -242,106 +162,29 @@
   }
 </style>
 
+<script src="/s.js" defer></script>
 <script>
 (function () {
-    var consentKey = 'cookie-consent';
-    var banner = document.getElementById('cookie-banner');
-    if (!banner) return;
-
-    var consent = localStorage.getItem(consentKey);
-    if (consent === 'accepted' || consent === 'rejected') {
-        banner.hidden = true;
-    } else {
-        banner.hidden = false;
-    }
-
-    function applyConsent(value) {
-        localStorage.setItem(consentKey, value);
-        banner.hidden = true;
-
-        if (value === 'accepted') {
-            var provider = {{ site.Params.analytics.provider | default "none" | jsonify }};
-            var scriptElement = null;
-
-            if (provider === 'plausible') {
-                var plausibleScript = {{ site.Params.analytics.plausible.script | default "https://plausible.io/js/script.js" | jsonify }};
-                var plausibleDomain = {{ site.Params.analytics.domain | default "blog.audricrosier.be" | jsonify }};
-                scriptElement = document.querySelector('script[data-cookie-src="analytics-provider"][src="' + plausibleScript + '"]');
-                if (!scriptElement) {
-                    scriptElement = document.createElement('script');
-                    scriptElement.defer = true;
-                    scriptElement.src = plausibleScript;
-                    scriptElement.setAttribute('data-domain', plausibleDomain);
-                    scriptElement.setAttribute('data-cookie-src', 'analytics-provider');
-                    document.head.appendChild(scriptElement);
-                }
-            } else if (provider === 'umami') {
-                var umamiScript = {{ site.Params.analytics.umami.script | default "https://cloud.umami.is/script.js" | jsonify }};
-                var umamiId = {{ site.Params.analytics.umami.websiteId | default "" | jsonify }};
-                scriptElement = document.querySelector('script[data-cookie-src="analytics-provider"][src="' + umamiScript + '"]');
-                if (!scriptElement) {
-                    scriptElement = document.createElement('script');
-                    scriptElement.defer = true;
-                    scriptElement.src = umamiScript;
-                    scriptElement.setAttribute('data-website-id', umamiId);
-                    scriptElement.setAttribute('data-cookie-src', 'analytics-provider');
-                    document.head.appendChild(scriptElement);
-                }
-            } else if (provider === 'cloudflare') {
-                var existing = document.querySelector('script[data-cookie-src="cloudflare-insights"]');
-                if (!existing) {
-                    var script = document.createElement('script');
-                    script.defer = true;
-                    script.src = 'https://static.cloudflareinsights.com/beacon.min.js';
-                    script.setAttribute('data-cf-beacon', '{"token":"' + {{ site.Params.analytics.cloudflare.token | default "" | jsonify }} + '"}');
-                    script.setAttribute('data-cookie-src', 'cloudflare-insights');
-                    document.head.appendChild(script);
-                }
-            }
-            fetch('/admin/api.php?action=analytics.track', {
-                method: 'POST',
-                credentials: 'same-origin',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    path: window.location.pathname + window.location.search,
-                    title: document.title,
-                    language: document.documentElement.lang || 'fr',
-                    referrer: document.referrer || ''
-                })
-            }).catch(function () {});
-        }
-    }
-
-    document.querySelectorAll('[data-cookie-action]').forEach(function (button) {
-        button.addEventListener('click', function () {
-            applyConsent(this.getAttribute('data-cookie-action') === 'accept' ? 'accepted' : 'rejected');
+    var form = document.getElementById('newsletter-form');
+    var status = document.getElementById('newsletter-status');
+    if (!form || !status) return;
+    form.addEventListener('submit', function (event) {
+        event.preventDefault();
+        var data = new FormData(form);
+        fetch('/api/newsletter.php?a=subscribe', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email: data.get('email'), website: data.get('website'), lang: document.documentElement.lang })
+        }).then(function (response) {
+            return response.json().catch(function () { return {}; }).then(function (result) {
+                if (!response.ok) throw new Error(result.error || status.dataset.error);
+                form.reset();
+                status.textContent = status.dataset.ok;
+            });
+        }).catch(function (error) {
+            status.textContent = error.message || status.dataset.error;
         });
     });
-
-    var newsletterForm = document.getElementById('newsletter-form');
-    if (newsletterForm) {
-        newsletterForm.addEventListener('submit', function (event) {
-            event.preventDefault();
-            var form = event.currentTarget;
-            var email = form.querySelector('input[name="email"]').value.trim();
-            var status = document.getElementById('newsletter-status');
-            if (!email) return;
-            fetch('/admin/api.php?action=newsletter.subscribe', {
-                method: 'POST',
-                credentials: 'same-origin',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ email: email, source: 'footer' })
-            }).then(function (response) {
-                return response.json().then(function (data) {
-                    if (!response.ok) throw new Error(data.error || 'Inscription impossible.');
-                    form.reset();
-                    if (status) status.textContent = 'Merci, vous êtes inscrit·e à la newsletter.';
-                });
-            }).catch(function (error) {
-                if (status) status.textContent = error.message || 'Inscription impossible.';
-            });
-        });
-    }
 })();
 </script>
 

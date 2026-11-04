@@ -35,7 +35,11 @@ REQUIRED_FILES = [
     "confidentialite/index.html",
     "admin/index.php",
     "admin/api.php",
-    "admin/security.php",
+    "admin/app.js",
+    "admin/inc/core.php",
+    "api/hit.php",
+    "api/newsletter.php",
+    "s.js",
 ]
 
 errors: list[str] = []
