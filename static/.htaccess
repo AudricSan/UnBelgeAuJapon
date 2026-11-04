@@ -1,0 +1,6 @@
+Options -Indexes
+
+# Configuration privée et base SQLite de l'administration : jamais servies.
+<FilesMatch "^(admin-config\.php|.*\.sqlite(-wal|-shm|-journal)?)$">
+    Require all denied
+</FilesMatch>

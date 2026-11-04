@@ -3,8 +3,8 @@ declare(strict_types=1);
 
 /**
  * Configuration privée de l'administration.
- * Copie ce fichier en admin-config.php, place-le HORS du dossier public
- * (par défaut : trois niveaux au-dessus de admin/inc/) et ne le versionne jamais.
+ * Copie ce fichier en admin-config.php, à la racine du site (protégé par le .htaccess racine)
+ * ou dans son dossier parent, et ne le versionne jamais.
  */
 return [
     // Valeur aléatoire d'au moins 32 caractères (sert à hacher visiteurs et IP).

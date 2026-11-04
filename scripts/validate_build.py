@@ -33,6 +33,7 @@ REQUIRED_FILES = [
     "contact/index.html",
     "mentions-legales/index.html",
     "confidentialite/index.html",
+    ".htaccess",
     "admin/index.php",
     "admin/api.php",
     "admin/app.js",

@@ -67,13 +67,21 @@ function config(): array
         return $config;
     }
 
+    // Ordre de recherche : variable d'environnement, dossier parent du site, racine du site.
+    // À la racine du site, le .htaccess racine interdit tout accès web au fichier.
     $env = getenv('MVAJ_ADMIN_CONFIG');
-    $path = is_string($env) && $env !== '' ? $env : dirname(__DIR__, 3) . DIRECTORY_SEPARATOR . 'admin-config.php';
-    if (!is_file($path)) {
-        fail(503, 'Configuration absente : copie admin-config.example.php vers admin-config.php (hors du dossier public).');
+    $candidates = is_string($env) && $env !== ''
+        ? [$env]
+        : [dirname(__DIR__, 3) . DIRECTORY_SEPARATOR . 'admin-config.php', dirname(__DIR__, 2) . DIRECTORY_SEPARATOR . 'admin-config.php'];
+    $path = null;
+    foreach ($candidates as $candidate) {
+        if (is_file($candidate)) {
+            $path = $candidate;
+            break;
+        }
     }
-    if (isInsideWebRoot($path)) {
-        fail(503, 'admin-config.php doit être placé hors du dossier public.');
+    if ($path === null) {
+        fail(503, 'Configuration absente : copie admin-config.example.php vers admin-config.php (racine du site ou dossier parent).');
     }
 
     $loaded = require $path;
@@ -111,8 +119,8 @@ function db(): PDO
         fail(503, 'Le dossier de la base SQLite doit exister et être inscriptible.');
     }
     $file = $dir . DIRECTORY_SEPARATOR . basename($file);
-    if (isInsideWebRoot($file)) {
-        fail(503, 'La base SQLite doit être placée hors du dossier public.');
+    if (isInsideWebRoot($file) && !str_ends_with(strtolower($file), '.sqlite')) {
+        fail(503, 'Dans le dossier du site, la base doit porter l’extension .sqlite (protégée par le .htaccess racine).');
     }
     if (!in_array('sqlite', PDO::getAvailableDrivers(), true)) {
         fail(503, 'Le pilote PHP PDO_SQLITE doit être activé.');

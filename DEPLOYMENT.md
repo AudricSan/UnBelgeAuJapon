@@ -43,7 +43,7 @@ Compare l'empreinte avec celle affichée par ta première connexion dans FileZil
 
 Le script ne crée pas le dossier cible : s'il n'existe pas, il s'arrête sans rien modifier.
 
-⚠ **Administration PHP** : `public/admin/` est généré depuis `static/admin/`. `admin-config.php` et `mvaj-admin.sqlite` doivent rester **hors** du dossier du blog (`api.php` cherche `admin-config.php` deux niveaux au-dessus de `admin/`). Le déploiement ne les touche jamais, car il ne gère que des fichiers listés dans son manifeste.
+⚠ **Administration PHP** : `public/admin/` est généré depuis `static/admin/`. `admin-config.php` se place à la racine du blog (à côté de `index.html`) ou dans son dossier parent ; `mvaj-admin.sqlite` est créé à côté. Le `.htaccess` racine (généré depuis `static/.htaccess`) interdit tout accès web à ces fichiers. Le déploiement ne les touche jamais, car il ne gère que des fichiers listés dans son manifeste.
 
 ### 2.4 Secrets GitHub
 Dépôt → **Settings → Secrets and variables → Actions → New repository secret**.
