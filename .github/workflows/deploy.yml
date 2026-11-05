@@ -68,6 +68,17 @@ jobs:
       - name: Build de production
         run: hugo build --minify --gc --cleanDestinationDir
 
+      - name: Configuration privée de l'administration (secret ADMIN_CONFIG_PHP)
+        env:
+          ADMIN_CONFIG_PHP: ${{ secrets.ADMIN_CONFIG_PHP }}
+        run: |
+          if [ -z "$ADMIN_CONFIG_PHP" ]; then
+            echo "::notice::Secret ADMIN_CONFIG_PHP absent : la config admin du serveur reste inchangée."
+            exit 0
+          fi
+          printf '%s\n' "$ADMIN_CONFIG_PHP" > public/private/admin-config.php
+          php -l public/private/admin-config.php
+
       - name: Validation du build
         run: python3 scripts/validate_build.py public
 

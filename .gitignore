@@ -9,3 +9,8 @@ CLAUDE.md
 
 # Identifiants locaux (FileZilla) : ne jamais versionner
 /OVH.xml
+
+# Config admin réelle (copiée dans public/private/ à chaque build)
+/static/private/admin-config.php
+*.sqlite
+*.sqlite-*
