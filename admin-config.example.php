@@ -3,8 +3,8 @@ declare(strict_types=1);
 
 /**
  * Configuration privée de l'administration.
- * Copie ce fichier en admin-config.php, à la racine du site (protégé par le .htaccess racine)
- * ou dans son dossier parent, et ne le versionne jamais.
+ * Copie ce fichier en admin-config.php dans le dossier private/ du site
+ * (fermé au web par private/.htaccess) et ne le versionne jamais.
  */
 return [
     // Valeur aléatoire d'au moins 32 caractères (sert à hacher visiteurs et IP).

@@ -1,0 +1,2 @@
+# Configuration privée et base SQLite de l'administration : jamais servies.
+Require all denied

@@ -17,7 +17,7 @@ Un seul petit module PHP + SQLite, sans service externe. Le site reste statique 
 
 ## Configuration (une seule fois)
 
-1. Copie `admin-config.example.php` vers `admin-config.php`, à la racine du blog (à côté de `index.html`, ex. `/blog/` sur OVH) ou dans son dossier parent. Le `.htaccess` racine bloque tout accès web à ce fichier et à la base `.sqlite`. Il n'est jamais versionné.
+1. Copie `admin-config.example.php` vers `admin-config.php`, dans le dossier `private/` du blog (ex. `/blog/private/admin-config.php` sur OVH ; en local `public/private/`). `private/` est fermé au web par son `.htaccess`, et la base `.sqlite` y est créée. Il n'est jamais versionné.
 2. Génère les valeurs avec le PHP de XAMPP :
    ```powershell
    D:\audri\Xamp\php\php.exe -r "echo bin2hex(random_bytes(32)), PHP_EOL;"                           # security_key

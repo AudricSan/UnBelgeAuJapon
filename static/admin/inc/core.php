@@ -67,12 +67,16 @@ function config(): array
         return $config;
     }
 
-    // Ordre de recherche : variable d'environnement, dossier parent du site, racine du site.
-    // À la racine du site, le .htaccess racine interdit tout accès web au fichier.
+    // Ordre de recherche : variable d'environnement, private/ du site, racine du site, dossier parent.
+    // private/ (Require all denied) et le .htaccess racine interdisent tout accès web au fichier.
     $env = getenv('MVAJ_ADMIN_CONFIG');
+    $site = dirname(__DIR__, 2);
     $candidates = is_string($env) && $env !== ''
         ? [$env]
-        : [dirname(__DIR__, 3) . DIRECTORY_SEPARATOR . 'admin-config.php', dirname(__DIR__, 2) . DIRECTORY_SEPARATOR . 'admin-config.php'];
+        : array_map(
+            static fn(string $dir): string => $dir . DIRECTORY_SEPARATOR . 'admin-config.php',
+            [$site . DIRECTORY_SEPARATOR . 'private', $site, dirname($site)]
+        );
     $path = null;
     foreach ($candidates as $candidate) {
         if (is_file($candidate)) {
