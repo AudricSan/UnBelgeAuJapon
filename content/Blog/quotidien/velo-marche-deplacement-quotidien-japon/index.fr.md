@@ -34,7 +34,7 @@ En France ou en Belgique, le vélo est souvent associé au sport, à la santé, 
 
 Le Japon compte environ **72 millions de vélos** pour une population de 125 millions d'habitants (Ministère des Transports japonais, 2022). Dans les villes moyennes et les banlieues, le vélo est souvent le lien entre le domicile et la gare.
 
-Le *mamachari* est le roi de cet usage : stable, pratique, peu coûteux, équipé d'un antivol intégré. On trouve aussi des vélos électriques (*denkidōsha*) de plus en plus répandus, notamment chez les parents transportant des enfants.
+Le *mamachari* est le roi de cet usage : stable, pratique, peu coûteux, équipé d'un antivol intégré. On trouve aussi des vélos électriques (*dendō-jitensha*, 電動自転車) de plus en plus répandus, notamment chez les parents transportant des enfants.
 
 ---
 
@@ -44,7 +44,7 @@ Le vélo au Japon est **légalement un véhicule**. Il doit, en principe, rouler
 
 Mais quelques règles sont appliquées :
 
-- **Pas de téléphone en roulant** : infraction depuis 2023, amende de jusqu'à **50 000 ¥** voire emprisonnement en cas d'accident.
+- **Pas de téléphone en roulant** : interdit depuis novembre 2024, sanction pouvant aller jusqu'à **6 mois de prison ou 100 000 ¥ d'amende**.
 - **Port du casque** : obligatoire légalement depuis avril 2023 pour tous les cyclistes, mais la règle est peu appliquée pour l'instant et le taux de port reste faible (~14 % en 2024 selon la police nationale).
 - **Deux personnes sur un vélo** : interdit, sauf pour les vélos homologués avec siège enfant.
 - **Pas d'alcool** : conduire un vélo en état d'ivresse est une infraction pénale au Japon.

@@ -76,8 +76,8 @@ C'est l'un des moments où j'ai eu l'impression d'appartenir un peu à ce quarti
 
 Les matsuri révèlent quelque chose d'essentiel sur le Japon : l'importance du **collectif local** comme unité sociale. Dans un pays souvent décrit comme individualiste dans la sphère privée, les matsuri sont un espace où le groupe prime, où les générations se mélangent, où l'identité de quartier se réaffirme.
 
-Certains sociologues, comme Emiko Ohnuki-Tierney (*Illness and Culture in Contemporary Japan*, 1984), ont noté que les rituels collectifs jouent un rôle de **régulation émotionnelle** dans la société japonaise — un espace où les émotions, habituellement contrôlées, peuvent s'exprimer librement.
+On observe que les rituels collectifs jouent un rôle de **régulation émotionnelle** dans la société japonaise — un espace où les émotions, habituellement contrôlées, peuvent s'exprimer librement.
 
 ---
 
-*Sources : Association de promotion du patrimoine culturel immatériel du Japon, UNESCO, observations personnelles (été 2025).*
+*Sources : UNESCO, observations personnelles (été 2025).*

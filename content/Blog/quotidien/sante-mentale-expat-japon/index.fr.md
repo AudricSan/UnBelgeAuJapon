@@ -55,7 +55,7 @@ La culture japonaise valorise les groupes constitués (*uchi* vs *soto* — int�
 
 ### Le *honne* et le *tatemae*
 
-La distinction japonaise entre *honne* (真音, les véritables sentiments) et *tatemae* (建前, la façade sociale) peut rendre les relations difficiles à lire. On peut côtoyer des personnes pendant des mois sans vraiment savoir ce qu'elles pensent. Cette opacité relationnelle peut créer un sentiment de solitude même entouré de gens.
+La distinction japonaise entre *honne* (本音, les véritables sentiments) et *tatemae* (建前, la façade sociale) peut rendre les relations difficiles à lire. On peut côtoyer des personnes pendant des mois sans vraiment savoir ce qu'elles pensent. Cette opacité relationnelle peut créer un sentiment de solitude même entouré de gens.
 
 ### La pression performative
 

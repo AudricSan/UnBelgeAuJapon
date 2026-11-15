@@ -45,7 +45,7 @@ En France ou en Belgique, arriver avec 10 minutes de retard à un dîner entre a
 
 La ponctualité japonaise n'est pas de l'obsession — c'est de la **considération**. Elle dit : *j'ai anticipé les imprévus, j'ai laissé une marge, je t'ai pris au sérieux*.
 
-Le sociologue Émile Durkheim distinguait les normes **formelles** (lois, règlements) des normes **informelles** (mœurs, usages). La ponctualité au Japon relève de la seconde catégorie — aucune loi ne vous sanctionne si vous êtes en retard — mais la pression sociale y est plus forte que dans beaucoup de normes formelles.
+On distingue les normes **formelles** (lois, règlements) des normes **informelles** (mœurs, usages). La ponctualité au Japon relève de la seconde catégorie — aucune loi ne vous sanctionne si vous êtes en retard — mais la pression sociale y est plus forte que dans beaucoup de normes formelles.
 
 ---
 

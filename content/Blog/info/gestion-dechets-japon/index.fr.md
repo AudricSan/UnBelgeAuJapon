@@ -62,7 +62,7 @@ Meubles, vélos, électroménager volumineux. Nécessitent une collecte sur rend
 
 ## Le calendrier : la bible du locataire
 
-Chaque municipalité publie un calendrier de collecte (*gomi calender*). Il est généralement disponible à la mairie lors de l'inscription (*jūminhyō*), ou téléchargeable sur le site de la ville. Certaines villes proposent désormais une application mobile.
+Chaque municipalité publie un calendrier de collecte (*gomi calender*). Il est généralement disponible à la mairie lors de la déclaration d'arrivée (転入届), ou téléchargeable sur le site de la ville. Certaines villes proposent désormais une application mobile.
 
 À Tokyo, par exemple, chaque arrondissement (*ku*) a ses propres règles. Ce qui est valable à Shinjuku peut être différent à Suginami.
 

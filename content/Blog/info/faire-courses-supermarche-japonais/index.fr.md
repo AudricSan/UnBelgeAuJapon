@@ -61,7 +61,7 @@ Quelques produits que j'ai intégrés à ma cuisine et que je n'aurais pas achet
 C'est nuancé. En 2024–2026, avec la faiblesse du yen (autour de 160 ¥ pour 1 €), les prix peuvent paraître bas pour les résidents payés en euros ou en dollars. Pour les résidents payés en yen, la situation est différente.
 
 Quelques repères (prix moyens, Tokyo, 2025) :
-- Riz (5 kg) : **2 000 ¥ à 3 500 ¥** selon la variété
+- Riz (5 kg) : le prix varie selon la saison et la marque
 - Filet de saumon (100 g) : **200 ¥ à 400 ¥**
 - Tomates (4 à 5 unités) : **300 ¥ à 600 ¥**
 - Lait (1 L) : **180 ¥ à 250 ¥**

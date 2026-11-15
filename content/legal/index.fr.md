@@ -55,11 +55,9 @@ legal@audricrosier.be
 ---
 
 ## 6. Cookies  
-Ce site peut utiliser des cookies pour :  
-- Assurer son bon fonctionnement  
-- Mesurer l'audience (si applicable)  
+Ce site ne dépose aucun cookie sur les appareils des personnes qui le lisent. Seul l'espace d'administration, réservé à l'éditeur, utilise un cookie de session pour maintenir la connexion.  
 
-Vous pouvez configurer votre navigateur pour refuser ou limiter l'utilisation des cookies.
+Pour plus de détails, consultez la [politique de confidentialité](/confidentialite/).
 
 ---
 

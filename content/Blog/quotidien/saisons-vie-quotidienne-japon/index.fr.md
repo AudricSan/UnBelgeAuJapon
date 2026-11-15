@@ -58,7 +58,7 @@ Les Japonais portent des **vêtements de couleur claire**, utilisent des **éven
 
 L'automne est, pour beaucoup, la saison préférée au Japon. Les températures descendent progressivement, l'humidité disparaît, et les forêts se couvrent de rouge et d'or : c'est le *momiji* (紅葉), la contemplation des feuilles colorées.
 
-Comme pour les sakura, des **prévisions de koyo** (la coloration automnale) sont publiées par les agences météo et les offices du tourisme. Les sites comme Nikkō, Kyoto (parc de Nara) ou Hokkaido attirent des milliers de visiteurs.
+Comme pour les sakura, des **prévisions de koyo** (la coloration automnale) sont publiées par les agences météo et les offices du tourisme. Les sites comme Nikkō, Nara (parc de Nara) ou Hokkaido attirent des milliers de visiteurs.
 
 L'automne est aussi la saison des **festivals gastronomiques** : champignons *matsutake*, châtaignes (*kuri*), patates douces (*satsumaimo*), poisson *sanma* (balaou du Pacifique). Les menus de saison apparaissent dans les restaurants, les supermarchés, les konbini.
 

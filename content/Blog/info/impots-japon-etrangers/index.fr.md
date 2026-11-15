@@ -64,7 +64,7 @@ C'est l'impôt **local**, calculé sur tes revenus de l'**année précédente** 
 | Plusieurs employeurs dans l'année | Oui |
 | Revenus annexes > 200 000 ¥ | Oui |
 | Travailleur indépendant / freelance | Oui |
-| Revenus à l'étranger (si résident permanent) | Oui |
+| Revenus à l'étranger (selon la durée de résidence) | Oui |
 
 ### 📅 Quand déclarer ?
 
@@ -116,7 +116,7 @@ Ne pas le faire peut compliquer un futur retour au Japon (notamment pour un reno
 
 ## 6️⃣ Le cas des revenus à l'étranger
 
-Si tu continues à percevoir des revenus en Belgique (loyers, placements, etc.) et que tu es **résident permanent ou à long terme au Japon**, ces revenus peuvent être **imposables au Japon** selon la convention fiscale bilatérale.
+Si tu continues à percevoir des revenus en Belgique (loyers, placements, etc.) l'imposition de ces revenus de source étrangère dépend de ta **durée de résidence au Japon** : si tu es considéré comme résident permanent au sens fiscal (plus de 5 ans de résidence sur les 10 dernières années), l'ensemble de tes revenus mondiaux peut être **imposable au Japon** ; sinon, seule la part rapatriée au Japon est concernée. La convention fiscale bilatérale peut aussi jouer. Confirme ta situation auprès du bureau des impôts (税務署).
 
 > La Belgique et le Japon ont signé une **convention fiscale** pour éviter la double imposition. En pratique, les revenus sont déclarés dans les deux pays mais les impôts déjà payés en Belgique sont déduits.
 

@@ -157,8 +157,8 @@ Il doit être **transcrit dans les registres belges** via l’ambassade ou la co
 | 🏛️ 3. Dépôt            | Ambassade ou commune            |
 | 📂 4. Enregistrement   | Dans le registre national belge |
 
-> pour faire valide votre mariage par l'embassade vous devez etres inscris sur le registe consullaire sans cela vous devez passer par votre commune en Belgique.
-> Certaine comunne peuvent accepter les document par scan mais la plupart demande les document en original, a presente en personne. (cela demande un aller-retoru entre le Japon et la Belgique).
+> Pour faire valider votre mariage par l'ambassade, vous devez être inscrit au registre consulaire. Sans cela, vous devez passer par votre commune en Belgique.
+> Certaines communes peuvent accepter les documents par scan, mais la plupart demandent les originaux, à présenter en personne (cela demande un aller-retour entre le Japon et la Belgique).
 
 ---
 

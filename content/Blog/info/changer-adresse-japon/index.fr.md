@@ -81,7 +81,7 @@ La mairie met à jour **l'adresse imprimée au dos de ta carte de résident**. T
 
 ---
 
-## 4️⃣ Étape 3 — Mettre à jour sa carte de résident à l'immigration
+## 4️⃣ Étape 3 : carte de résident
 
 **Obligatoire dans les 14 jours** suivant le déménagement.
 
@@ -107,7 +107,7 @@ Après la mairie, il faut prévenir plusieurs autres organismes :
 | Services de livraison | Formulaire de réexpédition Yamato/Sagawa | En ligne ou en agence |
 | Administration fiscale | Automatiquement via mairie | — |
 
-> La Japan Post propose un service de **réexpédition du courrier** pendant 1 an pour environ 1 900 ¥ (*転居届* postal). À faire au bureau de poste ou sur leur site.
+> La Japan Post propose un service de **réexpédition du courrier** gratuit, valable 1 an (*転居届* postal). À faire au bureau de poste ou sur leur site.
 
 ---
 

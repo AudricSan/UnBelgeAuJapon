@@ -22,7 +22,7 @@ slug: metro-train-japon
 draft: false
 ---
 
-Quand j'habitais en Belgique, la voiture était une évidence. En Japan, je n'en ai plus besoin — et c'est l'une des premières choses qui m'a frappé en arrivant.
+Quand j'habitais en Belgique, la voiture était une évidence. Au Japon, je n'en ai plus besoin — et c'est l'une des premières choses qui m'a frappé en arrivant.
 
 Le réseau ferroviaire japonais est objectivement parmi les plus développés au monde. Comprendre comment il fonctionne, c'est comprendre une partie du rythme de vie japonais.
 
@@ -82,7 +82,7 @@ Ce que je n'avais pas anticipé : **le temps de trajet devient un espace de tran
 
 ## Ressources utiles
 
-- [Hyperdia](https://www.hyperdia.com/) — planificateur de trajets complet (horaires en temps réel)
+- [Jorudan](https://www.jorudan.co.jp/) — planificateur de trajets basé sur les horaires (乗換案内)
 - [Google Maps](https://maps.google.com) — fiable pour les trajets quotidiens, moins précis pour les horaires Shinkansen
 - [Tokyo Metro App](https://www.tokyometro.jp/en/app/) — carte offline du métro de Tokyo
 

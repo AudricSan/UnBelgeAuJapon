@@ -77,7 +77,7 @@ Le silence n'est pas absolu : il est **contextuel**. Ce qui tranche avec une cul
 
 ## Ce que j'ai changé dans mon comportement
 
-Je parle moins fort dans les lieux publics. Je ne téléphone plus dans les transports. J'ai pris l'habitude d'envoyer un message plutôt qu'appeler — même en France, désormais.
+Je parle moins fort dans les lieux publics. Je ne téléphone plus dans les transports. J'ai pris l'habitude d'envoyer un message plutôt qu'appeler — même en Belgique, désormais.
 
 Et quelque chose de plus profond s'est modifié : j'ai appris à être plus à l'aise dans le silence avec les autres. À ne pas combler chaque pause d'une conversation. À laisser un espace exister sans le remplir.
 

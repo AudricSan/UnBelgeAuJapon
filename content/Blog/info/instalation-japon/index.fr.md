@@ -153,7 +153,7 @@ Sans adresse enregistrée, certaines démarches seront impossibles.
 
 ## 🏦 Ouvrir un compte bancaire
 
-Banques accessibles aux nouveaux arrivants :
+Exemple de banque accessible aux nouveaux arrivants :
 
 - Japan Post Bank  
 
@@ -200,9 +200,9 @@ Tu peux opter pour **LINEMO**, une offre mobile simple, **100 % en ligne**, qui 
 | Plan                   | Données                        | Prix indicatif | Notes                              |
 | ---------------------- | ------------------------------ | -------------- | ---------------------------------- |
 | **LINEMO Best Plan**   | 3 GB (990 ¥) / 10 GB (2 090 ¥) | ¥990〜         | Données LINE illimitées            |
-| **LINEMO Best Plan V** | 30 GB                          | ¥2 700〜       | Appels inclus 5 min (selon option) |
+| **LINEMO Best Plan V** | 30 GB                          | ¥2 970         | Appels inclus 5 min (selon option) |
 
-* Les prix sont hors taxe et peuvent varier selon options. 
+* Prix TTC (税込) ; ils peuvent varier selon les options. 
 
 ---
 
@@ -235,15 +235,21 @@ Tu peux opter pour **LINEMO**, une offre mobile simple, **100 % en ligne**, qui 
 
 | Opérateur          | Type  | Prix mensuel moyen | Points forts                                                            | Points faibles                     |
 | ------------------ | ----- | ------------------ | ----------------------------------------------------------------------- | ---------------------------------- |
-| LINEMO             | MNO   | ~990–2 700 ¥       | Réseau SoftBank, 100 % en ligne, facile à installer                     | Support principalement en japonais |
+| LINEMO             | MNO   | ~990–2 970 ¥       | Réseau SoftBank, 100 % en ligne, facile à installer                     | Support principalement en japonais |
 | Rakuten Mobile     | MNO   | ~2 000–3 000 ¥     | Données généreuses                                                      | Couverture variable selon zone     |
 | NTT Docomo         | MNO   | ~4 500–7 000 ¥+    | Couverture excellente partout au Japon                                  | Plus cher, souvent contrats longs  |
-| **ahamo (Docomo)** | MVNO* | ~2 970–4 950 ¥     | Utilise le réseau NTT Docomo haut débit, offre de roaming international | Support uniquement en japonais     |
+| **ahamo (Docomo)** | MNO (marque en ligne de Docomo) | 2 970 ¥ → dès déc. 2026 : 3 135–5 115 ¥ | Utilise le réseau NTT Docomo haut débit, offre de roaming international | Support uniquement en japonais     |
 | IIJmio             | MVNO  | ~1 500–2 500 ¥     | Bon rapport qualité/prix                                                | Débit réduit heures de pointe      |
 | SoftBank           | MNO   | ~3 000–5 000 ¥     | Couverture solide                                                       | Plus cher que les MVNO             |
 
 > 💡 **Note personnelle :** Mon abonnement actuel est **ahamo (30 GB)**.  
 > Je le trouve équilibré entre stabilité du réseau et prix raisonnable.
+
+> ⚠️ **Changement de tarifs ahamo au 1er décembre 2026** (d'après le courrier envoyé par Docomo aux abonnés) :  
+> - Jusqu'à la facture de novembre 2026 : 30 GB à 2 970 ¥ TTC (2 700 ¥ HT) ; avec l'option « 大盛り » : 110 GB à 4 950 ¥ TTC.  
+> - À partir de décembre 2026, l'option « 大盛り » disparaît (résiliée automatiquement) et le forfait passe à **trois paliers selon la consommation** : jusqu'à 40 GB pour 3 135 ¥ TTC, jusqu'à 60 GB pour 4 125 ¥ TTC, jusqu'à 120 GB pour 5 115 ¥ TTC.  
+> - Par défaut, le plafond de données est réglé sur 40 GB. Pour dépasser, il faut le lever depuis My docomo.  
+> - Aucune démarche n'est nécessaire pour être migré. Les tarifs de l'ancien forfait 30 GB cités plus haut ne s'appliquent donc plus à partir de cette date.
 
 ---
 

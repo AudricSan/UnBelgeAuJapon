@@ -62,7 +62,7 @@ Vous devez vous inscrire à la **国民健康保険** (*kokumin kenko hoken*) à
 
 ### 📅 Quand s'inscrire ?
 
-Idéalement dans les **14 jours** suivant votre enregistrement d'adresse, ou dès votre prise de résidence.
+Dans les **14 jours** suivant votre enregistrement d'adresse : c'est le délai légal. En cas de dépassement, il n'y a en général pas de sanction : la mairie peut simplement vous le faire remarquer et poser quelques questions supplémentaires (dans mon cas, ma commune m'a seulement signalé que j'avais dépassé le délai). Cela peut toutefois être revu lors d'un renouvellement ou d'un changement de visa : mieux vaut donc le faire à temps.
 
 ### 📋 Documents nécessaires
 
@@ -112,6 +112,8 @@ Après inscription, vous recevrez votre **carte d'assurance maladie** (*保険�
 **Conservez-la précieusement.** Elle est à présenter à chaque consultation médicale.
 
 > Sans cette carte, vous payez 100 % des frais au moment de la consultation. Un remboursement partiel est possible après coup, mais la procédure est plus longue.
+
+> Note : la carte papier 保険証 est progressivement remplacée par la carte My Number (マイナ保険証) ou par une attestation d'éligibilité (資格確認書). Renseignez-vous auprès de votre mairie.
 
 ---
 

@@ -52,7 +52,7 @@ Avantages concrets :
 |---|---|
 | Résident avec visa de travail standard | **10 ans** au Japon dont **5 ans** avec un visa de travail |
 | Conjoint(e) de Japonais(e) | **3 ans** de mariage + **1 an** de résidence au Japon |
-| Titulaire du statut de Résident de Longue Durée | **5 ans** |
+| Titulaire du statut de Résident de longue durée (定住者) | **5 ans** |
 | Titulaire d'un Highly Skilled Professional visa (HSP) | **1 à 3 ans** selon le score |
 
 > Pour les conjoints de Japonais, la condition est parmi les plus courtes : 3 ans de mariage ET résidence effective au Japon. C'est souvent la voie la plus accessible pour les couples mixtes.
