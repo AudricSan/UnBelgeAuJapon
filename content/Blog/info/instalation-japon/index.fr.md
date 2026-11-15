@@ -39,9 +39,9 @@ Voici une check-list complète et structurée pour éviter les erreurs les plus 
 
 ---
 
-# ✅ 1. Avant de partir au Japon
+## ✅ 1. Avant de partir au Japon
 
-## 📄 Documents administratifs indispensables
+### 📄 Documents administratifs indispensables
 
 - Passeport valide (durée supérieure à celle du visa)
 - Visa japonais obtenu auprès de l’ambassade
@@ -53,7 +53,7 @@ Voici une check-list complète et structurée pour éviter les erreurs les plus 
 
 ---
 
-## 💰 Préparer son budget d’installation
+### 💰 Préparer son budget d’installation
 
 Coûts initiaux souvent sous-estimés :
 
@@ -66,23 +66,23 @@ Coûts initiaux souvent sous-estimés :
 
 ---
 
-## 🏥 Assurance santé avant départ
+### 🏥 Assurance santé avant départ
 
 - Souscrire une assurance temporaire pour les premières semaines
 - Prévoir ordonnances traduites si traitement médical
 
 ---
 
-## 📱 Téléphone
+### 📱 Téléphone
 
 - Vérifier que le téléphone est débloqué
 - Prévoir une eSIM ou carte SIM temporaire pour l’arrivée
 
 ---
 
-# 💰 Budget réel d’installation au Japon – Exemple concret
+## 💰 Budget réel d’installation au Japon – Exemple concret
 
-## 📍 Profil exemple
+### 📍 Profil exemple
 - Appartement 2DK dans la prefecture de Saitama
 - Loyer : 62 000 ¥ / mois
 - Installation Seul
@@ -90,7 +90,7 @@ Coûts initiaux souvent sous-estimés :
 
 ---
 
-## 🏠 Coûts liés au logement
+### 🏠 Coûts liés au logement
 
 | Poste                   | Montant estimé |
 | ----------------------- | -------------- |
@@ -105,7 +105,7 @@ Coûts initiaux souvent sous-estimés :
 
 ---
 
-## 📦 Installation & vie quotidienne
+### 📦 Installation & vie quotidienne
 
 | Poste                    | Montant estimé     |
 | ------------------------ | ------------------ |
@@ -116,7 +116,7 @@ Coûts initiaux souvent sous-estimés :
 
 ---
 
-## 💵 Budget recommandé réaliste
+### 💵 Budget recommandé réaliste
 
 👉 **Entre 300 000 ¥ et 600 000 ¥** pour démarrer confortablement.
 
@@ -125,9 +125,9 @@ Coûts initiaux souvent sous-estimés :
 
 ---
 
-# 🇯🇵 2. À l’arrivée au Japon
+## 🇯🇵 2. À l’arrivée au Japon
 
-## 🛂 À l’aéroport
+### 🛂 À l’aéroport
 
 Tu recevras ta carte de résident (在留カード).
 
@@ -139,7 +139,7 @@ Vérifie immédiatement :
 
 ---
 
-## 🏢 Déclarer son adresse (obligatoire sous 14 jours)
+### 🏢 Déclarer son adresse (obligatoire sous 14 jours)
 
 À faire à la mairie :
 
@@ -151,7 +151,7 @@ Sans adresse enregistrée, certaines démarches seront impossibles.
 
 ---
 
-## 🏦 Ouvrir un compte bancaire
+### 🏦 Ouvrir un compte bancaire
 
 Exemple de banque accessible aux nouveaux arrivants :
 
@@ -166,7 +166,7 @@ Certaines banques limitent certains services pendant les premiers mois.
 
 ---
 
-## 📱 Obtenir une carte SIM japonaise
+### 📱 Obtenir une carte SIM japonaise
 
 Avoir **un numéro japonais actif** est un des points les plus importants après l’enregistrement d’adresse, car sans lui :
 
@@ -178,13 +178,13 @@ Avoir **un numéro japonais actif** est un des points les plus importants après
 
 ---
 
-### 📲 Mon choix : LINEMO
+#### 📲 Mon choix : LINEMO
 
 Tu peux opter pour **LINEMO**, une offre mobile simple, **100 % en ligne**, qui fonctionne sur le réseau fiable de **SoftBank** — sans engagement à long terme.
 
 ---
 
-### 💡 Pourquoi LINEMO est un bon choix
+#### 💡 Pourquoi LINEMO est un bon choix
 
 - **Plans simples et transparents** (pas de gestion d’options compliquées) 
 - **Données illimitées pour l’usage du chat LINE** (LINE Gigafree)
@@ -195,7 +195,7 @@ Tu peux opter pour **LINEMO**, une offre mobile simple, **100 % en ligne**, qui 
 
 ---
 
-### 📊 Plans LINEMO (exemples)
+#### 📊 Plans LINEMO (exemples)
 
 | Plan                   | Données                        | Prix indicatif | Notes                              |
 | ---------------------- | ------------------------------ | -------------- | ---------------------------------- |
@@ -206,7 +206,7 @@ Tu peux opter pour **LINEMO**, une offre mobile simple, **100 % en ligne**, qui 
 
 ---
 
-### 📝 Ce qu’il faut savoir avant de souscrire
+#### 📝 Ce qu’il faut savoir avant de souscrire
 
 - **Tu dois avoir une adresse japonaise enregistrée** pour activer la ligne.
 - LINEMO **ne vend pas de téléphones** — tu dois utiliser ton propre appareil.
@@ -215,7 +215,7 @@ Tu peux opter pour **LINEMO**, une offre mobile simple, **100 % en ligne**, qui 
 
 ---
 
-### 📍 Avantages pratiques pour les expatriés
+#### 📍 Avantages pratiques pour les expatriés
 
 ✔ Pas de contrat long terme  
 ✔ LINE (chat + appels via l’app) ne consomme pas ton volume data  
@@ -224,14 +224,14 @@ Tu peux opter pour **LINEMO**, une offre mobile simple, **100 % en ligne**, qui 
 
 ---
 
-### ⚠️ Points à surveiller
+#### ⚠️ Points à surveiller
 ❗ Support client en **japonais uniquement** (chat/LINE ou mails).  
 ❗ Extensions ou options (appels illimités, roaming) peuvent être payantes.  
 ❗ Vérifier **la compatibilité de ton téléphone** avant l’inscription (modèle eSIM ou SIM standard supporté).
 
 ---
 
-## 📱 Comparatif Opérateurs SIM
+### 📱 Comparatif Opérateurs SIM
 
 | Opérateur          | Type  | Prix mensuel moyen | Points forts                                                            | Points faibles                     |
 | ------------------ | ----- | ------------------ | ----------------------------------------------------------------------- | ---------------------------------- |
@@ -253,9 +253,9 @@ Tu peux opter pour **LINEMO**, une offre mobile simple, **100 % en ligne**, qui 
 
 ---
 
-# 🏠 3. Après installation
+## 🏠 3. Après installation
 
-## 💼 Travail
+### 💼 Travail
 
 Avant de commencer à travailler au Japon :
 
@@ -265,7 +265,7 @@ Avant de commencer à travailler au Japon :
 
 ---
 
-### 📌 Cas particuliers
+#### 📌 Cas particuliers
 
 **Visa étudiant :**
 - Autorisation de travail obligatoire (資格外活動許可)
@@ -282,7 +282,7 @@ Avant de commencer à travailler au Japon :
 
 ---
 
-### ⚠️ Points importants
+#### ⚠️ Points importants
 
 - Travailler hors du cadre autorisé peut entraîner :
   - Refus de renouvellement de visa
@@ -304,7 +304,7 @@ Avant de commencer à travailler au Japon :
 - lire : [Comment trouver un travail rapidement en arrivant au Japon ?]()
 - Lire : [Travailler dans une konbini / baito : ce qu’il faut savoir]()
 
-## 💳 Organisation financière
+### 💳 Organisation financière
 
 Une fois installé, il est important de structurer correctement ta gestion financière au Japon.
 
@@ -339,7 +339,7 @@ Le système fonctionne généralement via des factures envoyées par courrier av
 
 ---
 
-# ⚠️ Les erreurs fréquentes
+## ⚠️ Les erreurs fréquentes
 
 1. Sous-estimer le coût initial du logement  
 2. Arriver sans logement temporaire  
@@ -349,34 +349,34 @@ Le système fonctionne généralement via des factures envoyées par courrier av
 6. Ne pas vérifier les conditions de travail liées au visa
 ---
 
-# ❓ FAQ – S’installer au Japon
+## ❓ FAQ – S’installer au Japon
 
-### Combien faut-il d’argent pour s’installer au Japon ?
+#### Combien faut-il d’argent pour s’installer au Japon ?
 
 Minimum 300 000 ¥ en province.  
 Plus à Tokyo.
 
 ---
 
-### Peut-on ouvrir un compte bancaire dès l’arrivée ?
+#### Peut-on ouvrir un compte bancaire dès l’arrivée ?
 
 Oui, après enregistrement d’adresse.
 
 ---
 
-### L’assurance santé japonaise est-elle obligatoire ?
+#### L’assurance santé japonaise est-elle obligatoire ?
 
 Oui pour les résidents de plus de 3 mois.
 
 ---
 
-### Que se passe-t-il si on ne déclare pas son adresse sous 14 jours ?
+#### Que se passe-t-il si on ne déclare pas son adresse sous 14 jours ?
 
 Infraction administrative pouvant compliquer un renouvellement de visa.
 
 ---
 
-# 📌 Conclusion
+## 📌 Conclusion
 
 S’installer au Japon est un projet excitant, mais demande une préparation rigoureuse.
 
@@ -384,7 +384,7 @@ En suivant cette check-list étape par étape, tu réduis fortement les risques 
 
 ---
 
-## 📚 Sources utiles
+### 📚 Sources utiles
 
 * [Immigration Services Agency of Japan](https://www.moj.go.jp/isa/index.html)
 * [Ambassade du Japon en Belgique](https://www.be.emb-japan.go.jp/)

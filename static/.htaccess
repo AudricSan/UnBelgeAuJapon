@@ -4,3 +4,35 @@ Options -Indexes
 <FilesMatch "^(admin-config\.php|.*\.sqlite(-wal|-shm|-journal)?)$">
     Require all denied
 </FilesMatch>
+
+# --- SEO / performance -------------------------------------------------------
+
+# Une seule version du site : HTTPS (évite le contenu dupliqué http/https).
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteCond %{HTTPS} !=on
+    RewriteCond %{HTTP:X-Forwarded-Proto} !=https
+    RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+</IfModule>
+
+# Vraie page 404 (code HTTP 404 conservé) au lieu de la page serveur par défaut.
+ErrorDocument 404 /404.html
+
+# Compression (Core Web Vitals).
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/css text/plain text/xml application/xml application/xhtml+xml application/rss+xml application/javascript application/json image/svg+xml
+</IfModule>
+
+# Cache navigateur : ressources statiques longues, HTML toujours revalidé.
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType text/html "access plus 0 seconds"
+    ExpiresByType text/css "access plus 1 year"
+    ExpiresByType application/javascript "access plus 1 month"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/webp "access plus 1 year"
+    ExpiresByType image/svg+xml "access plus 1 year"
+    ExpiresByType image/x-icon "access plus 1 year"
+    ExpiresByType application/xml "access plus 1 hour"
+</IfModule>

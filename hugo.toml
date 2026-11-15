@@ -95,6 +95,14 @@ paginate = 10
     "s'installer au Japon"
   ]
 
+  # Vérification des moteurs de recherche (balises <meta> émises seulement si renseignées).
+  # Google Search Console → « Préfixe d'URL » → balise HTML : copier la valeur de content="…"
+  # Bing Webmaster Tools → « Meta tag » : idem.
+  [params.analytics.google]
+    SiteVerificationTag = ""
+  [params.analytics.bing]
+    SiteVerificationTag = ""
+
   # Logo / Label
   [params.label]
     text = "Un Belge au Japon"

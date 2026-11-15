@@ -54,7 +54,11 @@
 {{- /* Title */}}
 {{- /* Titre : `seo_title` (front matter) si présent, sinon le titre de l'article. Suffixe = titre du site. */}}
 {{- $pageTitle := .Params.seo_title | default .Title }}
-<title>{{ if and (not .IsHome) $pageTitle }}{{ $pageTitle }} | {{ end }}{{ if .Params.seo_title }}{{ site.Params.label.text }}{{ else }}{{ site.Title }}{{ end }}</title>
+{{- /* Pagination : « Page 2 » ajouté pour distinguer les titres/descriptions des pages de liste. */}}
+{{- $pageSuffix := "" }}
+{{- if or .IsSection (eq .Kind "term") }}{{ if gt .Paginator.PageNumber 1 }}{{ $pageSuffix = printf " – %s %d" (cond (eq .Lang "ja") "ページ" "Page") .Paginator.PageNumber }}{{ end }}{{ end }}
+{{- /* Titre court (< 60 caractères) : seule l'accueil garde le titre long du site. */}}
+<title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ $pageTitle }}{{ $pageSuffix }} | {{ site.Params.label.text }}{{ end }}</title>
 
 {{- /* Meta */}}
 {{- if .IsHome }}
@@ -70,7 +74,7 @@
 {{- else if .IsPage }}{{ $desc = .Summary | plainify | truncate 160 }}
 {{- else if eq .Kind "term" }}
   {{- if eq .Lang "ja" }}{{ $desc = printf "「%s」に関する記事一覧 — %s" .Title site.Params.label.text }}{{ else }}{{ $desc = printf "Tous les articles sur « %s » — %s" .Title site.Params.label.text }}{{ end }}
-{{- else if and .Title (not .IsHome) }}{{ $desc = printf "%s — %s" .Title site.Params.description | truncate 160 }}
+{{- else if and .Title (not .IsHome) }}{{ $desc = printf "%s%s — %s" .Title $pageSuffix site.Params.description | truncate 160 }}
 {{- else }}{{ $desc = site.Params.description }}{{ end }}
 <meta name="description" content="{{ $desc }}">
 <meta name="author" content="{{ (partial "author.html" . ) }}">
