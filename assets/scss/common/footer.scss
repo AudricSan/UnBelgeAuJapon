@@ -1,0 +1,160 @@
+/* ============================================================
+   Footer – Multi-column, cohérent avec le thème PaperMod
+   Utilise exclusivement les variables CSS du thème
+   ============================================================ */
+
+.site-footer {
+  background: color-mix(in srgb, var(--theme), var(--tertiary) 40%);
+  color: var(--secondary);
+  font-size: 13px;
+  line-height: 1.6;
+  margin-top: 0;
+
+  /* Annule les styles .footer de PaperMod */
+  max-width: none;
+  padding: 0;
+  text-align: left;
+
+  /* ── Séparateur haut ────────────────────────── */
+  border-top: 1px solid var(--border);
+
+  /* ── Grille principale ──────────────────────── */
+  &__inner {
+    max-width: calc(var(--nav-width) + var(--gap) * 2);
+    margin: 0 auto;
+    padding: calc(var(--gap) * 2) var(--gap) var(--gap);
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: var(--gap) calc(var(--gap) * 2);
+    align-items: start;
+  }
+
+  /* ── Colonne Brand ──────────────────────────── */
+  &__brand { display: flex; flex-direction: column; }
+
+  &__logo {
+    display: block;
+    text-decoration: none;
+    color: var(--primary);
+    font-size: 1.05rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+
+    .brand-sub {
+      display: block;
+      font-size: 0.68rem;
+      font-weight: 400;
+      color: var(--secondary);
+      letter-spacing: 0.1em;
+      margin-top: 0.25rem;
+    }
+
+    &:hover { color: var(--primary); opacity: 0.8; }
+  }
+
+  &__desc {
+    font-size: 0.8rem;
+    color: var(--secondary);
+    line-height: 1.65;
+    margin: 0.85rem 0 0.7rem;
+    max-width: 28ch;
+  }
+
+  &__location {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.72rem;
+    color: var(--secondary);
+    letter-spacing: 0.06em;
+
+    svg { flex-shrink: 0; }
+  }
+
+  &__social {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0;
+    margin-top: 0.9rem;
+    margin-left: -8px;
+  }
+
+  &__social-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    color: var(--secondary);
+    text-decoration: none;
+    transition: color 0.15s ease;
+    border-radius: var(--radius);
+
+    svg { width: 17px; height: 17px; }
+
+    &:hover { color: var(--primary); }
+  }
+
+  /* ── Colonnes Nav / Catégories / Légal ───────── */
+  &__col { display: flex; flex-direction: column; }
+
+  &__heading {
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--primary);
+    margin: 0 0 0.85rem;
+    padding-bottom: 0.7rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  &__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    a {
+      color: var(--secondary);
+      text-decoration: none;
+      font-size: 0.83rem;
+      transition: color 0.15s ease;
+
+      &:hover { color: var(--primary); }
+    }
+  }
+
+  /* ── Barre inférieure ───────────────────────── */
+  &__bottom {
+    border-top: 1px solid var(--border);
+    max-width: calc(var(--nav-width) + var(--gap) * 2);
+    margin: 0 auto;
+    padding: calc(var(--gap) * 0.75) var(--gap);
+    font-size: 0.72rem;
+    color: var(--secondary);
+    letter-spacing: 0.02em;
+  }
+
+  /* ── Responsive : 4 → 2 colonnes ──────────── */
+  @media (max-width: 860px) {
+    &__inner {
+      grid-template-columns: 1fr 1fr;
+      gap: calc(var(--gap) * 1.5) var(--gap);
+    }
+    &__brand { grid-column: 1 / -1; }
+    &__desc   { max-width: 40ch; }
+  }
+
+  /* ── Responsive : 2 → 1 colonne ──────────── */
+  @media (max-width: 520px) {
+    &__inner {
+      grid-template-columns: 1fr;
+      padding: var(--gap) var(--gap) calc(var(--gap) * 0.5);
+    }
+    &__brand { grid-column: auto; }
+  }
+}

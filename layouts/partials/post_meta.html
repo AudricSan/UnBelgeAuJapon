@@ -1,0 +1,31 @@
+{{- $scratch := newScratch }}
+
+{{- /* Tags de catégorie de la charte (Récit, Guide, Comparaison, Conseil, Quotidien) */}}
+{{- $catClasses := dict "récit" "recit" "recit" "recit" "guide" "guide" "comparaison" "comparaison" "conseil" "conseil" "quotidien" "quotidien" }}
+{{- range .Params.categories }}
+{{- with index $catClasses (lower .) }}
+{{- $scratch.Add "meta" (slice (printf "<span class='cat-tag tag-%s'>%s</span>" . (title .))) }}
+{{- end }}
+{{- end }}
+
+{{- if not .Date.IsZero -}}
+{{- $scratch.Add "meta" (slice (printf "<span title='%s'>📅 %s</span>" (.Date) (.Date | time.Format (default ":date_long" site.Params.DateFormat)))) }}
+{{- end }}
+
+{{- if (.Param "ShowReadingTime") -}}
+{{- $scratch.Add "meta" (slice (printf "<span>⏱️ %s</span>" (i18n "read_time" .ReadingTime | default (printf "%d min" .ReadingTime)))) }}
+{{- end }}
+
+{{- if (.Param "ShowWordCount") -}}
+{{- $scratch.Add "meta" (slice (printf "<span>%s</span>" (i18n "words" .WordCount | default (printf "%d words" .WordCount)))) }}
+{{- end }}
+
+{{- if not (.Param "hideAuthor") -}}
+{{- with (partial "author.html" .) }}
+{{- $scratch.Add "meta" (slice (printf "<span>✍️ %s</span>" .)) }}
+{{- end }}
+{{- end }}
+
+{{- with ($scratch.Get "meta") }}
+{{- delimit . "&nbsp;·&nbsp;" | safeHTML -}}
+{{- end -}}

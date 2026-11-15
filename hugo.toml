@@ -1,0 +1,152 @@
+# =========================
+# BASE CONFIG
+# =========================
+baseURL = "https://blog.audricrosier.be/"
+canonicalURL = "https://blog.audricrosier.be/"
+title = "Un Belge au Japon – Blog d’expatriation, conseils et démarches"
+theme = "PaperMod"
+
+defaultContentLanguage = "fr"
+defaultContentLanguageInSubdir = false
+enableRobotsTXT = true
+paginate = 10
+
+[sitemap]
+  filename = "sitemap.xml"
+  priority = 0.7
+  changefreq = "weekly"
+
+# =========================
+# LANGUAGES
+# =========================
+[languages]
+
+  [languages.fr]
+    label = "Français"
+    locale = "fr-FR"
+    weight = 1
+
+    [[languages.fr.menus.main]]
+      name   = "Accueil"
+      url    = "/"
+      weight = 1
+
+    [[languages.fr.menus.main]]
+      name   = "Blog"
+      url    = "/Blog/"
+      weight = 2
+
+    [[languages.fr.menus.main]]
+      name   = "À propos"
+      url    = "/About/"
+      weight = 3
+
+    [[languages.fr.menus.main]]
+      name   = "Contact"
+      url    = "/Contact/"
+      weight = 4
+
+  [languages.ja]
+    label = "日本語"
+    locale = "ja-JP"
+    weight = 2
+
+    [[languages.ja.menus.main]]
+      name   = "ホーム"
+      url    = "/"
+      weight = 1
+
+    [[languages.ja.menus.main]]
+      name   = "ブログ"
+      url    = "/Blog/"
+      weight = 2
+
+    [[languages.ja.menus.main]]
+      name   = "自己紹介"
+      url    = "/About/"
+      weight = 3
+
+    [[languages.ja.menus.main]]
+      name   = "お問い合わせ"
+      url    = "/Contact/"
+      weight = 4
+
+# =========================
+# GLOBAL PARAMS (SEO / THEME)
+# =========================
+[params]
+  env = "production" # Active OpenGraph, Twitter Cards, JSON-LD
+  author = "AudricSan"
+
+  # Charte : thème clair uniquement (aucun mode sombre défini)
+  defaultTheme = "light"
+  disableThemeToggle = true
+
+  description = "Découvrez comment vivre au Japon : démarches, visa, logement, travail et conseils d’expatrié. Un blog complet pour réussir votre installation au Japon."
+
+  keywords = [
+    "Japon",
+    "expatrié Belgique Japon",
+    "visa Japon",
+    "vie au Japon",
+    "mariage belgo-japonais",
+    "démarches administratives Japon",
+    "résident étranger Japon",
+    "s'installer au Japon"
+  ]
+
+  # Logo / Label
+  [params.label]
+    text = "Un Belge au Japon"
+
+  # SEO Schema
+  [params.schema]
+    publisherType = "Person"
+
+  # Métadonnées articles
+  ShowReadingTime = true
+  ShowBreadCrumbs = true
+  mainSections = ["Blog"]
+
+  # Réseaux sociaux (footer + page d'accueil)
+  # Noms d'icônes disponibles : twitter, instagram, facebook, youtube, github, linkedin, etc.
+  [[params.socialIcons]]
+    name = "instagram"
+    url  = "https://www.instagram.com/audric_san/"
+
+  [[params.socialIcons]]
+    name = "instagram"
+    url  = "https://www.instagram.com/belgeaujapon/"
+
+  [[params.socialIcons]]
+    name = "youtube"
+    url  = "https://www.youtube.com/@JapanByAudric"
+
+  [[params.socialIcons]]
+    name = "github"
+    url  = "https://github.com/AudricSan"
+
+  # Images (PaperMod)
+  [params.cover]
+    responsiveImages = true
+
+  [params.assets]
+    favicon = "favicon.svg"
+    favicon16x16 = "favicon-16x16.png"
+    favicon32x32 = "favicon-32x32.png"
+    apple_touch_icon = "apple-touch-icon.png"
+    safari_pinned_tab = "safari-pinned-tab.svg"
+    theme_color = "#d82c2c"
+    msapplication_TileColor = "#d82c2c"
+
+# =========================
+# IMAGE PROCESSING
+# =========================
+[imaging]
+  resampleFilter = "Lanczos"
+
+  [imaging.jpeg]
+    quality = 85
+
+  [imaging.webp]
+    quality = 85

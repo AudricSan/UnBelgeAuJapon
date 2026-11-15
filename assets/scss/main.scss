@@ -1,0 +1,9 @@
+// =============================================================
+// Point d'entrée SCSS – Un Belge au Japon
+// Chaque fichier correspond à une zone précise du site.
+// =============================================================
+
+@use "common/header";   // Navigation, dropdown, hamburger, responsive
+@use "common/home";     // Page d'accueil, cartes catégories
+@use "common/article";  // Pages articles (post-single, contenu, pagination)
+@use "common/footer";   // Footer multi-colonnes

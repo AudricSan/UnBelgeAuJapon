@@ -1,0 +1,29 @@
+<script>
+(function () {
+    // ===== Hamburger (mobile) =====
+    var hamburgerBtn = document.getElementById('hamburger-btn');
+    var menu = document.getElementById('menu');
+
+    if (hamburgerBtn && menu) {
+        hamburgerBtn.addEventListener('click', function (e) {
+            e.stopPropagation();
+            var isOpen = menu.classList.toggle('menu-open');
+            hamburgerBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        });
+
+        document.addEventListener('click', function (e) {
+            if (!hamburgerBtn.contains(e.target) && !menu.contains(e.target)) {
+                menu.classList.remove('menu-open');
+                hamburgerBtn.setAttribute('aria-expanded', 'false');
+            }
+        });
+
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') {
+                menu.classList.remove('menu-open');
+                hamburgerBtn.setAttribute('aria-expanded', 'false');
+            }
+        });
+    }
+})();
+</script>

@@ -1,0 +1,287 @@
+{{- if not (.Param "hideFooter") }}
+
+<footer class="site-footer" aria-label="Pied de page">
+
+  <div class="site-footer__inner">
+
+    {{/* ── Brand ─────────────────────────────────── */}}
+    <div class="site-footer__brand">
+      <a href="{{ "/" | absLangURL }}" class="site-footer__logo" aria-label="Un Belge au Japon – Accueil">
+        <span class="brand-name">Un Belge au Japon</span>
+        <span class="brand-sub" aria-hidden="true">日本での生活</span>
+      </a>
+
+      <p class="site-footer__desc">
+        Le quotidien d'un Belge installé au Japon —
+        démarches, visa, culture et récits.
+      </p>
+
+      <span class="site-footer__location" aria-label="Basé au Japon">
+        <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="13" height="13" fill="currentColor">
+          <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+        </svg>
+        Japon
+      </span>
+
+      {{- with site.Params.socialIcons }}
+      <div class="site-footer__social" role="list" aria-label="Réseaux sociaux">
+        {{- range . }}
+        <a class="site-footer__social-link"
+           href="{{ trim .url " " | safeURL }}"
+           target="_blank"
+           rel="noopener noreferrer me"
+           title="{{ (.title | default .name) | title }}"
+           role="listitem">
+          {{ partial "svg.html" . }}
+        </a>
+        {{- end }}
+      </div>
+      {{- end }}
+    </div>
+
+    {{/* ── Navigation ──────────────────────────── */}}
+    {{- with site.Menus.main }}
+    <nav class="site-footer__col" aria-label="Navigation principale">
+      <h3 class="site-footer__heading">{{ i18n "footer_nav" | default "Navigation" }}</h3>
+      <ul class="site-footer__list">
+        {{- range . }}
+        <li><a href="{{ .URL | absLangURL }}">{{ .Name }}</a></li>
+        {{- end }}
+      </ul>
+    </nav>
+    {{- end }}
+
+    {{/* ── Catégories = sous-sections de Blog ──── */}}
+    {{- with site.GetPage "/Blog" }}
+    {{- with .Sections }}
+    <nav class="site-footer__col" aria-label="Catégories">
+      <h3 class="site-footer__heading">{{ i18n "footer_categories" | default "Catégories" }}</h3>
+      <ul class="site-footer__list">
+        {{- range sort . "Weight" }}
+        <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+        {{- end }}
+      </ul>
+    </nav>
+    {{- end }}
+    {{- end }}
+
+    {{/* ── Légal ───────────────────────────────── */}}
+    <div class="site-footer__col">
+      <h3 class="site-footer__heading">Légal</h3>
+      <ul class="site-footer__list">
+        <li><a href="{{ "/mentions-legales/" | absLangURL }}">Mentions légales</a></li>
+        <li><a href="{{ "/confidentialite/" | absLangURL }}">Confidentialité</a></li>
+        <li><a href="{{ "/index.xml" | absLangURL }}" type="application/rss+xml">RSS</a></li>
+        <li><a href="/sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+
+    {{/* ── Newsletter ───────────────────────── */}}
+    {{- $ja := eq site.Language.Lang "ja" }}
+    <div class="site-footer__col">
+      <h3 class="site-footer__heading">{{ if $ja }}ニュースレター{{ else }}Newsletter{{ end }}</h3>
+      <form id="newsletter-form" class="newsletter-form" method="post" action="/api/newsletter.php?a=subscribe">
+        <label class="sr-only" for="newsletter-email">{{ if $ja }}メールアドレス{{ else }}Adresse e-mail{{ end }}</label>
+        <input id="newsletter-email" name="email" type="email" placeholder="votre@email.com" autocomplete="email" required>
+        <input class="sr-only" name="website" type="text" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <button type="submit">{{ if $ja }}登録する{{ else }}S’abonner{{ end }}</button>
+      </form>
+      <p id="newsletter-status" class="newsletter-status" aria-live="polite"
+         data-ok="{{ if $ja }}確認メールをお送りしました。リンクをクリックして登録を完了してください。{{ else }}Merci ! Un e-mail de confirmation vient de t’être envoyé.{{ end }}"
+         data-error="{{ if $ja }}登録できませんでした。後ほどもう一度お試しください。{{ else }}Inscription impossible pour le moment.{{ end }}"></p>
+    </div>
+
+    {{/* ── Projet ──────────────────────────────── */}}
+    <div class="site-footer__col">
+      <h3 class="site-footer__heading">Projet</h3>
+      <ul class="site-footer__list">
+        <li>
+          <a href="https://github.com/AudricSan/Ma-vie-au-Japon" target="_blank" rel="noopener noreferrer">
+            Code source
+          </a>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+
+  {{/* ── Barre inférieure ───────────────────── */}}
+  <div class="site-footer__bottom">
+    <span>&copy; {{ now.Year }} {{ site.Params.author | default site.Title }}</span>
+  </div>
+
+</footer>
+
+<style>
+  .newsletter-form {
+    display: flex;
+    flex-direction: column;
+    gap: .6rem;
+    margin-top: .5rem;
+  }
+  .newsletter-form input {
+    min-height: 40px;
+    padding: .65rem .8rem;
+    border: 1px solid rgba(148, 163, 184, 0.5);
+    border-radius: 8px;
+    background: rgba(255,255,255,0.9);
+    color: #0f172a;
+  }
+  .newsletter-form button {
+    min-height: 40px;
+    border: 0;
+    border-radius: 8px;
+    background: #f8fafc;
+    color: #0f172a;
+    font-weight: 700;
+    cursor: pointer;
+  }
+  .newsletter-unsubscribe-link {
+    display: inline-block;
+    margin-top: .7rem;
+    color: #e2e8f0;
+    text-decoration: underline;
+    font-size: .9rem;
+  }
+  .newsletter-status {
+    min-height: 1.5rem;
+    margin: .75rem 0 0;
+    font-size: .9rem;
+    color: #e2e8f0;
+  }
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+</style>
+
+<script src="/s.js" defer></script>
+<script>
+(function () {
+    var form = document.getElementById('newsletter-form');
+    var status = document.getElementById('newsletter-status');
+    if (!form || !status) return;
+    form.addEventListener('submit', function (event) {
+        event.preventDefault();
+        var data = new FormData(form);
+        fetch('/api/newsletter.php?a=subscribe', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email: data.get('email'), website: data.get('website'), lang: document.documentElement.lang })
+        }).then(function (response) {
+            return response.json().catch(function () { return {}; }).then(function (result) {
+                if (!response.ok) throw new Error(result.error || status.dataset.error);
+                form.reset();
+                status.textContent = status.dataset.ok;
+            });
+        }).catch(function (error) {
+            status.textContent = error.message || status.dataset.error;
+        });
+    });
+})();
+</script>
+
+{{- end }}
+
+
+{{/* ── Bouton retour en haut (PaperMod) ─── */}}
+{{- if (not site.Params.disableScrollToTop) }}
+<a href="#top" id="top-link" class="top-link hidden" aria-label="Retour en haut" title="Haut de page (Alt + G)" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-up">
+        <polyline points="17 11 12 6 7 11"></polyline>
+        <polyline points="17 18 12 13 7 18"></polyline>
+    </svg>
+</a>
+{{- end }}
+
+{{- partial "extend_footer.html" . }}
+
+{{/* ── Scripts PaperMod ──────────────────── */}}
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) menu.scrollLeft = parseInt(scrollPosition, 10);
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        };
+    }
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({ behavior: "smooth" });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") { history.replaceState(null, null, " "); }
+            else { history.pushState(null, null, `#${id}`); }
+        });
+    });
+</script>
+
+{{- if (not site.Params.disableScrollToTop) }}
+<script>
+    var toplink = document.getElementById("top-link");
+    window.onscroll = function () {
+        const t = window.innerHeight;
+        if (document.body.scrollTop > t || document.documentElement.scrollTop > t) {
+            toplink.classList.remove("hidden");
+        } else { toplink.classList.add("hidden"); }
+    };
+</script>
+{{- end }}
+
+{{- if (not site.Params.disableThemeToggle) }}
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    });
+</script>
+{{- end }}
+
+{{- if (and (eq .Kind "page") (ne .Layout "archives") (ne .Layout "search") (.Param "ShowCodeCopyButtons")) }}
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = '{{- i18n "code_copy" | default "copy" }}';
+        function copyingDone() {
+            copybutton.innerHTML = '{{- i18n "code_copied" | default "copied!" }}';
+            setTimeout(() => { copybutton.innerHTML = '{{- i18n "code_copy" | default "copy" }}'; }, 2000);
+        }
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) { navigator.clipboard.writeText(codeblock.textContent); copyingDone(); return; }
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try { document.execCommand('copy'); copyingDone(); } catch (e) {}
+            selection.removeRange(range);
+        });
+        if (container.classList.contains("highlight")) { container.appendChild(copybutton); }
+        else if (container.parentNode.firstChild == container) { /* td LineNos */ }
+        else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else { codeblock.parentNode.appendChild(copybutton); }
+    });
+</script>
+{{- end }}

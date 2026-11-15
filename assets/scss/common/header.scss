@@ -1,0 +1,195 @@
+/* ============================================================
+   Header – navigation, dropdown, hamburger, responsive
+   ============================================================ */
+
+/* ── Fond distinct du contenu ───────────────────────────── */
+.header {
+    background: color-mix(in srgb, var(--theme), var(--tertiary) 40%);
+}
+
+/* ── Correction overflow PaperMod (bloque les dropdowns) ── */
+#menu {
+    overflow: visible !important;
+    white-space: normal;
+}
+
+.header-nav,
+.header {
+    overflow: visible;
+}
+
+/* ── Sous-menus desktop ─────────────────────────────────── */
+#menu li.has-submenu {
+    position: relative;
+}
+
+/* Indicateur : fine ligne sous le lien parent au survol */
+#menu li.has-submenu > a {
+    position: relative;
+
+    &::after {
+        content: '';
+        position: absolute;
+        bottom: -3px;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: var(--primary);
+        border-radius: 0;
+        transform: scaleX(0);
+        transform-origin: center;
+        transition: transform 0.2s ease;
+    }
+}
+
+#menu li.has-submenu:hover > a::after {
+    transform: scaleX(1);
+}
+
+/* Dropdown */
+#menu li.has-submenu > .submenu {
+    display: block;
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 50%;
+    transform: translateX(-50%) translateY(-6px);
+    background: var(--theme);
+    border-radius: 0;
+    padding: 6px;
+    min-width: 0;
+    z-index: 200;
+    list-style: none;
+    margin: 0;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+
+    /* Petit pont invisible pour ne pas perdre le hover */
+    &::before {
+        content: '';
+        position: absolute;
+        top: -10px;
+        left: 0;
+        right: 0;
+        height: 10px;
+    }
+
+    li {
+        margin: 0;
+
+        a {
+            display: block;
+            padding: 7px 16px;
+            white-space: nowrap;
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--primary);
+            border-radius: 0;
+            transition: background 0.15s ease, color 0.15s ease;
+            text-decoration: none;
+
+            &:hover { background: var(--tertiary); }
+        }
+    }
+}
+
+#menu li.has-submenu:hover > .submenu {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateX(-50%) translateY(0);
+}
+
+/* ── Bouton hamburger ───────────────────────────────────── */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 24px;
+    height: 18px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 201;
+    order: 3;
+
+    span {
+        display: block;
+        width: 100%;
+        height: 2px;
+        background: var(--primary);
+        border-radius: 0;
+        transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    &[aria-expanded="true"] {
+        span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+        span:nth-child(2) { opacity: 0; }
+        span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+    }
+}
+
+/* ── Menu responsive mobile ─────────────────────────────── */
+@media (max-width: 768px) {
+    .header-nav {
+        flex-wrap: wrap;
+        position: relative;
+    }
+
+    .hamburger { display: flex; }
+
+    #menu {
+        display: none !important;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--theme);
+        border-top: 1px solid var(--border);
+        padding: 8px 0;
+        margin: 0;
+        width: 100%;
+        z-index: 199;
+        white-space: normal;
+
+        &.menu-open { display: flex !important; }
+
+        li {
+            width: 100%;
+            padding: 0;
+            margin: 0 !important;
+
+            a {
+                display: block;
+                padding: 10px 20px;
+                font-size: 15px;
+            }
+        }
+
+        /* Sous-menus mobile : toujours visibles inline */
+        li.has-submenu > .submenu {
+            display: block !important;
+            position: static;
+            border: none;
+            padding: 0;
+            background: transparent;
+            min-width: unset;
+            opacity: 1;
+            pointer-events: auto;
+            transform: none;
+            transition: none;
+
+            &::before { display: none; }
+
+            li a {
+                padding: 8px 20px 8px 36px;
+                font-size: 14px;
+                color: var(--secondary);
+            }
+        }
+
+        /* Masquer le chevron en mobile */
+        li.has-submenu > a::after { display: none; }
+    }
+}

@@ -1,0 +1,16 @@
+# Sortie Hugo et cache de build (générés)
+/public/
+/resources/
+.hugo_build.lock
+
+# Éditeurs et outils locaux
+/.vscode/
+/.idea/
+/.claude/
+
+# Config admin réelle et base SQLite : ne jamais versionner
+# (static/private/admin-config.php est copié dans public/private/ à chaque build)
+/admin-config.php
+/static/private/admin-config.php
+*.sqlite
+*.sqlite-*

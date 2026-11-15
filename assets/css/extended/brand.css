@@ -1,0 +1,125 @@
+/* ============================================================
+   Charte « Un Belge au Japon » – voir charte-blog-hugo.md
+   Toute nouvelle couleur doit d'abord être ajoutée à la charte.
+   ============================================================ */
+
+:root {
+  --creme: #F2EBDD;
+  --anthracite: #242321;
+  --terracotta: #B65C45;
+  --beige: #D9C7B0;
+  --sauge: #6B7F72;
+  --blanc-casse: #F8F3E9;
+  --voile: #3A332C;
+  --gris-pied: #8A8175;
+
+  --font-titre: 'Playfair Display', Georgia, serif;
+  --font-texte: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-manuscrit: 'Caveat', cursive;
+  --font-japonais: 'Noto Serif JP', serif;
+}
+
+/* Mappage sur les variables PaperMod. La charte ne définit pas de
+   mode sombre : .dark reçoit les mêmes valeurs (thème clair forcé). */
+:root,
+.dark {
+  --theme: var(--creme);
+  --entry: var(--blanc-casse);
+  --primary: var(--anthracite);
+  --secondary: var(--voile);
+  --tertiary: var(--beige);
+  --content: var(--anthracite);
+  --code-bg: var(--blanc-casse);
+  --border: var(--beige);
+  /* Rayons d'angle non définis par la charte : aucun arrondi. */
+  --radius: 0;
+}
+
+body {
+  font-family: var(--font-texte);
+  background: var(--creme);
+  color: var(--anthracite);
+}
+
+/* Titres : Playfair Display ; japonais : Noto Serif JP en appoint */
+h1, h2, h3, h4, h5, h6,
+.post-title,
+.logo a,
+.site-footer__logo {
+  font-family: var(--font-titre);
+  font-weight: 700;
+}
+
+:lang(ja) h1, :lang(ja) h2, :lang(ja) h3, :lang(ja) h4,
+:lang(ja) .post-title,
+:lang(ja) .logo a {
+  font-family: var(--font-titre), var(--font-japonais);
+}
+
+.brand-sub {
+  font-family: var(--font-japonais);
+  font-weight: 600;
+}
+
+/* Accessibilité : focus visible sur tout élément interactif */
+:focus-visible {
+  outline: 2px solid var(--terracotta);
+  outline-offset: 2px;
+}
+
+/* Liens : texte anthracite, soulignement terracotta
+   (terracotta sur crème = 3,8:1, interdit pour le corps de texte) */
+.post-content a {
+  color: var(--anthracite);
+  text-decoration-color: var(--terracotta);
+  text-underline-offset: 3px;
+}
+
+::selection {
+  background: var(--terracotta);
+  color: var(--creme);
+}
+
+/* ── Tags de catégorie ──────────────────────────────────────── */
+.cat-tag {
+  display: inline-block;
+  padding: 0.15rem 0.6rem;
+  margin-right: 0.5rem;
+  font-family: var(--font-texte);
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  line-height: 1.6;
+  text-decoration: none;
+  border: 1.5px solid transparent;
+}
+
+.tag-recit       { background: var(--terracotta); color: var(--creme); }
+.tag-guide       { background: var(--sauge); color: var(--blanc-casse); }
+.tag-comparaison { background: var(--beige); color: var(--anthracite); }
+.tag-conseil     { border-color: var(--sauge); color: var(--sauge); background: transparent; }
+.tag-quotidien   { border-color: var(--anthracite); color: var(--anthracite); background: transparent; }
+
+/* Étiquette « coup de pinceau » : nom du compte, numéros de post */
+.etiquette-pinceau {
+  display: inline-block;
+  padding: 0.2rem 0.7rem;
+  background: var(--terracotta);
+  color: var(--creme);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+/* Touche manuscrite : une accroche ou un soulignement, jamais une phrase */
+.manuscrit {
+  font-family: var(--font-manuscrit);
+  font-weight: 700;
+  color: var(--terracotta);
+}
+
+/* Pied de page : mentions discrètes */
+.site-footer__bottom {
+  color: var(--gris-pied);
+}
