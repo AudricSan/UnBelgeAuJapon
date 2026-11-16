@@ -42,8 +42,8 @@
 
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-{{- if or (eq .Params.robotsNoIndex true) (and (eq .Kind "term") (eq .Data.Plural "tags")) }}
-{{- /* Pages d'étiquettes : trop fines pour être indexées, mais leurs liens restent suivis */}}
+{{- if or (eq .Params.robotsNoIndex true) (and (eq .Kind "term") (in (slice "tags" "categories") .Data.Plural)) }}
+{{- /* Pages d'étiquettes et de catégories : doublons des sections, non indexées mais leurs liens restent suivis */}}
 <meta name="robots" content="noindex, follow">
 {{- else if hugo.IsProduction | or (eq site.Params.env "production") }}
 <meta name="robots" content="index, follow">

@@ -50,6 +50,10 @@ paginate = 10
     label = "日本語"
     locale = "ja-JP"
     weight = 2
+    title = "ベルギー人の日本生活ブログ｜手続き・ビザ・暮らしのヒント"
+
+    [languages.ja.params]
+      description = "日本で暮らすベルギー人が、在留手続き、ビザ、住まい、仕事、日常生活のコツを実体験をもとに紹介するブログです。"
 
     [[languages.ja.menus.main]]
       name   = "ホーム"
